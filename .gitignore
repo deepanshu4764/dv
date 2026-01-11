@@ -8,3 +8,4 @@ yarn.lock
 /.vercel
 /.turbo
 coverage
+.env.local
