@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { FormEvent, Suspense, useState } from "react";
-import { signIn } from "next-auth/react";
+import { FormEvent, Suspense, useEffect, useState } from "react";
+import { type ClientSafeProvider, getProviders, signIn } from "next-auth/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,27 +16,63 @@ function SignInContent() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [providers, setProviders] = useState<Record<string, ClientSafeProvider> | null>(null);
+  const [checkingProviders, setCheckingProviders] = useState(true);
+
+  useEffect(() => {
+    getProviders()
+      .then((prov) => setProviders(prov))
+      .catch(() => setProviders(null))
+      .finally(() => setCheckingProviders(false));
+  }, []);
+
+  const googleAvailable = Boolean(providers?.google);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
     setLoading(true);
-    const result = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-      callbackUrl
-    });
+    const normalizedEmail = email.trim().toLowerCase();
 
-    setLoading(false);
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email: normalizedEmail,
+        password,
+        callbackUrl
+      });
 
-    if (result?.error) {
-      setError("Invalid credentials");
+      if (result?.error) {
+        setError("Invalid email or password. Please try again.");
+        return;
+      }
+
+      router.push(result?.url ?? callbackUrl);
+    } catch (err) {
+      console.error("[SIGN_IN_CREDENTIALS]", err);
+      setError("Unable to sign in right now. Please retry.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    if (googleLoading || loading) return;
+    if (!googleAvailable && !checkingProviders) {
+      setError("Google sign-in is not configured. Add GOOGLE_CLIENT_ID/SECRET and restart the app.");
       return;
     }
-
-    router.push(callbackUrl);
+    setError(null);
+    setGoogleLoading(true);
+    try {
+      await signIn("google", { callbackUrl });
+    } catch (err) {
+      console.error("[SIGN_IN_GOOGLE]", err);
+      setError("Google sign-in failed. Check your connection and try again.");
+      setGoogleLoading(false);
+    }
   };
 
   return (
@@ -82,17 +118,27 @@ function SignInContent() {
             </div>
           </div>
           {error ? <p className="text-sm text-red-600">{error}</p> : null}
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full" disabled={loading || googleLoading}>
             {loading ? "Signing in..." : "Sign in"}
           </Button>
           <Button
             type="button"
             variant="secondary"
             className="w-full"
-            onClick={() => signIn("google", { callbackUrl })}
+            disabled={googleLoading || loading}
+            onClick={handleGoogleSignIn}
           >
-            Continue with Google
+            {googleLoading
+              ? "Redirecting to Google..."
+              : googleAvailable
+                ? "Continue with Google"
+                : "Google sign-in unavailable"}
           </Button>
+          {!checkingProviders && !googleAvailable ? (
+            <p className="text-center text-xs text-slate-500">
+              Add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in your environment to enable Google sign-in.
+            </p>
+          ) : null}
           <p className="text-center text-sm text-slate-600">
             New here?{" "}
             <Link className="font-semibold text-primary-600" href="/auth/signup">

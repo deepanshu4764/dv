@@ -8,6 +8,9 @@ import { prisma } from "./prisma";
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET,
+  // Avoid secure cookies in local dev when NEXTAUTH_URL might be https.
+  useSecureCookies: process.env.NODE_ENV === "production",
+  trustHost: true,
   session: {
     strategy: "jwt"
   },
@@ -26,8 +29,10 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
+        const email = credentials.email.trim().toLowerCase();
+
         const user = await prisma.user.findUnique({
-          where: { email: credentials.email }
+          where: { email }
         });
 
         if (!user?.passwordHash) {

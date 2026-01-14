@@ -1,17 +1,32 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import { Prisma, UserRole } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { email, password, name } = body ?? {};
+    const body = await req.json().catch(() => ({}));
+    const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+    const password = typeof body.password === "string" ? body.password : "";
+    const name = typeof body.name === "string" ? body.name.trim() : "";
 
-    if (!email || !password) {
-      return NextResponse.json({ error: "Email and password are required" }, { status: 400 });
+    if (!email || !password || !name) {
+      return NextResponse.json({ error: "Name, email, and password are required" }, { status: 400 });
     }
 
-    const existing = await prisma.user.findUnique({ where: { email } });
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!validEmail) {
+      return NextResponse.json({ error: "Please enter a valid email address" }, { status: 400 });
+    }
+
+    if (password.length < 8) {
+      return NextResponse.json({ error: "Password must be at least 8 characters" }, { status: 400 });
+    }
+
+    const existing = await prisma.user.findFirst({
+      where: { email: { equals: email, mode: "insensitive" } },
+      select: { id: true }
+    });
     if (existing) {
       return NextResponse.json({ error: "User already exists" }, { status: 409 });
     }
@@ -22,13 +37,26 @@ export async function POST(req: Request) {
       data: {
         email,
         name,
-        passwordHash
+        passwordHash,
+        role: UserRole.USER,
+        dailyEmailOptIn: true
       }
     });
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true }, { status: 201 });
   } catch (error) {
     console.error("[REGISTER]", error);
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === "P2002") {
+        return NextResponse.json({ error: "User already exists" }, { status: 409 });
+      }
+    }
+    if (error instanceof Prisma.PrismaClientInitializationError) {
+      return NextResponse.json(
+        { error: "Database unavailable. Please try again in a moment." },
+        { status: 503 }
+      );
+    }
     return NextResponse.json({ error: "Unable to register" }, { status: 500 });
   }
 }

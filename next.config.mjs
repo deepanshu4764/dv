@@ -6,6 +6,15 @@ const nextConfig = {
       bodySizeLimit: "2mb"
     }
   },
+  async redirects() {
+    return [
+      {
+        source: "/api/auth/google/callback",
+        destination: "/api/auth/callback/google",
+        permanent: false
+      }
+    ];
+  },
   async rewrites() {
     return [
       {
