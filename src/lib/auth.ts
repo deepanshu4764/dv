@@ -5,7 +5,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { prisma } from "./prisma";
 
-export const authOptions: NextAuthOptions = {
+type AuthOptionsWithTrustHost = NextAuthOptions & { trustHost?: boolean };
+
+export const authOptions: AuthOptionsWithTrustHost = {
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET,
   // Avoid secure cookies in local dev when NEXTAUTH_URL might be https.
