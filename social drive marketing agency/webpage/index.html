@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Drive | ROI-Driven Social Media Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070d15;
+      --panel: #0d1523;
+      --card: #111b2b;
+      --muted: #a2b3cc;
+      --text: #e6edf6;
+      --accent: #2cf7a4;
+      --accent-2: #ffb347;
+      --stroke: rgba(255,255,255,0.08);
+      --shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+      --radius: 14px;
+      --radius-lg: 18px;
+      --max-width: 1160px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Manrope", "Inter", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(44,247,164,0.08), transparent 30%), radial-gradient(circle at 80% 0%, rgba(255,179,71,0.08), transparent 30%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 {
+      font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+      margin: 0 0 12px;
+      color: #f4f7fb;
+      letter-spacing: -0.01em;
+    }
+    p { margin: 0 0 12px; color: var(--muted); }
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: var(--max-width); margin: 0 auto; padding: 18px 22px 96px; }
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(7,13,21,0.8);
+      border-bottom: 1px solid var(--stroke);
+      padding: 12px 0;
+    }
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 18px;
+    }
+    .logo mark {
+      background: linear-gradient(120deg, var(--accent), #1dd3ff);
+      color: #04101e;
+      padding: 6px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      padding: 8px 12px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 10px;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .btn {
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(120deg, var(--accent), #16c57f);
+      color: #04101e;
+      padding: 12px 16px;
+      box-shadow: 0 10px 30px rgba(44,247,164,0.25);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(44,247,164,0.32); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: #f1f5f9;
+      padding: 11px 14px;
+      border: 1px solid var(--stroke);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      padding: 28px 0 10px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      color: #c6d7ef;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+    .hero h1 { font-size: clamp(32px, 4vw, 48px); line-height: 1.08; }
+    .hero p { font-size: 16px; max-width: 620px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0 8px; }
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 0;
+    }
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.04);
+      color: #d8e4f5;
+      font-weight: 600;
+      font-size: 13px;
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .hero-card {
+      background: linear-gradient(165deg, rgba(44,247,164,0.06), rgba(14,126,255,0.04));
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 12px;
+    }
+    .stat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+    }
+    .stat strong { font-size: 24px; }
+    .stat small { color: var(--muted); }
+    .stacked {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .mini-card {
+      padding: 12px;
+      border-radius: 12px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+    }
+    .mini-card h4 { margin: 0 0 6px; font-size: 15px; }
+    .mini-card p { margin: 0; font-size: 13px; }
+    .section {
+      margin: 48px 0 14px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .section-header h2 { margin: 0; font-size: 28px; }
+    .section-header p { max-width: 720px; }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 8px;
+    }
+    .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(44,247,164,0.12);
+      color: #0e2f25;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .card p { font-size: 14px; }
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 0;
+      display: grid;
+      gap: 6px;
+    }
+    .list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 8px;
+      color: #c8d8ef;
+      font-size: 14px;
+    }
+    .list li span { color: var(--accent); font-weight: 700; }
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .plan {
+      position: relative;
+      background: linear-gradient(160deg, #0f1829, #0b1220);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 14px;
+      min-height: 100%;
+    }
+    .plan.recommended {
+      border: 1px solid rgba(44,247,164,0.6);
+      box-shadow: 0 18px 48px rgba(44,247,164,0.2);
+      background: linear-gradient(160deg, rgba(44,247,164,0.08), #0e1524);
+    }
+    .badge {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      background: rgba(44,247,164,0.16);
+      color: #9fffd6;
+      border: 1px solid rgba(44,247,164,0.4);
+    }
+    .plan-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .plan-name {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      font-size: 16px;
+      color: #f7fbff;
+    }
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      background: rgba(44,247,164,0.16);
+      color: #9fffd6;
+      border: 1px solid rgba(44,247,164,0.4);
+      white-space: nowrap;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .plan .price {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .price-row span { font-size: 15px; color: var(--muted); font-weight: 600; }
+    .plan-desc { margin: 0; color: #cbd7f0; font-size: 14px; }
+    .plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .plan li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #c8d8ef;
+      font-size: 14px;
+    }
+    .plan li::before {
+      content: "";
+      display: none;
+    }
+    .plan li b { color: #fff; }
+    .plan button { width: 100%; }
+    .plan .note { color: #90a6c8; }
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 12px;
+    }
+    form { display: grid; gap: 12px; }
+    label { font-weight: 700; color: #dbe8ff; font-size: 14px; }
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 14px;
+    }
+    input:focus { outline: 1px solid var(--accent); box-shadow: 0 0 0 3px rgba(44,247,164,0.14); }
+    .note { font-size: 13px; color: #94a9c6; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--stroke);
+      font-size: 13px;
+      color: #c8d8ef;
+    }
+    .testimonial {
+      background: linear-gradient(180deg, rgba(44,247,164,0.08), rgba(255,255,255,0.02));
+      border: 1px solid var(--stroke);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 8px;
+    }
+    .avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(44,247,164,0.4), rgba(255,255,255,0.1));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #04101e;
+    }
+    .footer {
+      margin-top: 40px;
+      padding: 18px 0 8px;
+      border-top: 1px solid var(--stroke);
+      color: #8ea2c0;
+      font-size: 13px;
+      display: grid;
+      gap: 12px;
+    }
+    .footer-links { display: flex; gap: 14px; flex-wrap: wrap; }
+    .floating-bar {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      left: 14px;
+      display: flex;
+      justify-content: flex-end;
+      z-index: 40;
+      pointer-events: none;
+    }
+    .floating-bar .bar {
+      pointer-events: auto;
+      background: #0c1626;
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      padding: 10px 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: min(460px, 100%);
+    }
+    /* Chatbot and WhatsApp floating support starts */
+    .support-widget {
+      position: fixed;
+      right: 18px;
+      bottom: 92px;
+      z-index: 70;
+      display: grid;
+      gap: 10px;
+      justify-items: end;
+    }
+    .wa-chat,
+    .chatbot-toggle {
+      width: 56px;
+      height: 56px;
+      border: none;
+      border-radius: 50%;
+      color: #04101e;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.38);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      text-decoration: none;
+    }
+    .wa-chat {
+      background: linear-gradient(135deg, #25d366, #1ebe5d);
+    }
+    .chatbot-toggle {
+      background: linear-gradient(135deg, var(--accent), #1dd3ff);
+      font-size: 24px;
+    }
+    .wa-chat:hover,
+    .chatbot-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.45);
+    }
+    .wa-chat svg,
+    .chatbot-toggle svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+    .chatbot-panel {
+      position: fixed;
+      right: 18px;
+      bottom: 220px;
+      z-index: 75;
+      width: min(372px, calc(100vw - 28px));
+      max-height: min(610px, calc(100vh - 246px));
+      background: #0c1626;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.48);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+      transform-origin: bottom right;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .chatbot-panel.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .chatbot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 14px 12px;
+      background: linear-gradient(135deg, rgba(44,247,164,0.18), rgba(29,211,255,0.12));
+      border-bottom: 1px solid var(--stroke);
+    }
+    .chatbot-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chatbot-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #1dd3ff);
+      color: #04101e;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+    }
+    .chatbot-title strong {
+      display: block;
+      line-height: 1.2;
+      color: #f7fbff;
+    }
+    .chatbot-title span {
+      color: #a8bad4;
+      font-size: 12px;
+    }
+    .chatbot-close {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      color: #f4f7fb;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .chatbot-messages {
+      height: 330px;
+      max-height: calc(100vh - 420px);
+      min-height: 220px;
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: 14px;
+      display: grid;
+      align-content: start;
+      gap: 10px;
+      background: rgba(7,13,21,0.72);
+    }
+    .chat-message {
+      width: fit-content;
+      max-width: 88%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.45;
+      white-space: pre-line;
+    }
+    .chat-message.bot {
+      background: rgba(255,255,255,0.07);
+      color: #e7f2ff;
+      border: 1px solid var(--stroke);
+      border-bottom-left-radius: 5px;
+    }
+    .chat-message.user {
+      justify-self: end;
+      background: linear-gradient(135deg, var(--accent), #18d98c);
+      color: #04101e;
+      border-bottom-right-radius: 5px;
+      font-weight: 700;
+    }
+    .chatbot-quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 14px 8px;
+      border-top: 1px solid var(--stroke);
+      background: #0c1626;
+    }
+    .chatbot-quick button {
+      border: 1px solid rgba(44,247,164,0.28);
+      background: rgba(44,247,164,0.08);
+      color: #dffdf0;
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .chatbot-input {
+      display: flex;
+      gap: 8px;
+      padding: 10px 14px 14px;
+      background: #0c1626;
+    }
+    .chatbot-input input {
+      min-width: 0;
+      height: 42px;
+    }
+    .chatbot-input button {
+      width: 46px;
+      height: 42px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #18d98c);
+      color: #04101e;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    /* Chatbot and WhatsApp floating support ends */
+    /* Phone OTP authentication modal starts */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 95;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(4, 9, 16, 0.76);
+      backdrop-filter: blur(10px);
+    }
+    .auth-overlay.open {
+      display: flex;
+    }
+    .auth-dialog {
+      width: min(430px, 100%);
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      background: #0c1626;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.5);
+    }
+    .auth-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 18px 12px;
+      border-bottom: 1px solid var(--stroke);
+    }
+    .auth-header h2 {
+      margin: 0 0 4px;
+      font-size: 22px;
+    }
+    .auth-header p {
+      margin: 0;
+      font-size: 13px;
+    }
+    .auth-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      color: #f4f7fb;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+    }
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 14px 18px 0;
+    }
+    .auth-tab {
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(255,255,255,0.05);
+      color: #dbe8ff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .auth-tab.active {
+      background: linear-gradient(135deg, var(--accent), #18d98c);
+      color: #04101e;
+      border-color: transparent;
+    }
+    .auth-body {
+      padding: 16px 18px 18px;
+      display: grid;
+      gap: 12px;
+    }
+    .auth-form {
+      display: grid;
+      gap: 12px;
+    }
+    .auth-form label {
+      display: grid;
+      gap: 7px;
+    }
+    .auth-form small {
+      color: #94a9c6;
+      font-weight: 600;
+    }
+    .auth-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .auth-submit {
+      width: 100%;
+      min-height: 44px;
+    }
+    .auth-link {
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: #9fffd6;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .auth-message {
+      display: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .auth-message.error {
+      display: block;
+      color: #ffd6d6;
+      background: rgba(255, 80, 80, 0.12);
+      border: 1px solid rgba(255, 80, 80, 0.28);
+    }
+    .auth-message.success {
+      display: block;
+      color: #ccffe7;
+      background: rgba(44,247,164,0.12);
+      border: 1px solid rgba(44,247,164,0.28);
+    }
+    .auth-user {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      color: #dbe8ff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .auth-user.visible {
+      display: flex;
+    }
+    /* Phone OTP authentication modal ends */
+    .secure {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 12px;
+      color: #9fb2cd;
+    }
+    .secure span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      border: 1px solid var(--stroke);
+    }
+    @media (max-width: 840px) {
+      .top-row { flex-direction: column; align-items: flex-start; }
+      .nav-links { width: 100%; justify-content: space-between; }
+      .hero { padding-top: 10px; }
+      .floating-bar { right: 10px; left: 10px; }
+    }
+    @media (max-width: 540px) {
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .page { padding: 14px 16px 96px; }
+      .nav-links { gap: 8px; }
+      .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+      .floating-bar .bar { flex-direction: column; align-items: flex-start; }
+      .support-widget {
+        right: 14px;
+        bottom: 162px;
+      }
+      .wa-chat,
+      .chatbot-toggle {
+        width: 52px;
+        height: 52px;
+      }
+      .chatbot-panel {
+        right: 14px;
+        bottom: 276px;
+        max-height: calc(100vh - 292px);
+      }
+      .chatbot-messages {
+        height: auto;
+        min-height: 150px;
+      }
+      .auth-overlay {
+        align-items: flex-end;
+        padding: 10px;
+      }
+      .auth-dialog {
+        border-radius: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="top-nav">
+      <div class="top-row">
+        <div class="logo">
+          <mark>SD</mark>
+          <div>Social Drive</div>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="#pricing">Plans</a>
+          <a class="nav-link" href="#why">Why us</a>
+          <a class="nav-link" href="#lead">Contact</a>
+          <button class="btn btn-ghost" id="login-btn">Login / Sign up</button>
+          <button class="btn btn-primary" data-scroll="#lead">Start free trial</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div>
+        <div class="eyebrow">1-month free trial | ROI-first social media growth</div>
+        <h1>Fuel your growth with ROI-driven social media campaigns.</h1>
+        <p>Social Drive turns every ad rupee into measurable revenue. We build funnel-based, data-led campaigns with AI-enhanced creatives, fast WhatsApp support, and crystal-clear reporting.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" data-scroll="#lead">Start your free month</button>
+          <button class="btn btn-ghost" data-scroll="#pricing">See plans & pricing</button>
+        </div>
+        <div class="pill-row">
+          <span class="pill">Full-funnel strategy</span>
+          <span class="pill">AI-optimized ads</span>
+          <span class="pill">Live performance reports</span>
+          <span class="pill">WhatsApp-fast support</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="stat">
+          <div>
+            <div style="color:#9fd8ff;font-weight:700;font-size:13px;">Avg ROAS across clients</div>
+            <strong>4.6x</strong>
+          </div>
+          <small>Tracking via client portal</small>
+        </div>
+        <div class="stacked">
+          <div class="mini-card">
+            <h4>Client Portal</h4>
+            <p>Login to view dashboards, campaign notes, and downloadable reports.</p>
+          </div>
+          <div class="mini-card">
+            <h4>Secure Payments</h4>
+            <p>Razorpay checkout with SSL + 3D secure. Free first month on every plan.</p>
+          </div>
+        </div>
+        <div class="stacked">
+          <div class="mini-card">
+            <h4>AI Creative Lab</h4>
+            <p>Dynamic creative optimization and A/B tests to lift conversions.</p>
+          </div>
+          <div class="mini-card">
+            <h4>Full-Funnel Ads</h4>
+            <p>Awareness -> Consideration -> Retargeting -> Conversion with landing page CRO.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="section-header">
+        <div>
+          <h2>Why Social Drive wins</h2>
+          <p>ROI-focused, funnel-based, and data-driven. We mix AI-enhanced ads with conversion-ready landing pages, so every click is primed to become revenue.</p>
+        </div>
+        <div class="secure">
+          <span>Secure checkout (Razorpay)</span>
+          <span>GDPR-friendly data handling</span>
+          <span>Always-on WhatsApp support</span>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">ROI</div>
+          <h3>ROI-focused approach</h3>
+          <p>Budgets flow to what works. We measure ROAS, CAC, LTV, and optimize weekly.</p>
+          <ul class="list">
+            <li><span>&bull;</span>Performance-first creatives</li>
+            <li><span>&bull;</span>Conversion tracking ready</li>
+            <li><span>&bull;</span>Landing page + ads in sync</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="icon">FNL</div>
+          <h3>Funnel-based strategy</h3>
+          <p>Full-funnel journeys: cold outreach, nurture, retargeting, and conversion plays.</p>
+          <ul class="list">
+            <li><span>&bull;</span>Audience mapping by intent</li>
+            <li><span>&bull;</span>Offer sequencing that converts</li>
+            <li><span>&bull;</span>A/B tests to lift CVR</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="icon">AI</div>
+          <h3>AI-enhanced ads</h3>
+          <p>Dynamic creative optimization and smart targeting to stretch every rupee.</p>
+          <ul class="list">
+            <li><span>&bull;</span>Adaptive ad copy & hooks</li>
+            <li><span>&bull;</span>Auto-rotate winners</li>
+            <li><span>&bull;</span>Data-led retargeting</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Plans & pricing</h2>
+          <p>Choose a plan, get the first month free. We set up tracking, launch your funnel, and report results fast.</p>
+        </div>
+      <div class="badge">First month free</div>
+    </div>
+    <div class="pricing" id="pricing">
+      <div class="plan">
+        <div class="plan-top">
+          <div class="plan-name">Base</div>
+          <div class="pill-badge">First month free</div>
+        </div>
+        <div class="price-row">
+          <div class="price">&#8377;15,000</div>
+          <span>/ month</span>
+        </div>
+        <p class="plan-desc">Ideal for starters or single-platform focus. Tight execution, zero fluff.</p>
+        <ul>
+          <li>1 platform (Facebook or Instagram)</li>
+          <li>Organic Google Ads management</li>
+          <li>8 posts/month (2 reels/shorts)</li>
+          <li>3 static + 1 video ad creative</li>
+          <li>Lead gen + A/B ads</li>
+          <li>Basic community replies</li>
+          <li>Simple landing page or form</li>
+          <li>1 detailed monthly report</li>
+          <li>30-min strategy call</li>
+        </ul>
+        <button class="btn btn-primary" data-plan="Base">Start free trial</button>
+        <div class="note">Cancel anytime within 30 days.</div>
+      </div>
+      <div class="plan recommended">
+        <div class="plan-top">
+          <div class="plan-name">Growth</div>
+          <div class="pill-badge">Best value</div>
+        </div>
+        <div class="price-row">
+          <div class="price">&#8377;50,000</div>
+          <span>/ month</span>
+        </div>
+        <p class="plan-desc">For brands ready to scale on multiple channels with deeper funnels.</p>
+        <ul>
+          <li>2 platforms (Facebook + Instagram)</li>
+          <li>16 posts/month (12 image + 4 reels)</li>
+          <li>8-12 creatives with DCO</li>
+          <li>Full-funnel cold/warm/hot ads</li>
+          <li>2 landing pages + WA/email automation</li>
+          <li>Monthly landing page A/B tests</li>
+          <li>Active community management</li>
+          <li>Bi-weekly performance reports</li>
+          <li>Weekly strategy meeting</li>
+          <li>1-2 micro-influencer collabs</li>
+        </ul>
+        <button class="btn btn-primary" data-plan="Growth">Start free trial</button>
+        <div class="note">Free month + Razorpay secure checkout.</div>
+      </div>
+      <div class="plan">
+        <div class="plan-top">
+          <div class="plan-name">Professional</div>
+          <div class="pill-badge">Priority support</div>
+        </div>
+        <div class="price-row">
+          <div class="price">&#8377;100,000</div>
+          <span>/ month</span>
+        </div>
+        <p class="plan-desc">All-in growth: premium production, multi-platform, automation, and PR.</p>
+        <ul>
+          <li>All major platforms incl. LinkedIn</li>
+          <li>30+ assets/month (short + long form)</li>
+          <li>4 premium long-form videos</li>
+          <li>Studio/on-site shoots + premium edits</li>
+          <li>Programmatic retargeting + lookalikes</li>
+          <li>Continuous AI-driven optimization</li>
+          <li>Reputation management</li>
+          <li>Advanced WA/email automation</li>
+          <li>Influencer + PR amplification</li>
+          <li>Daily dashboard + weekly reviews</li>
+          <li>Competitor benchmarking</li>
+        </ul>
+        <button class="btn btn-primary" data-plan="Professional">Start free trial</button>
+        <div class="note">Dedicated account manager + priority support.</div>
+      </div>
+    </div>
+    </section>
+
+    <section class="section" id="lead">
+      <div class="split">
+        <div class="form-card">
+          <div class="badge">Get your custom growth plan</div>
+          <h3>Claim your 30-day free trial</h3>
+          <p>We'll audit your accounts, set up tracking, and launch fast. Expect a callback within one business day.</p>
+          <form id="lead-form">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Work email</label>
+              <input id="email" type="email" name="email" placeholder="name@company.com" required>
+            </div>
+            <div>
+              <label for="phone">Phone / WhatsApp</label>
+              <input id="phone" name="phone" placeholder="+91 98xxxxxxx" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Send & schedule</button>
+            <div class="note">By submitting you agree to quick follow-up via WhatsApp/phone. Data stays private.</div>
+            <div class="note" id="form-status"></div>
+          </form>
+        </div>
+        <div class="card">
+          <div class="badge">How your free month works</div>
+          <ul class="list">
+            <li><span>1</span><div><b>Strategy sprint (48h):</b> Audit, define offers, map funnel.</div></li>
+            <li><span>2</span><div><b>Creative + launch (Week 1):</b> Ads, landing, tracking live.</div></li>
+            <li><span>3</span><div><b>Optimize (Week 2-3):</b> DCO + A/B tests to lift ROAS.</div></li>
+            <li><span>4</span><div><b>Report & scale (Week 4):</b> Transparent KPIs, next sprint plan.</div></li>
+          </ul>
+          <div class="chips" style="margin-top:12px;">
+            <div class="chip">Phone OTP login ready</div>
+            <div class="chip">Razorpay secure checkout</div>
+            <div class="chip">Client portal dashboards</div>
+            <div class="chip">Pixel/GA4 tracking ready</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Proof & trust</h2>
+          <p>Fast, responsive support and transparent reporting keep every stakeholder aligned.</p>
+        </div>
+      </div>
+      <div class="split">
+        <div class="testimonial">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="avatar">AR</div>
+            <div>
+              <strong>Aparna R.</strong><br>
+              <span style="color:#9fb2cd;">Founder, D2C Retail</span>
+            </div>
+          </div>
+          <p style="color:#e7f2ff;font-size:15px;">"Social Drive lifted our online revenue by 52% in 90 days. Weekly reports made it effortless to see what was working."</p>
+        </div>
+        <div class="testimonial">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="avatar">MK</div>
+            <div>
+              <strong>Mayank K.</strong><br>
+              <span style="color:#9fb2cd;">Head of Growth, SaaS</span>
+            </div>
+          </div>
+          <p style="color:#e7f2ff;font-size:15px;">"Their funnel approach plus on-page A/B tests cut our lead cost by 34% while improving lead quality."</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Client portal + support</h2>
+          <p>Login with your verified phone number, view real-time dashboards, download reports, and talk to your manager instantly via WhatsApp.</p>
+        </div>
+        <div class="badge">Always-on support</div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Phone OTP login</h3>
+          <p>Phone verification for new clients, then password login for secure repeat access.</p>
+          <div class="note">Ready for Firebase Auth, Twilio, MSG91, Fast2SMS, or another SMS gateway.</div>
+        </div>
+        <div class="card">
+          <h3>Live performance reports</h3>
+          <p>Dashboards with KPIs, ROAS, and conversion paths. Exportable PDFs.</p>
+          <div class="note">Built for daily check-ins + weekly deep dives.</div>
+        </div>
+        <div class="card">
+          <h3>WhatsApp-fast responses</h3>
+          <p>Dedicated account manager + backup team to keep campaigns moving.</p>
+          <div class="note">Includes creative requests and approvals.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="logo">
+          <mark>SD</mark>
+          <div>Social Drive</div>
+        </div>
+        <span>ROI-driven social media marketing. Free month on every plan.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="#pricing">Plans</a>
+        <a href="#lead">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="secure">
+        <span>SSL secured</span>
+        <span>Razorpay ready</span>
+        <span>Analytics ready</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Chatbot and WhatsApp floating support starts -->
+  <div class="support-widget" aria-label="Customer support shortcuts">
+    <a class="wa-chat" href="https://wa.me/918950378717?text=Hi%20Social%20Drive%2C%20I%20want%20to%20know%20more%20about%20your%20services" target="_blank" rel="noopener" aria-label="Chat with Social Drive on WhatsApp">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="currentColor" d="M16.04 4C9.4 4 4 9.34 4 15.9c0 2.1.56 4.16 1.62 5.96L4 28l6.3-1.6a12.1 12.1 0 0 0 5.74 1.45C22.68 27.85 28 22.5 28 15.9C28 9.34 22.68 4 16.04 4Zm0 21.85c-1.78 0-3.52-.48-5.04-1.38l-.36-.22l-3.74.95l.99-3.62l-.24-.37A9.83 9.83 0 0 1 6 15.9C6 10.45 10.5 6 16.04 6C21.56 6 26 10.45 26 15.9s-4.44 9.95-9.96 9.95Zm5.5-7.44c-.3-.15-1.78-.87-2.05-.97c-.28-.1-.48-.15-.68.15c-.2.3-.78.97-.96 1.17c-.18.2-.35.22-.65.07c-.3-.15-1.27-.46-2.42-1.48c-.9-.8-1.5-1.78-1.68-2.08c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.52c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.07-.15-.68-1.62-.93-2.22c-.25-.58-.5-.5-.68-.5h-.58c-.2 0-.53.07-.8.37c-.28.3-1.05 1.02-1.05 2.5c0 1.47 1.08 2.9 1.23 3.1c.15.2 2.13 3.22 5.17 4.52c.72.3 1.28.48 1.72.62c.72.23 1.38.2 1.9.12c.58-.08 1.78-.72 2.03-1.42c.25-.7.25-1.3.18-1.42c-.08-.13-.28-.2-.58-.35Z"/>
+      </svg>
+    </a>
+    <button class="chatbot-toggle" id="chatbot-toggle" type="button" aria-label="Open support chatbot" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M4 5.8C4 4.8 4.8 4 5.8 4h12.4c1 0 1.8.8 1.8 1.8v8.4c0 1-.8 1.8-1.8 1.8H9.6L5 20v-4.1c-.6-.3-1-.9-1-1.7V5.8Zm4 3.1c0 .6.4 1 1 1h6c.6 0 1-.4 1-1s-.4-1-1-1H9c-.6 0-1 .4-1 1Zm1 3c-.6 0-1 .4-1 1s.4 1 1 1h4c.6 0 1-.4 1-1s-.4-1-1-1H9Z"/>
+      </svg>
+    </button>
+  </div>
+
+  <section class="chatbot-panel" id="chatbot-panel" aria-label="Social Drive support chatbot" aria-hidden="true">
+    <div class="chatbot-header">
+      <div class="chatbot-title">
+        <div class="chatbot-avatar">SD</div>
+        <div>
+          <strong>Social Drive Assistant</strong>
+          <span>Rule-based support, no paid API</span>
+        </div>
+      </div>
+      <button class="chatbot-close" id="chatbot-close" type="button" aria-label="Close support chatbot">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages" aria-live="polite"></div>
+    <div class="chatbot-quick" aria-label="Quick chatbot replies">
+      <button type="button" data-chat-quick="Products">Products</button>
+      <button type="button" data-chat-quick="Pricing">Pricing</button>
+      <button type="button" data-chat-quick="Services">Services</button>
+      <button type="button" data-chat-quick="Contact">Contact</button>
+      <button type="button" data-chat-quick="WhatsApp">WhatsApp</button>
+    </div>
+    <form class="chatbot-input" id="chatbot-form">
+      <input id="chatbot-input" type="text" placeholder="Ask about services, pricing, contact..." autocomplete="off" aria-label="Type your question">
+      <button type="submit" aria-label="Send chatbot message">Send</button>
+    </form>
+  </section>
+  <!-- Chatbot and WhatsApp floating support ends -->
+
+  <div class="floating-bar">
+    <div class="bar">
+      <div>
+        <div style="font-weight:800;">Start your free 30-day trial</div>
+        <div style="color:#9fb2cd;font-size:13px;">Limited slots each month. Launch in 48 hours.</div>
+      </div>
+      <button class="btn btn-primary" data-scroll="#lead">Start now</button>
+    </div>
+  </div>
+
+  <!-- Phone OTP authentication modal starts -->
+  <div class="auth-overlay" id="auth-modal" aria-hidden="true">
+    <div class="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <div class="auth-header">
+        <div>
+          <h2 id="auth-title">Client login</h2>
+          <p id="auth-subtitle">Use your verified phone number and password.</p>
+        </div>
+        <button class="auth-close" id="auth-close" type="button" aria-label="Close login dialog">&times;</button>
+      </div>
+      <div class="auth-tabs" id="auth-tabs">
+        <button class="auth-tab active" type="button" data-auth-tab="login">Login</button>
+        <button class="auth-tab" type="button" data-auth-tab="signup">Signup</button>
+      </div>
+      <div class="auth-body">
+        <div class="auth-user" id="auth-user"></div>
+        <div class="auth-message" id="auth-message"></div>
+        <form class="auth-form" id="auth-form" novalidate></form>
+      </div>
+    </div>
+  </div>
+  <!-- Phone OTP authentication modal ends -->
+
+  <script>
+    const authModal = document.getElementById("auth-modal");
+    const authClose = document.getElementById("auth-close");
+    const authForm = document.getElementById("auth-form");
+    const authMessage = document.getElementById("auth-message");
+    const authTitle = document.getElementById("auth-title");
+    const authSubtitle = document.getElementById("auth-subtitle");
+    const authTabs = document.getElementById("auth-tabs");
+    const authUser = document.getElementById("auth-user");
+    const loginBtn = document.getElementById("login-btn");
+
+    const authState = {
+      view: "login",
+      phoneNumber: "",
+      signupToken: "",
+      resetToken: "",
+      user: null,
+      isLoading: false
+    };
+
+    function normalizeIndianPhoneInput(value) {
+      let digits = String(value || "").replace(/[^\d+]/g, "");
+      if (digits.startsWith("+91")) digits = digits.slice(3);
+      if (digits.startsWith("91") && digits.length === 12) digits = digits.slice(2);
+      if (digits.startsWith("0") && digits.length === 11) digits = digits.slice(1);
+      return /^[6-9]\d{9}$/.test(digits) ? "+91" + digits : "";
+    }
+
+    function validatePasswordInput(password) {
+      if (!password || password.length < 8) return "Password must be at least 8 characters.";
+      if (!/[A-Za-z]/.test(password) || !/\d/.test(password)) return "Password must include at least one letter and one number.";
+      return "";
+    }
+
+    function setAuthMessage(text, type) {
+      authMessage.textContent = text || "";
+      authMessage.className = "auth-message" + (text ? " " + type : "");
+    }
+
+    function formatPhone(phoneNumber) {
+      const digits = String(phoneNumber || "").replace(/\D/g, "");
+      if (digits.length === 12 && digits.startsWith("91")) {
+        return "+91 " + digits.slice(2, 7) + " " + digits.slice(7);
+      }
+      return phoneNumber || "";
+    }
+
+    async function authRequest(path, payload, method = "POST") {
+      if (!window.location.protocol.startsWith("http")) {
+        throw new Error("Please run this site with npm start so phone login can reach the secure auth server.");
+      }
+      const options = {
+        method,
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" }
+      };
+      if (payload) options.body = JSON.stringify(payload);
+      const response = await fetch(path, options);
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.message || "Request failed. Please try again.");
+      return data;
+    }
+
+    function setAuthView(view, extra = {}) {
+      Object.assign(authState, extra, { view, isLoading: false });
+      setAuthMessage("", "");
+      renderAuth();
+    }
+
+    function setAuthLoading(isLoading) {
+      authState.isLoading = isLoading;
+      const submit = authForm.querySelector("[type='submit']");
+      if (submit) {
+        submit.disabled = isLoading;
+        submit.textContent = isLoading ? "Please wait..." : submit.dataset.label;
+      }
+    }
+
+    function renderAuthUser() {
+      if (!authState.user) {
+        authUser.classList.remove("visible");
+        authUser.innerHTML = "";
+        if (loginBtn) loginBtn.textContent = "Login / Sign up";
+        return;
+      }
+      authUser.classList.add("visible");
+      authUser.innerHTML = "<span>Logged in: " + formatPhone(authState.user.phoneNumber) + "</span><button class=\"auth-link\" type=\"button\" data-auth-action=\"logout\">Logout</button>";
+      if (loginBtn) loginBtn.textContent = "My account";
+    }
+
+    function renderAuth() {
+      renderAuthUser();
+      authTabs.querySelectorAll("[data-auth-tab]").forEach((tab) => {
+        const tabView = tab.getAttribute("data-auth-tab");
+        tab.classList.toggle("active", authState.view === tabView || authState.view.startsWith(tabView + "-"));
+      });
+
+      const disabled = authState.isLoading ? "disabled" : "";
+      const phoneValue = authState.phoneNumber ? formatPhone(authState.phoneNumber) : "";
+
+      if (authState.view === "login") {
+        authTitle.textContent = "Client login";
+        authSubtitle.textContent = "Use your verified phone number and password.";
+        authForm.innerHTML =
+          "<label>Phone number / user ID<input name=\"identifier\" type=\"tel\" inputmode=\"tel\" placeholder=\"8950378717\" autocomplete=\"tel\" required></label>" +
+          "<label>Password<input name=\"password\" type=\"password\" placeholder=\"Enter password\" autocomplete=\"current-password\" required></label>" +
+          "<div class=\"auth-row\"><button class=\"auth-link\" type=\"button\" data-auth-action=\"forgot\">Forgot Password?</button><button class=\"auth-link\" type=\"button\" data-auth-action=\"signup\">Create account</button></div>" +
+          "<button class=\"btn btn-primary auth-submit\" type=\"submit\" data-label=\"Login\" " + disabled + ">Login</button>";
+        return;
+      }
+
+      if (authState.view === "signup" || authState.view === "signup-phone") {
+        authTitle.textContent = "Create account";
+        authSubtitle.textContent = "Verify your phone number before setting a password.";
+        authForm.innerHTML =
+          "<label>Phone number<input name=\"phoneNumber\" type=\"tel\" inputmode=\"tel\" placeholder=\"8950378717\" autocomplete=\"tel\" required><small>Use a valid 10-digit Indian mobile number.</small></label>" +
+          "<div class=\"auth-row\"><button class=\"auth-link\" type=\"button\" data-auth-action=\"login\">Already registered?</button></div>" +
+          "<button class=\"btn btn-primary auth-submit\" type=\"submit\" data-label=\"Send OTP\" " + disabled + ">Send OTP</button>";
+        return;
+      }
+
+      if (authState.view === "signup-otp") {
+        authTitle.textContent = "Verify OTP";
+        authSubtitle.textContent = "OTP sent to " + phoneValue + ".";
+        authForm.innerHTML =
+          "<label>OTP<input name=\"otp\" type=\"text\" inputmode=\"numeric\" maxlength=\"6\" placeholder=\"6-digit OTP\" autocomplete=\"one-time-code\" required></label>" +
+          "<div class=\"auth-row\"><button class=\"auth-link\" type=\"button\" data-auth-action=\"resend\">Resend OTP</button><button class=\"auth-link\" type=\"button\" data-auth-action=\"signup\">Change phone</button></div>" +
+          "<button class=\"btn btn-primary auth-submit\" type=\"submit\" data-label=\"Verify OTP\" " + disabled + ">Verify OTP</button>";
+        return;
+      }
+
+      if (authState.view === "signup-password") {
+        authTitle.textContent = "Set password";
+        authSubtitle.textContent = "Create a password for " + phoneValue + ".";
+        authForm.innerHTML =
+          "<label>Password<input name=\"password\" type=\"password\" placeholder=\"Minimum 8 characters\" autocomplete=\"new-password\" required></label>" +
+          "<label>Confirm password<input name=\"confirmPassword\" type=\"password\" placeholder=\"Repeat password\" autocomplete=\"new-password\" required></label>" +
+          "<button class=\"btn btn-primary auth-submit\" type=\"submit\" data-label=\"Create account\" " + disabled + ">Create account</button>";
+        return;
+      }
+
+      if (authState.view === "forgot-phone") {
+        authTitle.textContent = "Reset password";
+        authSubtitle.textContent = "Verify your registered phone number with OTP.";
+        authForm.innerHTML =
+          "<label>Registered phone number<input name=\"phoneNumber\" type=\"tel\" inputmode=\"tel\" placeholder=\"8950378717\" autocomplete=\"tel\" required></label>" +
+          "<div class=\"auth-row\"><button class=\"auth-link\" type=\"button\" data-auth-action=\"login\">Back to login</button></div>" +
+          "<button class=\"btn btn-primary auth-submit\" type=\"submit\" data-label=\"Send OTP\" " + disabled + ">Send OTP</button>";
+        return;
+      }
+
+      if (authState.view === "forgot-otp") {
+        authTitle.textContent = "Verify OTP";
+        authSubtitle.textContent = "Password reset OTP sent to " + phoneValue + ".";
+        authForm.innerHTML =
+          "<label>OTP<input name=\"otp\" type=\"text\" inputmode=\"numeric\" maxlength=\"6\" placeholder=\"6-digit OTP\" autocomplete=\"one-time-code\" required></label>" +
+          "<div class=\"auth-row\"><button class=\"auth-link\" type=\"button\" data-auth-action=\"resend\">Resend OTP</button><button class=\"auth-link\" type=\"button\" data-auth-action=\"forgot\">Change phone</button></div>" +
+          "<button class=\"btn btn-primary auth-submit\" type=\"submit\" data-label=\"Verify OTP\" " + disabled + ">Verify OTP</button>";
+        return;
+      }
+
+      if (authState.view === "forgot-password") {
+        authTitle.textContent = "Create new password";
+        authSubtitle.textContent = "Set a new password for " + phoneValue + ".";
+        authForm.innerHTML =
+          "<label>New password<input name=\"password\" type=\"password\" placeholder=\"Minimum 8 characters\" autocomplete=\"new-password\" required></label>" +
+          "<label>Confirm new password<input name=\"confirmPassword\" type=\"password\" placeholder=\"Repeat password\" autocomplete=\"new-password\" required></label>" +
+          "<button class=\"btn btn-primary auth-submit\" type=\"submit\" data-label=\"Update password\" " + disabled + ">Update password</button>";
+      }
+    }
+
+    function openAuthModal(view = "login") {
+      authModal.classList.add("open");
+      authModal.setAttribute("aria-hidden", "false");
+      setAuthView(view);
+      setTimeout(() => {
+        const firstInput = authForm.querySelector("input");
+        if (firstInput) firstInput.focus();
+      }, 80);
+    }
+
+    function closeAuthModal() {
+      authModal.classList.remove("open");
+      authModal.setAttribute("aria-hidden", "true");
+    }
+
+    async function handleAuthSubmit(event) {
+      event.preventDefault();
+      const formData = Object.fromEntries(new FormData(authForm).entries());
+      setAuthMessage("", "");
+
+      try {
+        setAuthLoading(true);
+
+        if (authState.view === "login") {
+          const phoneNumber = normalizeIndianPhoneInput(formData.identifier);
+          if (!phoneNumber) throw new Error("Please enter a valid Indian phone number.");
+          if (!formData.password) throw new Error("Please enter your password.");
+          const data = await authRequest("/api/auth/login", { identifier: phoneNumber, password: formData.password });
+          authState.user = data.user;
+          renderAuthUser();
+          setAuthMessage("Login successful.", "success");
+          return;
+        }
+
+        if (authState.view === "signup" || authState.view === "signup-phone") {
+          const phoneNumber = normalizeIndianPhoneInput(formData.phoneNumber);
+          if (!phoneNumber) throw new Error("Please enter a valid Indian phone number.");
+          await authRequest("/api/auth/signup/start", { phoneNumber });
+          setAuthView("signup-otp", { phoneNumber });
+          setAuthMessage("OTP sent. Enter it to verify your phone number.", "success");
+          return;
+        }
+
+        if (authState.view === "signup-otp") {
+          if (!/^\d{6}$/.test(formData.otp || "")) throw new Error("Please enter the 6-digit OTP.");
+          const data = await authRequest("/api/auth/signup/verify", { phoneNumber: authState.phoneNumber, otp: formData.otp });
+          setAuthView("signup-password", { signupToken: data.signupToken });
+          setAuthMessage("Phone verified. Set your password now.", "success");
+          return;
+        }
+
+        if (authState.view === "signup-password") {
+          const passwordError = validatePasswordInput(formData.password);
+          if (passwordError) throw new Error(passwordError);
+          if (formData.password !== formData.confirmPassword) throw new Error("Passwords do not match.");
+          const data = await authRequest("/api/auth/signup/complete", {
+            phoneNumber: authState.phoneNumber,
+            signupToken: authState.signupToken,
+            password: formData.password
+          });
+          authState.user = data.user;
+          renderAuthUser();
+          setAuthMessage("Account created successfully.", "success");
+          return;
+        }
+
+        if (authState.view === "forgot-phone") {
+          const phoneNumber = normalizeIndianPhoneInput(formData.phoneNumber);
+          if (!phoneNumber) throw new Error("Please enter a valid Indian phone number.");
+          await authRequest("/api/auth/forgot/start", { phoneNumber });
+          setAuthView("forgot-otp", { phoneNumber });
+          setAuthMessage("OTP sent. Enter it to reset your password.", "success");
+          return;
+        }
+
+        if (authState.view === "forgot-otp") {
+          if (!/^\d{6}$/.test(formData.otp || "")) throw new Error("Please enter the 6-digit OTP.");
+          const data = await authRequest("/api/auth/forgot/verify", { phoneNumber: authState.phoneNumber, otp: formData.otp });
+          setAuthView("forgot-password", { resetToken: data.resetToken });
+          setAuthMessage("OTP verified. Set your new password.", "success");
+          return;
+        }
+
+        if (authState.view === "forgot-password") {
+          const passwordError = validatePasswordInput(formData.password);
+          if (passwordError) throw new Error(passwordError);
+          if (formData.password !== formData.confirmPassword) throw new Error("Passwords do not match.");
+          const data = await authRequest("/api/auth/forgot/complete", {
+            phoneNumber: authState.phoneNumber,
+            resetToken: authState.resetToken,
+            password: formData.password
+          });
+          authState.user = data.user;
+          renderAuthUser();
+          setAuthMessage("Password updated. You are logged in.", "success");
+        }
+      } catch (error) {
+        setAuthMessage(error.message, "error");
+      } finally {
+        setAuthLoading(false);
+      }
+    }
+
+    async function handleAuthAction(event) {
+      const actionButton = event.target.closest("[data-auth-action]");
+      if (!actionButton) return;
+      const action = actionButton.getAttribute("data-auth-action");
+
+      if (action === "login") setAuthView("login");
+      if (action === "signup") setAuthView("signup");
+      if (action === "forgot") setAuthView("forgot-phone");
+      if (action === "logout") {
+        try {
+          await authRequest("/api/auth/logout", {});
+          authState.user = null;
+          setAuthMessage("Logged out.", "success");
+          renderAuth();
+        } catch (error) {
+          setAuthMessage(error.message, "error");
+        }
+      }
+      if (action === "resend") {
+        try {
+          const flow = authState.view.startsWith("forgot") ? "reset" : "signup";
+          await authRequest("/api/auth/otp/resend", { phoneNumber: authState.phoneNumber, flow });
+          setAuthMessage("A new OTP has been sent.", "success");
+        } catch (error) {
+          setAuthMessage(error.message, "error");
+        }
+      }
+    }
+
+    async function checkAuthStatus() {
+      if (!window.location.protocol.startsWith("http")) return;
+      try {
+        const response = await fetch("/api/auth/me", { credentials: "same-origin" });
+        const data = await response.json();
+        authState.user = data.user;
+        renderAuthUser();
+      } catch (error) {
+        authState.user = null;
+        renderAuthUser();
+      }
+    }
+
+    if (loginBtn) loginBtn.addEventListener("click", () => openAuthModal("login"));
+    if (authClose) authClose.addEventListener("click", closeAuthModal);
+    if (authForm) {
+      authForm.addEventListener("submit", handleAuthSubmit);
+      authForm.addEventListener("click", handleAuthAction);
+    }
+    if (authUser) authUser.addEventListener("click", handleAuthAction);
+    if (authTabs) {
+      authTabs.addEventListener("click", (event) => {
+        const tab = event.target.closest("[data-auth-tab]");
+        if (!tab) return;
+        setAuthView(tab.getAttribute("data-auth-tab"));
+      });
+    }
+    if (authModal) {
+      authModal.addEventListener("click", (event) => {
+        if (event.target === authModal) closeAuthModal();
+      });
+    }
+    renderAuth();
+    checkAuthStatus();
+
+    const scrollButtons = document.querySelectorAll("[data-scroll]");
+    scrollButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-scroll");
+        const el = document.querySelector(target);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    document.querySelectorAll("[data-plan]").forEach(btn => {
+      btn.addEventListener("click", () => openCheckout(btn.getAttribute("data-plan")));
+    });
+
+    const form = document.getElementById("lead-form");
+    const status = document.getElementById("form-status");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      status.textContent = "Submitting...";
+      // Placeholder: connect to Sheets/Firestore backend endpoint.
+      setTimeout(() => {
+        status.textContent = "Thanks! We received your details. Expect a callback within one business day.";
+        form.reset();
+      }, 600);
+      console.log("Lead captured", data);
+    });
+
+    function openCheckout(plan) {
+      // Placeholder: integrate Razorpay checkout with selected plan & free trial logic.
+      alert("Razorpay checkout for " + plan + " plan (first month free) would open here.");
+    }
+
+    // Chatbot and WhatsApp floating support starts
+    const whatsappNumber = "918950378717";
+    const whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent("Hi Social Drive, I want to know more about your services");
+    const chatbotPanel = document.getElementById("chatbot-panel");
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    const chatbotClose = document.getElementById("chatbot-close");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+    const chatbotForm = document.getElementById("chatbot-form");
+    const chatbotInput = document.getElementById("chatbot-input");
+
+    const chatbotKnowledge = {
+      products: "Social Drive offers ROI-driven social media marketing systems, client portal access, live performance dashboards, conversion-ready landing pages, AI creative support, and WhatsApp-fast campaign support.",
+      services: "Our services include full-funnel strategy, Facebook and Instagram campaign management, Google Ads management, AI-enhanced ad creatives, reels and short-form content, landing pages, WA/email automation, A/B testing, community management, influencer/PR amplification, reporting, and dedicated account support.",
+      pricing: "Plans shown on this website: Base at Rs. 15,000/month, Growth at Rs. 50,000/month, and Professional at Rs. 100,000/month. Every plan includes a first month free trial. For custom or exact pricing, please contact us on WhatsApp.",
+      business: "Social Drive is an ROI-driven social media marketing agency focused on measurable revenue, ROAS, CAC, LTV, funnel strategy, transparent reporting, and fast execution.",
+      contact: "You can fill the contact form on this page to claim your 30-day free trial. You can also message Social Drive directly on WhatsApp at +91 8950378717.",
+      freeTrial: "The website offers a 30-day free trial. The process includes a 48-hour strategy sprint, Week 1 creative and launch, Week 2-3 optimization, and Week 4 reporting and scale planning.",
+      portal: "The client portal is described as phone OTP login ready, with real-time dashboards, campaign notes, downloadable reports, daily check-ins, and weekly deep dives.",
+      support: "Support is WhatsApp-fast with a dedicated account manager and backup team. Professional includes priority support.",
+      fallback: "Our team will help you with full details. Please contact us on WhatsApp for exact pricing or custom requirements."
+    };
+
+    function addChatMessage(text, sender) {
+      if (!chatbotMessages) return;
+      const message = document.createElement("div");
+      message.className = "chat-message " + sender;
+      message.textContent = text;
+      chatbotMessages.appendChild(message);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function getChatbotReply(question) {
+      const text = question.toLowerCase();
+      if (text.includes("price") || text.includes("pricing") || text.includes("plan") || text.includes("cost") || text.includes("package")) {
+        return chatbotKnowledge.pricing;
+      }
+      if (text.includes("service") || text.includes("ad") || text.includes("campaign") || text.includes("marketing") || text.includes("reel") || text.includes("automation")) {
+        return chatbotKnowledge.services;
+      }
+      if (text.includes("product") || text.includes("portal") || text.includes("dashboard") || text.includes("report")) {
+        return chatbotKnowledge.products + "\n\n" + chatbotKnowledge.portal;
+      }
+      if (text.includes("contact") || text.includes("phone") || text.includes("call") || text.includes("email")) {
+        return chatbotKnowledge.contact;
+      }
+      if (text.includes("whatsapp") || text.includes("wa")) {
+        return "You can chat with Social Drive on WhatsApp at +91 8950378717: " + whatsappUrl;
+      }
+      if (text.includes("trial") || text.includes("free")) {
+        return chatbotKnowledge.freeTrial;
+      }
+      if (text.includes("business") || text.includes("about") || text.includes("company") || text.includes("agency")) {
+        return chatbotKnowledge.business;
+      }
+      if (text.includes("support") || text.includes("manager") || text.includes("help")) {
+        return chatbotKnowledge.support;
+      }
+      return chatbotKnowledge.fallback;
+    }
+
+    function submitChatbotQuestion(question) {
+      const cleanQuestion = question.trim();
+      if (!cleanQuestion) return;
+      addChatMessage(cleanQuestion, "user");
+      setTimeout(() => addChatMessage(getChatbotReply(cleanQuestion), "bot"), 180);
+    }
+
+    function openChatbot() {
+      if (!chatbotPanel || !chatbotToggle) return;
+      chatbotPanel.classList.add("open");
+      chatbotPanel.setAttribute("aria-hidden", "false");
+      chatbotToggle.setAttribute("aria-expanded", "true");
+      if (!chatbotMessages.dataset.started) {
+        addChatMessage("Hi! I can help with Social Drive products, services, pricing, free trial details, support, and contact information.", "bot");
+        chatbotMessages.dataset.started = "true";
+      }
+      setTimeout(() => chatbotInput && chatbotInput.focus(), 120);
+    }
+
+    function closeChatbot() {
+      if (!chatbotPanel || !chatbotToggle) return;
+      chatbotPanel.classList.remove("open");
+      chatbotPanel.setAttribute("aria-hidden", "true");
+      chatbotToggle.setAttribute("aria-expanded", "false");
+    }
+
+    if (chatbotToggle) {
+      chatbotToggle.addEventListener("click", () => {
+        if (chatbotPanel.classList.contains("open")) {
+          closeChatbot();
+        } else {
+          openChatbot();
+        }
+      });
+    }
+
+    if (chatbotClose) {
+      chatbotClose.addEventListener("click", closeChatbot);
+    }
+
+    if (chatbotForm) {
+      chatbotForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        submitChatbotQuestion(chatbotInput.value);
+        chatbotInput.value = "";
+      });
+    }
+
+    document.querySelectorAll("[data-chat-quick]").forEach(button => {
+      button.addEventListener("click", () => {
+        const topic = button.getAttribute("data-chat-quick");
+        openChatbot();
+        submitChatbotQuestion(topic);
+        if (topic === "WhatsApp") {
+          setTimeout(() => window.open(whatsappUrl, "_blank", "noopener"), 250);
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && chatbotPanel && chatbotPanel.classList.contains("open")) {
+        closeChatbot();
+      }
+      if (event.key === "Escape" && authModal && authModal.classList.contains("open")) {
+        closeAuthModal();
+      }
+    });
+    // Chatbot and WhatsApp floating support ends
+  </script>
+</body>
+</html>

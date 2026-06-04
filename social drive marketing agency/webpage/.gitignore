@@ -1,0 +1,5 @@
+.env
+data/users.json
+data/users.json.tmp
+node_modules/
+*.log

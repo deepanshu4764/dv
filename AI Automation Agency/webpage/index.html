@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Automation Agency by Deepanshu Ventures builds AI chatbots, WhatsApp automation, CRM workflows, and voice agents that help businesses automate, scale, and dominate.">
+  <meta property="og:title" content="AI Automation Agency by Deepanshu Ventures &#8212; Automate &amp; Scale">
+  <meta property="og:description" content="Automate. Accelerate. Dominate. Explore AI chatbots, lead automation, CRM integrations, and voice AI services by Deepanshu Ventures.">
+  <title>AI Automation Agency by Deepanshu Ventures &#8212; Automate &amp; Scale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    :root {
+      --navy: #0a0f2c;
+      --electric: #2563eb;
+      --cyan: #06b6d4;
+      --white: #ffffff;
+      --card: #0f172a;
+      --muted: #9fb2d9;
+      --surface: rgba(15, 23, 42, 0.72);
+      --surface-strong: rgba(10, 15, 44, 0.92);
+      --border: rgba(125, 211, 252, 0.16);
+      --shadow: 0 18px 60px rgba(3, 7, 18, 0.35);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --transition: 0.3s ease;
+      --container: min(1180px, calc(100% - 2rem));
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.22), transparent 24%),
+        radial-gradient(circle at 88% 18%, rgba(6, 182, 212, 0.2), transparent 22%),
+        linear-gradient(180deg, #060918 0%, #0a0f2c 45%, #060918 100%);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body.is-loading {
+      overflow: hidden;
+    }
+
+    ::selection {
+      background: rgba(6, 182, 212, 0.35);
+      color: var(--white);
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #091125;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--cyan), var(--electric));
+      border-radius: 999px;
+      border: 2px solid #091125;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    canvas {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      background: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 5.5rem 0;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.22);
+      color: #baf3ff;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), #7dd3fc);
+      box-shadow: 0 0 18px rgba(6, 182, 212, 0.8);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.05;
+    }
+
+    h1 {
+      font-size: clamp(2.9rem, 8vw, 5.8rem);
+      letter-spacing: -0.05em;
+    }
+
+    h2 {
+      font-size: clamp(2.15rem, 5vw, 3.7rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-head p {
+      font-size: 1.05rem;
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.46));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .neon-outline {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .neon-outline::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.75), rgba(37, 99, 235, 0.1), rgba(6, 182, 212, 0.85));
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .neon-outline:hover::after,
+    .neon-outline.active::after {
+      opacity: 1;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 0.95rem 1.6rem;
+      border-radius: 999px;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--electric), var(--cyan));
+      box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.28), 0 18px 40px rgba(37, 99, 235, 0.38);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 24px rgba(6, 182, 212, 0.55), 0 18px 50px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-secondary:hover {
+      box-shadow: 0 0 22px rgba(6, 182, 212, 0.28);
+      border-color: rgba(6, 182, 212, 0.42);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #1db954, #25d366);
+      box-shadow: 0 18px 40px rgba(29, 185, 84, 0.32);
+    }
+
+    .btn-whatsapp:hover {
+      box-shadow: 0 0 24px rgba(37, 211, 102, 0.48), 0 18px 44px rgba(29, 185, 84, 0.38);
+    }
+
+    .site-loader {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at center, rgba(37, 99, 235, 0.18), transparent 40%),
+        linear-gradient(180deg, rgba(6, 9, 24, 0.98), rgba(10, 15, 44, 0.98));
+      z-index: 1200;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .site-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-mark {
+      display: grid;
+      gap: 1rem;
+      place-items: center;
+      text-align: center;
+    }
+
+    .loader-ring {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      border-top-color: var(--cyan);
+      border-right-color: var(--electric);
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 40px rgba(6, 182, 212, 0.25);
+    }
+
+    .loader-mark h2 {
+      margin: 0;
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+    }
+
+    .loader-mark p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.scrolled {
+      background: rgba(10, 15, 44, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-color: rgba(125, 211, 252, 0.1);
+      box-shadow: 0 16px 40px rgba(1, 4, 14, 0.32);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 5.4rem;
+      position: relative;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      min-width: 0;
+    }
+
+    .brand-dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7dd3fc, var(--cyan));
+      box-shadow: 0 0 18px rgba(6, 182, 212, 0.95);
+      flex-shrink: 0;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 0.08rem;
+    }
+
+    .brand-copy strong {
+      font-size: 1rem;
+      letter-spacing: -0.03em;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .brand-copy span {
+      font-size: 0.76rem;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-shell {
+      display: none;
+      align-items: center;
+      gap: 1.2rem;
+      position: absolute;
+      top: calc(100% + 0.6rem);
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      border-radius: 22px;
+      background: rgba(7, 10, 28, 0.96);
+      border: 1px solid rgba(125, 211, 252, 0.14);
+      box-shadow: var(--shadow);
+      flex-direction: column;
+    }
+
+    .nav-shell.open {
+      display: flex;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      width: 100%;
+    }
+
+    .nav-links a {
+      padding: 0.8rem 1rem;
+      border-radius: 14px;
+      color: rgba(255, 255, 255, 0.82);
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--white);
+      transform: translateX(4px);
+    }
+
+    .nav-cta {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      width: 3rem;
+      height: 3rem;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .nav-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.28);
+      border-color: rgba(6, 182, 212, 0.4);
+    }
+
+    .hero {
+      padding: 2.5rem 0 4rem;
+      min-height: calc(100vh - 5.4rem);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: clip;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(24px);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 18rem;
+      height: 18rem;
+      top: 8%;
+      left: -8%;
+      background: rgba(37, 99, 235, 0.3);
+      animation: floatBlob 12s ease-in-out infinite;
+    }
+
+    .hero::after {
+      width: 20rem;
+      height: 20rem;
+      bottom: -8%;
+      right: -8%;
+      background: rgba(6, 182, 212, 0.3);
+      animation: floatBlob 15s ease-in-out infinite reverse;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 35%, rgba(37, 99, 235, 0.34), transparent 26%),
+        radial-gradient(circle at 70% 28%, rgba(6, 182, 212, 0.28), transparent 24%),
+        radial-gradient(circle at 72% 75%, rgba(37, 99, 235, 0.18), transparent 20%);
+      animation: heroGlow 12s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(125, 211, 252, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(125, 211, 252, 0.07) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 80%);
+      pointer-events: none;
+      opacity: 0.22;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero-copy p {
+      font-size: 1.1rem;
+      max-width: 42rem;
+      margin: 1.2rem 0 1.8rem;
+    }
+
+    .hero-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.2rem;
+      color: #c7d8f9;
+      font-size: 1rem;
+    }
+
+    .hero-line strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .typing-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-height: 2.4rem;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(125, 211, 252, 0.15);
+      box-shadow: 0 12px 32px rgba(3, 7, 18, 0.28);
+      margin-bottom: 1.8rem;
+    }
+
+    .typing-box i {
+      color: var(--cyan);
+    }
+
+    .typing-text {
+      color: #e8f9ff;
+      font-weight: 700;
+    }
+
+    .typing-caret {
+      width: 1px;
+      height: 1.1rem;
+      background: var(--cyan);
+      animation: blink 0.8s steps(1) infinite;
+    }
+
+    .hero-cards {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .hero-panel {
+      padding: 1.35rem;
+      border-radius: var(--radius);
+    }
+
+    .hero-panel h3 {
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .metric-box {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(125, 211, 252, 0.08);
+    }
+
+    .metric-box strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.7rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .stats-strip {
+      margin-top: -1.4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats-card {
+      padding: 1.4rem;
+      border-radius: calc(var(--radius) + 4px);
+    }
+
+    .stats-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stat-item {
+      padding: 1rem;
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(125, 211, 252, 0.08);
+    }
+
+    .stat-item strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 0.15rem;
+    }
+
+    .services-grid,
+    .pricing-grid,
+    .testimonials-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .service-card,
+    .pricing-card,
+    .timeline-card,
+    .testimonial-card,
+    .about-card,
+    .faq-item,
+    .footer-card {
+      border-radius: var(--radius);
+      padding: 1.55rem;
+      position: relative;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    .service-card:hover,
+    .pricing-card:hover,
+    .timeline-card:hover,
+    .testimonial-card:hover,
+    .about-card:hover,
+    .faq-item:hover,
+    .footer-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 26px rgba(6, 182, 212, 0.12), var(--shadow);
+    }
+
+    .icon-bubble {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 1.1rem;
+      display: inline-grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(6, 182, 212, 0.95));
+      box-shadow: 0 18px 36px rgba(6, 182, 212, 0.18);
+      margin-bottom: 1.1rem;
+      font-size: 1.3rem;
+    }
+
+    .service-card h3,
+    .pricing-card h3,
+    .timeline-card h3,
+    .testimonial-card h3,
+    .about-card h3 {
+      margin-bottom: 0.65rem;
+    }
+
+    .pricing-grid {
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .pricing-card.popular {
+      background:
+        linear-gradient(180deg, rgba(37, 99, 235, 0.18), rgba(15, 23, 42, 0.72)),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.86), rgba(15, 23, 42, 0.58));
+      border-color: rgba(6, 182, 212, 0.32);
+      transform: translateY(-8px);
+      box-shadow: 0 0 34px rgba(6, 182, 212, 0.18), var(--shadow);
+    }
+
+    .pricing-card.popular:hover {
+      transform: translateY(-12px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(6, 182, 212, 0.16);
+      border: 1px solid rgba(6, 182, 212, 0.26);
+      color: #d7fcff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin: 1rem 0 0.75rem;
+    }
+
+    .price-row strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .price-row span {
+      color: rgba(255, 255, 255, 0.64);
+      font-weight: 600;
+    }
+
+    .price-description {
+      margin-bottom: 1.3rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+      flex: 1;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      color: #dbe7ff;
+    }
+
+    .feature-list i {
+      margin-top: 0.18rem;
+      font-size: 0.96rem;
+    }
+
+    .feature-list .fa-check {
+      color: #5eead4;
+    }
+
+    .feature-list .fa-xmark {
+      color: rgba(255, 255, 255, 0.38);
+    }
+
+    .about-layout {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .about-card ul {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .about-card li {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+
+    .about-card li i {
+      margin-top: 0.18rem;
+      color: var(--cyan);
+    }
+
+    .timeline-shell {
+      position: relative;
+    }
+
+    .timeline-shell::before {
+      content: "";
+      position: absolute;
+      top: 2.2rem;
+      left: 1.25rem;
+      bottom: 1rem;
+      width: 2px;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(6, 182, 212, 0.9),
+        rgba(6, 182, 212, 0.9) 10px,
+        transparent 10px,
+        transparent 18px
+      );
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.55);
+      opacity: 0.85;
+    }
+
+    .timeline-grid {
+      display: grid;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .timeline-card {
+      padding-left: 4.1rem;
+    }
+
+    .step-badge {
+      position: absolute;
+      top: 1.35rem;
+      left: 1rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--electric), var(--cyan));
+      box-shadow: 0 0 24px rgba(6, 182, 212, 0.42);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .timeline-card .icon-bubble {
+      margin-bottom: 0.85rem;
+      width: 3rem;
+      height: 3rem;
+      font-size: 1rem;
+    }
+
+    .testimonial-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.55s ease;
+      will-change: transform;
+    }
+
+    .testimonial-slide {
+      min-width: 100%;
+      display: grid;
+      gap: 1.2rem;
+      justify-items: center;
+    }
+
+    .testimonial-slide .testimonial-card {
+      max-width: 760px;
+      width: 100%;
+    }
+
+    .testimonial-card blockquote {
+      color: #d8e8ff;
+      font-size: 1rem;
+    }
+
+    .testimonial-card .stars {
+      color: #facc15;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.12em;
+    }
+
+    .testimonial-card .meta {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.1rem;
+    }
+
+    .testimonial-card .meta span {
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.65rem;
+      margin-top: 1.4rem;
+    }
+
+    .dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .dot.active {
+      background: linear-gradient(135deg, var(--cyan), #7dd3fc);
+      transform: scale(1.1);
+      box-shadow: 0 0 18px rgba(6, 182, 212, 0.6);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.35rem 1.4rem;
+      text-align: left;
+    }
+
+    .faq-question h3 {
+      font-size: 1.05rem;
+    }
+
+    .faq-question i {
+      transition: transform var(--transition), color var(--transition);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 1.4rem 1.35rem;
+    }
+
+    .faq-item.open .faq-question i {
+      transform: rotate(180deg);
+      color: var(--cyan);
+    }
+
+    .cta-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: calc(var(--radius) + 4px);
+      padding: 2rem;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(125, 211, 252, 0.18), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(37, 99, 235, 0.25), transparent 28%),
+        linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(6, 182, 212, 0.92));
+      box-shadow: 0 28px 60px rgba(6, 182, 212, 0.22);
+    }
+
+    .cta-banner::before {
+      content: "";
+      position: absolute;
+      inset: -35%;
+      background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.14) 50%, transparent 65%);
+      animation: sheen 7s linear infinite;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1rem;
+      justify-items: start;
+    }
+
+    .cta-content p {
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 40rem;
+    }
+
+    footer {
+      padding: 1rem 0 2rem;
+    }
+
+    .footer-card {
+      padding: 2rem;
+    }
+
+    .footer-grid {
+      gap: 1.8rem;
+    }
+
+    .footer-brand p {
+      max-width: 24rem;
+      margin-top: 1rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-col ul {
+      display: grid;
+      gap: 0.7rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-col a {
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover {
+      color: #e0fbff;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(6, 182, 212, 0.44);
+      box-shadow: 0 0 22px rgba(6, 182, 212, 0.24);
+    }
+
+    .footer-base {
+      padding-top: 1.4rem;
+      margin-top: 1.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 0.55rem;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 1.1rem;
+      bottom: 1.1rem;
+      z-index: 950;
+    }
+
+    .whatsapp-float a {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      background: linear-gradient(135deg, #1db954, #25d366);
+      box-shadow: 0 18px 38px rgba(37, 211, 102, 0.38);
+      position: relative;
+      font-size: 1.5rem;
+    }
+
+    .whatsapp-float a::before,
+    .whatsapp-float a::after {
+      content: "";
+      position: absolute;
+      inset: -0.25rem;
+      border-radius: 50%;
+      border: 1px solid rgba(37, 211, 102, 0.45);
+      animation: pulseRing 2.4s ease-out infinite;
+    }
+
+    .whatsapp-float a::after {
+      animation-delay: 1.2s;
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 4.7rem;
+      top: 50%;
+      transform: translateY(-50%) translateX(0.4rem);
+      padding: 0.7rem 0.95rem;
+      border-radius: 12px;
+      background: rgba(9, 16, 38, 0.94);
+      border: 1px solid rgba(125, 211, 252, 0.14);
+      color: var(--white);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes heroGlow {
+      from {
+        transform: scale(1) rotate(0deg);
+        filter: saturate(1);
+      }
+      to {
+        transform: scale(1.08) rotate(4deg);
+        filter: saturate(1.15);
+      }
+    }
+
+    @keyframes floatBlob {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(18px, -22px, 0) scale(1.08);
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulseRing {
+      0% {
+        transform: scale(0.92);
+        opacity: 0.75;
+      }
+      70% {
+        transform: scale(1.35);
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes sheen {
+      from {
+        transform: translateX(-35%) rotate(8deg);
+      }
+      to {
+        transform: translateX(40%) rotate(8deg);
+      }
+    }
+
+    @media (min-width: 700px) {
+      .stats-grid,
+      .services-grid,
+      .testimonials-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-layout {
+        grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      }
+
+      .cta-content {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+      }
+
+      .cta-content .btn {
+        justify-self: end;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .section {
+        padding: 7rem 0;
+      }
+
+      .nav-toggle {
+        display: none;
+      }
+
+      .nav-shell {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+        width: auto;
+      }
+
+      .nav-links {
+        flex-direction: row;
+        width: auto;
+        align-items: center;
+      }
+
+      .nav-links a {
+        padding: 0.7rem 1rem;
+      }
+
+      .nav-links a:hover {
+        transform: translateY(-2px);
+      }
+
+      .nav-cta {
+        width: auto;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .timeline-shell::before {
+        left: 5%;
+        right: 5%;
+        top: 3rem;
+        bottom: auto;
+        width: auto;
+        height: 2px;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(6, 182, 212, 0.9),
+          rgba(6, 182, 212, 0.9) 12px,
+          transparent 12px,
+          transparent 20px
+        );
+      }
+
+      .timeline-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .timeline-card {
+        padding: 5.3rem 1.4rem 1.4rem;
+      }
+
+      .step-badge {
+        top: 1.45rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .timeline-card .icon-bubble {
+        margin-top: 0.4rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr 0.8fr 0.9fr;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .hero {
+        padding: 2rem 0 5.5rem;
+      }
+
+      .stats-strip {
+        margin-top: -2rem;
+      }
+    }
+
+    @media (max-width: 699px) {
+      .hero-copy p {
+        font-size: 1rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .cta-banner {
+        padding: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body class="is-loading">
+  <div class="site-loader" id="siteLoader" aria-hidden="true">
+    <div class="loader-mark">
+      <div class="loader-ring"></div>
+      <div>
+        <h2>Deepanshu Ventures</h2>
+        <p>AI Automation Agency</p>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container navbar">
+      <a class="brand" href="#home" aria-label="Deepanshu Ventures home">
+        <span class="brand-dot"></span>
+        <span class="brand-copy">
+          <strong>Deepanshu Ventures</strong>
+          <span>AI Automation Agency</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navShell" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="nav-shell" id="navShell">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="btn btn-primary nav-cta" href="https://wa.me/918950378717?text=Hi%20Deepanshu%20Ventures!%20I%20want%20to%20learn%20more%20about%20your%20AI%20automation%20services." target="_blank" rel="noopener noreferrer">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-mesh"></div>
+      <div class="hero-grid"></div>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="container hero-layout">
+        <div class="hero-copy" data-reveal>
+          <span class="eyebrow">AI-Powered Growth Systems</span>
+          <h1>The Future of Business is Automated</h1>
+          <p>We build AI-powered systems that work 24/7, so you don't have to. From lead capture to customer support, Deepanshu Ventures turns repetitive work into scalable revenue engines.</p>
+          <div class="hero-line">
+            <span>Currently building for:</span>
+            <div class="typing-box" aria-live="polite">
+              <i class="fa-solid fa-sparkles"></i>
+              <strong class="typing-text" id="typingText">AI Chatbots</strong>
+              <span class="typing-caret" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <a class="btn btn-primary" href="#pricing">View Packages</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/918950378717?text=Hi%20Deepanshu%20Ventures!%20I%20want%20to%20learn%20more%20about%20your%20AI%20automation%20services." target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp"></i>
+              Talk to Us on WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-cards" data-reveal>
+          <article class="hero-panel glass neon-outline">
+            <h3>Automation That Compounds</h3>
+            <p>Deploy AI chatbots, lead engines, CRM flows, and voice agents inside one revenue-ready stack designed to scale without growing headcount.</p>
+            <div class="hero-metrics">
+              <div class="metric-box">
+                <strong>24/7</strong>
+                <span>Always-On Systems</span>
+              </div>
+              <div class="metric-box">
+                <strong>10x</strong>
+                <span>Average ROI Focus</span>
+              </div>
+              <div class="metric-box">
+                <strong>98%</strong>
+                <span>Client Satisfaction</span>
+              </div>
+              <div class="metric-box">
+                <strong>500+</strong>
+                <span>Businesses Supported</span>
+              </div>
+            </div>
+          </article>
+          <article class="hero-panel glass neon-outline">
+            <h3>What You Gain</h3>
+            <p>Automated follow-ups, faster response times, higher lead conversion, and a consistent experience across WhatsApp, CRM, voice, and social channels.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-strip">
+      <div class="container">
+        <div class="stats-card glass" data-reveal id="statsSection">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <strong class="counter" data-target="500" data-suffix="+">0</strong>
+              <span>Clients</span>
+            </div>
+            <div class="stat-item">
+              <strong class="counter" data-target="98" data-suffix="%">0</strong>
+              <span>Satisfaction</span>
+            </div>
+            <div class="stat-item">
+              <strong class="counter" data-target="10" data-suffix="x">0</strong>
+              <span>ROI Average</span>
+            </div>
+            <div class="stat-item">
+              <strong class="counter" data-target="24" data-suffix="/7">0</strong>
+              <span>Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Services</span>
+          <h2>What We Automate For You</h2>
+          <p>Deepanshu Ventures delivers cutting-edge AI systems for every business need, combining strategy, setup, and optimisation into one focused growth partner.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card glass neon-outline" data-reveal>
+            <div class="icon-bubble"><i class="fa-solid fa-robot"></i></div>
+            <h3>AI Chatbot Development</h3>
+            <p>Smart bots that handle customer queries round the clock while capturing intent, qualifying prospects, and reducing support load.</p>
+          </article>
+          <article class="service-card glass neon-outline" data-reveal>
+            <div class="icon-bubble"><i class="fa-brands fa-whatsapp"></i></div>
+            <h3>WhatsApp Automation</h3>
+            <p>Automated follow-ups, broadcasts &amp; lead nurturing on WhatsApp with instant responses and structured conversation flows.</p>
+          </article>
+          <article class="service-card glass neon-outline" data-reveal>
+            <div class="icon-bubble"><i class="fa-solid fa-funnel-dollar"></i></div>
+            <h3>CRM &amp; Lead Automation</h3>
+            <p>Auto-capture, qualify and follow up leads without lifting a finger using connected pipelines that keep your team focused on closing.</p>
+          </article>
+          <article class="service-card glass neon-outline" data-reveal>
+            <div class="icon-bubble"><i class="fa-solid fa-headset"></i></div>
+            <h3>Voice AI Agents</h3>
+            <p>AI phone agents that talk, respond, and convert with natural conversations built for bookings, screening, and support.</p>
+          </article>
+          <article class="service-card glass neon-outline" data-reveal>
+            <div class="icon-bubble"><i class="fa-solid fa-bullhorn"></i></div>
+            <h3>Social Media Automation</h3>
+            <p>Auto-post, engage, and grow your presence on autopilot with campaign workflows that keep your brand active and consistent.</p>
+          </article>
+          <article class="service-card glass neon-outline" data-reveal>
+            <div class="icon-bubble"><i class="fa-solid fa-diagram-project"></i></div>
+            <h3>Custom AI Workflows</h3>
+            <p>End-to-end automation tailored to your exact business process, integrating the tools your team already depends on.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Pricing</span>
+          <h2>Choose Your Growth Plan</h2>
+          <p>Transparent pricing. Real results. Powered by Deepanshu Ventures.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="pricing-card glass neon-outline" data-reveal>
+            <div>
+              <span class="badge"><i class="fa-solid fa-bolt"></i> Starter</span>
+              <h3>Starter Package</h3>
+            </div>
+            <div class="price-row">
+              <strong>&#8377;15,000</strong>
+              <span>/mo</span>
+            </div>
+            <p class="price-description">Perfect for businesses launching their first automation stack.</p>
+            <ul class="feature-list">
+              <li><i class="fa-solid fa-check"></i><span>1 AI Chatbot</span></li>
+              <li><i class="fa-solid fa-check"></i><span>WhatsApp Automation Setup</span></li>
+              <li><i class="fa-solid fa-check"></i><span>500 leads/month</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Basic CRM Integration</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Email Support</span></li>
+              <li><i class="fa-solid fa-xmark"></i><span>Voice AI Agent</span></li>
+              <li><i class="fa-solid fa-xmark"></i><span>Custom Workflows</span></li>
+            </ul>
+            <button class="btn btn-secondary" type="button" onclick="openWhatsApp('Starter Package', '&#8377;15,000/mo')">Buy Now</button>
+          </article>
+
+          <article class="pricing-card glass neon-outline popular active" data-reveal>
+            <div>
+              <span class="badge"><i class="fa-solid fa-fire"></i> Most Popular</span>
+              <h3>Professional Package</h3>
+            </div>
+            <div class="price-row">
+              <strong>&#8377;35,000</strong>
+              <span>/mo</span>
+            </div>
+            <p class="price-description">For growth-focused teams that need higher volume, deeper integrations, and stronger reporting.</p>
+            <ul class="feature-list">
+              <li><i class="fa-solid fa-check"></i><span>3 AI Chatbots</span></li>
+              <li><i class="fa-solid fa-check"></i><span>WhatsApp + Instagram Automation</span></li>
+              <li><i class="fa-solid fa-check"></i><span>2,000 leads/month</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Full CRM Integration</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Priority Support</span></li>
+              <li><i class="fa-solid fa-check"></i><span>1 Voice AI Agent</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Monthly Performance Report</span></li>
+              <li><i class="fa-solid fa-xmark"></i><span>Custom AI Workflows</span></li>
+            </ul>
+            <button class="btn btn-primary" type="button" onclick="openWhatsApp('Professional Package', '&#8377;35,000/mo')">Buy Now</button>
+          </article>
+
+          <article class="pricing-card glass neon-outline" data-reveal>
+            <div>
+              <span class="badge"><i class="fa-solid fa-crown"></i> Enterprise</span>
+              <h3>Enterprise Package</h3>
+            </div>
+            <div class="price-row">
+              <strong>Custom</strong>
+              <span>Pricing</span>
+            </div>
+            <p class="price-description">For brands that need omnichannel AI systems, deep customisation, and white-label capability.</p>
+            <ul class="feature-list">
+              <li><i class="fa-solid fa-check"></i><span>Unlimited AI Chatbots</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Full Omnichannel Automation</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Unlimited Leads</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Dedicated Account Manager</span></li>
+              <li><i class="fa-solid fa-check"></i><span>24/7 Priority Support</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Multiple Voice AI Agents</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Custom AI Workflows &amp; Integrations</span></li>
+              <li><i class="fa-solid fa-check"></i><span>White-label Options Available</span></li>
+            </ul>
+            <button class="btn btn-secondary" type="button" onclick="openWhatsApp('Enterprise Package', 'Custom Pricing')">Get Custom Quote</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">About</span>
+          <h2>Built for Operators Who Want Leverage</h2>
+          <p>AI Automation Agency by Deepanshu Ventures helps businesses replace manual bottlenecks with scalable systems that close faster, respond instantly, and run continuously.</p>
+        </div>
+
+        <div class="about-layout">
+          <article class="about-card glass neon-outline" data-reveal>
+            <h3>Strategy First. Automation Second.</h3>
+            <p>We map your revenue flow, identify friction points, then build AI systems that remove them. Every deployment is tied to a clear business outcome.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i><span>Lead capture and follow-up engines built to improve conversion speed.</span></li>
+              <li><i class="fa-solid fa-check"></i><span>CRM automation that keeps your pipeline updated without manual admin.</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Omnichannel orchestration across chat, voice, social, and internal workflows.</span></li>
+            </ul>
+          </article>
+
+          <article class="about-card glass neon-outline" data-reveal>
+            <h3>Execution That Keeps Improving</h3>
+            <p>From discovery to launch to ongoing optimisation, we keep refining your systems so performance compounds over time instead of plateauing after setup.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i><span>Fast onboarding with clear milestones and measurable delivery stages.</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Reporting and tuning focused on ROI, response time, and qualified leads.</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Support that helps you scale workflows as your business expands.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container timeline-shell">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Process</span>
+          <h2>Your Journey to Full Automation</h2>
+          <p>From discovery to optimisation, our rollout is designed to move fast without sacrificing clarity, quality, or measurable business impact.</p>
+        </div>
+
+        <div class="timeline-grid">
+          <article class="timeline-card glass neon-outline" data-reveal>
+            <span class="step-badge">1</span>
+            <div class="icon-bubble"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <h3>Discovery Call</h3>
+            <p>We map your existing process, goals, blockers, and automation opportunities.</p>
+          </article>
+          <article class="timeline-card glass neon-outline" data-reveal>
+            <span class="step-badge">2</span>
+            <div class="icon-bubble"><i class="fa-solid fa-gears"></i></div>
+            <h3>Strategy &amp; Setup</h3>
+            <p>We architect the automation stack, configure integrations, and prepare launch flows.</p>
+          </article>
+          <article class="timeline-card glass neon-outline" data-reveal>
+            <span class="step-badge">3</span>
+            <div class="icon-bubble"><i class="fa-solid fa-rocket"></i></div>
+            <h3>Launch &amp; Test</h3>
+            <p>We deploy, test, refine conversations, and validate the customer journey end to end.</p>
+          </article>
+          <article class="timeline-card glass neon-outline" data-reveal>
+            <span class="step-badge">4</span>
+            <div class="icon-bubble"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Scale &amp; Optimise</h3>
+            <p>We monitor performance, improve results, and expand automation into new channels.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Testimonials</span>
+          <h2>What Our Clients Say</h2>
+          <p>Teams choose Deepanshu Ventures when they need reliable execution, measurable outcomes, and AI systems that quickly prove their value.</p>
+        </div>
+
+        <div class="testimonial-wrap" data-reveal>
+          <div class="testimonial-track" id="testimonialTrack">
+            <div class="testimonial-slide">
+              <article class="testimonial-card glass neon-outline">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"Deepanshu Ventures completely transformed our lead generation. Our chatbot now handles 80% of queries automatically!"</blockquote>
+                <div class="meta">
+                  <h3>Rahul Sharma</h3>
+                  <span>TechBiz India</span>
+                </div>
+              </article>
+            </div>
+            <div class="testimonial-slide">
+              <article class="testimonial-card glass neon-outline">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"The WhatsApp automation alone saved us 40 hours a week. Absolute game changer for our sales team."</blockquote>
+                <div class="meta">
+                  <h3>Priya Mehta</h3>
+                  <span>GrowthLabs</span>
+                </div>
+              </article>
+            </div>
+            <div class="testimonial-slide">
+              <article class="testimonial-card glass neon-outline">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <blockquote>"Professional, fast, and results-driven. Our ROI tripled within 60 days of going live."</blockquote>
+                <div class="meta">
+                  <h3>Arjun Singh</h3>
+                  <span>StartupHub</span>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="dots" id="testimonialDots" aria-label="Testimonial navigation">
+            <button class="dot active" type="button" data-index="0" aria-label="Show testimonial group 1"></button>
+            <button class="dot" type="button" data-index="1" aria-label="Show testimonial group 2"></button>
+            <button class="dot" type="button" data-index="2" aria-label="Show testimonial group 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">FAQ</span>
+          <h2>Frequently Asked Questions</h2>
+          <p>Clear answers to the most common questions businesses ask before rolling out AI automation with Deepanshu Ventures.</p>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item glass neon-outline" data-reveal>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <h3>How long does the setup take?</h3>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Most setups are completed within 7-14 business days depending on the package and complexity.</p>
+            </div>
+          </article>
+          <article class="faq-item glass neon-outline" data-reveal>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <h3>Do I need technical knowledge to use your services?</h3>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Not at all. We handle everything end-to-end. You just share your business requirements and we take care of the rest.</p>
+            </div>
+          </article>
+          <article class="faq-item glass neon-outline" data-reveal>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <h3>Can I upgrade my plan later?</h3>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, you can upgrade at any time. We'll migrate your existing setup seamlessly to the new plan.</p>
+            </div>
+          </article>
+          <article class="faq-item glass neon-outline" data-reveal>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <h3>What platforms do you integrate with?</h3>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>We integrate with WhatsApp, Instagram, Facebook, Salesforce, Zoho, HubSpot, Google Sheets, and 50+ other platforms.</p>
+            </div>
+          </article>
+          <article class="faq-item glass neon-outline" data-reveal>
+            <button class="faq-question" type="button" aria-expanded="false">
+              <h3>Is there a contract or can I cancel anytime?</h3>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>We offer flexible monthly plans with no long-term lock-in. Cancel anytime with 30 days' notice.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-banner" data-reveal>
+          <div class="cta-content">
+            <div>
+              <span class="eyebrow">Ready To Launch</span>
+              <h2>Ready to Put Your Business on Autopilot?</h2>
+              <p>Join 500+ businesses already growing with Deepanshu Ventures and start replacing manual work with AI systems that scale around the clock.</p>
+            </div>
+            <a class="btn btn-whatsapp" href="https://wa.me/918950378717?text=Hi%20Deepanshu%20Ventures!%20I%20want%20to%20get%20started%20with%20AI%20automation." target="_blank" rel="noopener noreferrer">
+              &#128172; Chat With Us Now on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-card glass">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="#home" aria-label="Deepanshu Ventures home">
+              <span class="brand-dot"></span>
+              <span class="brand-copy">
+                <strong>Deepanshu Ventures</strong>
+                <span>AI Automation Agency</span>
+              </span>
+            </a>
+            <p>Automate. Accelerate. Dominate. We build AI systems that respond faster, convert more leads, and keep your operations moving without constant manual effort.</p>
+            <div class="footer-socials">
+              <a class="social-link" href="https://wa.me/918950378717?text=Hi%20Deepanshu%20Ventures!%20I%27d%20like%20to%20know%20more%20about%20your%20AI%20automation%20services." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a class="social-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a class="social-link" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter X">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Chatbot Dev</a></li>
+              <li><a href="#services">WhatsApp Automation</a></li>
+              <li><a href="#services">CRM Automation</a></li>
+              <li><a href="#services">Voice AI</a></li>
+              <li><a href="#services">Social Automation</a></li>
+              <li><a href="#services">Custom Workflows</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#testimonials">Case Studies</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="https://wa.me/918950378717?text=Hi%20Deepanshu%20Ventures!%20I%20want%20to%20learn%20more%20about%20your%20AI%20automation%20services." target="_blank" rel="noopener noreferrer">&#128241; WhatsApp: +91 89503 78717</a></li>
+              <li><a href="mailto:contact@deepanshuventures.com">&#128231; Email: contact@deepanshuventures.com</a></li>
+              <li>&#128205; India</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-base">
+          <span>&copy; 2025 Deepanshu Ventures. All Rights Reserved.</span>
+          <span>Made with &#10084; and AI in India &#127470;&#127475;</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+    <span class="whatsapp-tooltip">Chat with us!</span>
+    <a href="https://wa.me/918950378717?text=Hi%20Deepanshu%20Ventures!%20I%27d%20like%20to%20know%20more%20about%20your%20AI%20automation%20services." target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <script>
+    function openWhatsApp(packageName, price) {
+      const phone = "918950378717";
+      const message = packageName === "Enterprise Package"
+        ? encodeURIComponent(
+          "Hi Deepanshu Ventures! I'm interested in the *Enterprise Package* and would like a custom quote. Please share more details."
+        )
+        : encodeURIComponent(
+          `Hi Deepanshu Ventures! I'm interested in the *${packageName}* (${price}). Please share more details and next steps.`
+        );
+      const popup = window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+      if (popup) {
+        popup.opener = null;
+      }
+    }
+
+    const body = document.body;
+    const loader = document.getElementById("siteLoader");
+    const header = document.getElementById("siteHeader");
+    const navToggle = document.getElementById("navToggle");
+    const navShell = document.getElementById("navShell");
+    const typingText = document.getElementById("typingText");
+    const testimonialTrack = document.getElementById("testimonialTrack");
+    const testimonialDots = Array.from(document.querySelectorAll(".dot"));
+    const statsSection = document.getElementById("statsSection");
+    const counters = Array.from(document.querySelectorAll(".counter"));
+    const revealItems = document.querySelectorAll("[data-reveal]");
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    const typingWords = [
+      "AI Chatbots",
+      "Lead Generation Bots",
+      "Workflow Automation",
+      "CRM Integration",
+      "Voice AI Agents"
+    ];
+
+    let typingWordIndex = 0;
+    let typingCharIndex = 0;
+    let typingDeleting = false;
+    let testimonialIndex = 0;
+    let testimonialTimer;
+    let countersStarted = false;
+
+    const setHeaderState = () => {
+      header.classList.toggle("scrolled", window.scrollY > 20);
+    };
+
+    const toggleNav = () => {
+      const isOpen = navShell.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    };
+
+    if (navToggle) {
+      navToggle.addEventListener("click", toggleNav);
+    }
+
+    navShell.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < 980 && navShell.classList.contains("open")) {
+          toggleNav();
+        }
+      });
+    });
+
+    window.addEventListener("scroll", setHeaderState);
+    setHeaderState();
+
+    const typeLoop = () => {
+      const currentWord = typingWords[typingWordIndex];
+      if (!typingDeleting) {
+        typingCharIndex += 1;
+        typingText.textContent = currentWord.slice(0, typingCharIndex);
+        if (typingCharIndex === currentWord.length) {
+          typingDeleting = true;
+          setTimeout(typeLoop, 1400);
+          return;
+        }
+      } else {
+        typingCharIndex -= 1;
+        typingText.textContent = currentWord.slice(0, typingCharIndex);
+        if (typingCharIndex === 0) {
+          typingDeleting = false;
+          typingWordIndex = (typingWordIndex + 1) % typingWords.length;
+        }
+      }
+
+      setTimeout(typeLoop, typingDeleting ? 45 : 90);
+    };
+
+    typeLoop();
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.16
+    });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const animateCounter = (counter) => {
+      const target = Number(counter.dataset.target || 0);
+      const suffix = counter.dataset.suffix || "";
+      const duration = 1400;
+      const startTime = performance.now();
+
+      const updateValue = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        counter.textContent = `${value}${suffix}`;
+        if (progress < 1) {
+          requestAnimationFrame(updateValue);
+        }
+      };
+
+      requestAnimationFrame(updateValue);
+    };
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+          counters.forEach(animateCounter);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    faqItems.forEach((item) => {
+      const trigger = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer");
+      trigger.addEventListener("click", () => {
+        const isOpen = item.classList.contains("open");
+
+        faqItems.forEach((faq) => {
+          faq.classList.remove("open");
+          faq.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+          faq.querySelector(".faq-answer").style.maxHeight = null;
+        });
+
+        if (!isOpen) {
+          item.classList.add("open");
+          trigger.setAttribute("aria-expanded", "true");
+          answer.style.maxHeight = `${answer.scrollHeight}px`;
+        }
+      });
+    });
+
+    const updateTestimonials = (index) => {
+      testimonialIndex = index;
+      testimonialTrack.style.transform = `translateX(-${testimonialIndex * 100}%)`;
+      testimonialDots.forEach((dot) => {
+        dot.classList.toggle("active", Number(dot.dataset.index) === testimonialIndex);
+      });
+    };
+
+    const restartTestimonialTimer = () => {
+      window.clearInterval(testimonialTimer);
+      testimonialTimer = window.setInterval(() => {
+        updateTestimonials((testimonialIndex + 1) % testimonialDots.length);
+      }, 4000);
+    };
+
+    testimonialDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        updateTestimonials(Number(dot.dataset.index));
+        restartTestimonialTimer();
+      });
+    });
+
+    updateTestimonials(0);
+    restartTestimonialTimer();
+
+    const canvas = document.getElementById("hero-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    const createParticles = () => {
+      const particleCount = window.innerWidth < 700 ? 28 : 46;
+      particles = Array.from({ length: particleCount }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2.6 + 1.2,
+        speedX: (Math.random() - 0.5) * 0.32,
+        speedY: (Math.random() - 0.5) * 0.26,
+        glow: Math.random() * 0.5 + 0.25
+      }));
+    };
+
+    const resizeCanvas = () => {
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(canvas.clientWidth * ratio);
+      canvas.height = Math.floor(canvas.clientHeight * ratio);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(ratio, ratio);
+      createParticles();
+    };
+
+    const drawParticles = () => {
+      ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+      particles.forEach((particle, index) => {
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        if (particle.x < -20) particle.x = canvas.clientWidth + 20;
+        if (particle.x > canvas.clientWidth + 20) particle.x = -20;
+        if (particle.y < -20) particle.y = canvas.clientHeight + 20;
+        if (particle.y > canvas.clientHeight + 20) particle.y = -20;
+
+        const gradient = ctx.createRadialGradient(
+          particle.x,
+          particle.y,
+          0,
+          particle.x,
+          particle.y,
+          particle.size * 5
+        );
+        gradient.addColorStop(0, `rgba(125, 211, 252, ${particle.glow})`);
+        gradient.addColorStop(1, "rgba(125, 211, 252, 0)");
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size * 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "rgba(232, 249, 255, 0.8)";
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let neighbor = index + 1; neighbor < particles.length; neighbor += 1) {
+          const other = particles[neighbor];
+          const dx = particle.x - other.x;
+          const dy = particle.y - other.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 100) {
+            ctx.strokeStyle = `rgba(125, 211, 252, ${0.12 - distance / 1000})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(other.x, other.y);
+            ctx.stroke();
+          }
+        }
+      });
+
+      requestAnimationFrame(drawParticles);
+    };
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    drawParticles();
+
+    window.setTimeout(() => {
+      loader.classList.add("hidden");
+      body.classList.remove("is-loading");
+    }, 1500);
+  </script>
+</body>
+</html>

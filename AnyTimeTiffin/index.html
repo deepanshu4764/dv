@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Fresh homemade tiffin delivery for M3M Soulitude, Sector 89. Order daily meals, add-ons, and subscriptions directly through WhatsApp." />
+  <title>AnyTime Tiffin | Homemade Tiffin in M3M Soulitude</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#menuSection">Skip to menu</a>
+
+  <header class="site-header" id="top">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="#home" aria-label="AnyTime Tiffin home">
+        <span class="brand-mark">AT</span>
+        <span class="brand-copy">
+          <strong>AnyTime Tiffin</strong>
+          <small>M3M Soulitude</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-links" id="primaryNav">
+        <a href="../" style="font-size: 0.85rem; color: #888; border-right: 1px solid #ddd; padding-right: 16px; margin-right: 16px;">← Back to Ventures</a>
+        <a href="#home">Home</a>
+        <a href="#menuSection">Menu</a>
+        <a href="#how">How it Works</a>
+        <a href="#plans">Plans</a>
+        <a href="#areas">Areas</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-button with-label" id="accountBtn" type="button" aria-haspopup="dialog">
+          <i data-lucide="user-round" aria-hidden="true"></i>
+          <span id="accountLabel">Login</span>
+        </button>
+        <button class="icon-button cart-button" id="headerCartBtn" type="button" aria-haspopup="dialog" aria-label="Review cart">
+          <i data-lucide="shopping-cart" aria-hidden="true"></i>
+          <span class="cart-count" id="headerCartCount">0</span>
+        </button>
+        <button class="btn primary compact" id="headerWhatsApp" type="button">
+          <i data-lucide="message-circle" aria-hidden="true"></i>
+          <span>Order via WhatsApp</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero-shade">
+        <div class="hero-content">
+          <p class="eyebrow">Fresh meals for M3M Soulitude</p>
+          <h1 id="heroTitle">Home Style Tiffin Delivered Hot</h1>
+          <p class="subtitle">Fresh homemade meals by trusted moms, packed with everyday comfort and sent straight to your doorstep inside the society.</p>
+          <div class="hero-ctas">
+            <button id="orderNowBtn" class="btn primary large" type="button">
+              <i data-lucide="utensils" aria-hidden="true"></i>
+              <span>Order Now</span>
+            </button>
+            <button id="viewMenuBtn" class="btn light large" type="button">
+              <i data-lucide="list-filter" aria-hidden="true"></i>
+              <span>View Menu</span>
+            </button>
+          </div>
+          <form class="hero-pincode" id="heroPincodeForm" aria-label="Check delivery pincode">
+            <label for="heroPincode">Pincode</label>
+            <div class="pincode-row">
+              <input type="text" id="heroPincode" inputmode="numeric" maxlength="6" placeholder="122004" autocomplete="postal-code">
+              <button class="btn dark compact" type="submit">Check</button>
+            </div>
+            <p class="checker-message" id="heroPinMessage" aria-live="polite"></p>
+          </form>
+          <div class="badges" aria-label="Trust highlights">
+            <span class="badge"><i data-lucide="leaf" aria-hidden="true"></i>Fresh Daily</span>
+            <span class="badge"><i data-lucide="home" aria-hidden="true"></i>Homemade</span>
+            <span class="badge"><i data-lucide="map-pin" aria-hidden="true"></i>M3M Soulitude Only</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-strip" aria-label="Service highlights">
+      <div>
+        <span>Available only in</span>
+        <strong>M3M Soulitude, Sector 89</strong>
+      </div>
+      <div>
+        <span>Order mode</span>
+        <strong>WhatsApp checkout</strong>
+      </div>
+      <div>
+        <span>Delivery promise</span>
+        <strong>Hot doorstep drop</strong>
+      </div>
+    </section>
+
+    <section class="section-block location-section" id="locationSection" aria-labelledby="locationTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Service area</p>
+          <h2 id="locationTitle">Choose Delivery Location</h2>
+        </div>
+        <span class="status-pill success">Available Now</span>
+      </div>
+      <div class="location-options">
+        <label class="loc-card available">
+          <input type="radio" name="location" value="M3M Soulitude" checked>
+          <span class="loc-icon"><i data-lucide="building-2" aria-hidden="true"></i></span>
+          <span class="loc-info">
+            <strong>M3M Soulitude, Sector 89</strong>
+            <small>Available Now</small>
+          </span>
+        </label>
+        <label class="loc-card unavailable">
+          <input type="radio" name="location" value="Other">
+          <span class="loc-icon"><i data-lucide="map" aria-hidden="true"></i></span>
+          <span class="loc-info">
+            <strong>Other location</strong>
+            <small>Coming Soon</small>
+          </span>
+        </label>
+      </div>
+
+      <div class="location-tools">
+        <button id="locCurrent" class="btn outline" type="button">
+          <i data-lucide="crosshair" aria-hidden="true"></i>
+          <span>Use Current Location</span>
+        </button>
+        <p id="locMessage" class="muted" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="section-block address-section" aria-labelledby="addressTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Delivery setup</p>
+          <h2 id="addressTitle">Delivery Details</h2>
+        </div>
+      </div>
+      <form id="addressForm" class="form-grid" novalidate>
+        <label class="field full">Name (required)
+          <input type="text" id="custName" required placeholder="e.g. Anita Sharma" autocomplete="name">
+          <span class="error" id="errName" aria-live="polite"></span>
+        </label>
+        <label class="field">Mobile (required)
+          <input type="tel" id="custMobile" required placeholder="e.g. 8950378717" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" autocomplete="tel">
+          <span class="error" id="errMobile" aria-live="polite"></span>
+        </label>
+        <label class="field">Pincode (required)
+          <input type="text" id="custPincode" required placeholder="122004" inputmode="numeric" maxlength="6" autocomplete="postal-code">
+          <span class="error" id="errPincode" aria-live="polite"></span>
+        </label>
+        <label class="field">Tower / Block (required)
+          <input type="text" id="custTower" required placeholder="e.g. Tower A" autocomplete="address-line1">
+          <span class="error" id="errTower" aria-live="polite"></span>
+        </label>
+        <label class="field">Flat No (required)
+          <input type="text" id="custFlat" required placeholder="e.g. 101" autocomplete="address-line2">
+          <span class="error" id="errFlat" aria-live="polite"></span>
+        </label>
+        <label class="field">Floor (optional)
+          <input type="text" id="custFloor" placeholder="e.g. 1st">
+        </label>
+        <label class="field">Delivery slot
+          <select id="deliverySlot">
+            <option value="Lunch: 12:00 PM - 2:00 PM">Lunch: 12:00 PM - 2:00 PM</option>
+            <option value="Dinner: 7:00 PM - 9:00 PM">Dinner: 7:00 PM - 9:00 PM</option>
+            <option value="Custom time requested">Custom time requested</option>
+          </select>
+        </label>
+        <label class="field">Spice level
+          <select id="spiceLevel">
+            <option value="Medium">Medium</option>
+            <option value="Mild">Mild</option>
+            <option value="Spicy">Spicy</option>
+          </select>
+        </label>
+        <label class="field full">Allergies or meal preferences (optional)
+          <input type="text" id="custAllergies" placeholder="e.g. no onion, less oil, peanut allergy">
+        </label>
+        <label class="field full">Delivery instructions (optional)
+          <textarea id="custInstr" rows="2" placeholder="Leave at doorstep, ring bell, etc."></textarea>
+        </label>
+      </form>
+    </section>
+
+    <section class="section-block menu-section" id="menuSection" aria-labelledby="menuTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Fresh menu</p>
+          <h2 id="menuTitle">Menu</h2>
+          <p class="muted">Add tiffin plans and extras. Your cart updates instantly.</p>
+        </div>
+      </div>
+
+      <div class="menu-tools" role="region" aria-label="Menu filters">
+        <label class="search-field" for="menuSearch">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <input id="menuSearch" type="search" placeholder="Search tiffin or add-ons" autocomplete="off">
+        </label>
+        <div class="segmented" role="group" aria-label="Diet filter">
+          <button class="chip active" type="button" data-diet="all">All</button>
+          <button class="chip" type="button" data-diet="veg">Veg</button>
+          <button class="chip" type="button" data-diet="jain">Jain</button>
+          <button class="chip" type="button" data-diet="nonveg">Non-Veg</button>
+        </div>
+        <label class="range-field" for="priceRange">
+          <span>Up to <strong id="priceRangeLabel">&#8377;200</strong></span>
+          <input id="priceRange" type="range" min="10" max="200" value="200" step="5">
+        </label>
+        <label class="select-field" for="sortMenu">
+          <span>Sort</span>
+          <select id="sortMenu">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price low to high</option>
+            <option value="price-high">Price high to low</option>
+            <option value="popular">Popularity</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+      <p class="empty-state" id="menuEmpty" hidden>No matching items right now.</p>
+    </section>
+
+    <section class="section-block plans-section" id="plans" aria-labelledby="plansTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Subscriptions</p>
+          <h2 id="plansTitle">Daily, Weekly, Monthly Plans</h2>
+          <p class="muted">Choose a meal rhythm, keep preferences saved, and pause when needed.</p>
+        </div>
+      </div>
+      <div class="subscription-grid">
+        <article class="subscription-card">
+          <span class="plan-tag">Daily</span>
+          <h3>Daily Tiffin Pass</h3>
+          <p class="subscription-price">From &#8377;129/day</p>
+          <ul>
+            <li>Fresh lunch or dinner delivery</li>
+            <li>Choose Standard or Premium meal</li>
+            <li>Saved spice and allergy preferences</li>
+          </ul>
+          <button class="btn primary full-width" type="button" data-subscription="daily">Start Daily Plan</button>
+        </article>
+        <article class="subscription-card featured">
+          <span class="plan-tag">Weekly</span>
+          <h3>Weekly Comfort Plan</h3>
+          <p class="subscription-price">&#8377;899/week</p>
+          <ul>
+            <li>Seven scheduled meals</li>
+            <li>Pause or skip from account dashboard</li>
+            <li>Priority WhatsApp confirmation</li>
+          </ul>
+          <button class="btn primary full-width" type="button" data-subscription="weekly">Start Weekly Plan</button>
+        </article>
+        <article class="subscription-card">
+          <span class="plan-tag">Monthly</span>
+          <h3>Monthly Home Meal Plan</h3>
+          <p class="subscription-price">&#8377;3499/month</p>
+          <ul>
+            <li>Best for daily tiffin users</li>
+            <li>Preference management included</li>
+            <li>Flexible delivery slot selection</li>
+          </ul>
+          <button class="btn primary full-width" type="button" data-subscription="monthly">Start Monthly Plan</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block cart-section" id="cartSection" aria-labelledby="cartTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Order summary</p>
+          <h2 id="cartTitle">Cart Summary</h2>
+        </div>
+        <button id="reviewCart" class="btn outline" type="button">
+          <i data-lucide="receipt" aria-hidden="true"></i>
+          <span>Review Cart</span>
+        </button>
+      </div>
+      <div id="cartItems" class="cart-items" aria-live="polite"></div>
+      <div class="cart-footer">
+        <div class="total">Total: <span id="totalAmount">&#8377;0</span></div>
+        <div class="cart-actions">
+          <button id="clearCart" class="btn outline" type="button">
+            <i data-lucide="trash-2" aria-hidden="true"></i>
+            <span>Clear Cart</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block how-section" id="how" aria-labelledby="howTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">How it works</p>
+          <h2 id="howTitle">Fresh Tiffin in Four Steps</h2>
+        </div>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card">
+          <i data-lucide="clipboard-list" aria-hidden="true"></i>
+          <h3>Choose Plan</h3>
+          <p>Select a daily meal, add-ons, or a subscription.</p>
+        </article>
+        <article class="step-card">
+          <i data-lucide="sliders-horizontal" aria-hidden="true"></i>
+          <h3>Customize</h3>
+          <p>Set slot, spice level, allergies, and delivery notes.</p>
+        </article>
+        <article class="step-card">
+          <i data-lucide="chef-hat" aria-hidden="true"></i>
+          <h3>Cooked with Love by Moms</h3>
+          <p>Meals are prepared fresh with everyday home-style taste.</p>
+        </article>
+        <article class="step-card">
+          <i data-lucide="bike" aria-hidden="true"></i>
+          <h3>Fresh Delivery</h3>
+          <p>Delivered hot to your flat inside M3M Soulitude.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block areas-section" id="areas" aria-labelledby="areasTitle">
+      <div class="areas-copy">
+        <p class="section-kicker">Areas we serve</p>
+        <h2 id="areasTitle">Currently Serving M3M Soulitude, Sector 89</h2>
+        <p class="muted">Orders are accepted only for homes inside M3M Soulitude. New nearby societies can register interest on WhatsApp.</p>
+      </div>
+      <form class="area-checker" id="areaPincodeForm" aria-label="Check serviceable pincode">
+        <label for="areaPincode">Check pincode</label>
+        <div class="pincode-row">
+          <input id="areaPincode" type="text" inputmode="numeric" maxlength="6" placeholder="122004" autocomplete="postal-code">
+          <button class="btn primary compact" type="submit">Check</button>
+        </div>
+        <p class="checker-message" id="areaPinMessage" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="section-block trust-section" aria-labelledby="trustTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Trust</p>
+          <h2 id="trustTitle">Prepared for Daily Confidence</h2>
+        </div>
+      </div>
+      <div class="trust-grid">
+        <article class="trust-card">
+          <i data-lucide="shield-check" aria-hidden="true"></i>
+          <h3>Verified Home Chefs</h3>
+          <p>Prepared by trusted moms and home cooks with clear quality routines.</p>
+        </article>
+        <article class="trust-card">
+          <i data-lucide="sparkles" aria-hidden="true"></i>
+          <h3>Hygiene Checklist</h3>
+          <p>Fresh packing, clean prep surfaces, and daily ingredient checks.</p>
+        </article>
+        <article class="trust-card">
+          <i data-lucide="clock" aria-hidden="true"></i>
+          <h3>Delivery Guarantee</h3>
+          <p>Hot delivery inside the society during selected lunch or dinner slots.</p>
+        </article>
+      </div>
+      <div class="testimonial-grid">
+        <blockquote>
+          <p>"Feels like the kind of ghar ka khana I can order on busy workdays."</p>
+          <cite>M3M Soulitude Resident</cite>
+        </blockquote>
+        <blockquote>
+          <p>"Simple ordering on WhatsApp and the meal portions are practical."</p>
+          <cite>Sector 89 Customer</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="section-block faq-section" aria-labelledby="faqTitle">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">FAQ</p>
+          <h2 id="faqTitle">Common Questions</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Do you deliver outside M3M Soulitude?</span>
+            <i data-lucide="chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>Not yet. Current delivery is limited to M3M Soulitude, Sector 89.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Can I pause a subscription?</span>
+            <i data-lucide="chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>Yes. The account dashboard includes a pause button for active simulated subscriptions.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How is the order confirmed?</span>
+            <i data-lucide="chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" hidden>
+            <p>The final confirmation happens through the pre-filled WhatsApp message.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block contact-section" id="contact" aria-labelledby="contactTitle">
+      <div>
+        <p class="section-kicker">Contact</p>
+        <h2 id="contactTitle">Order or Ask on WhatsApp</h2>
+        <p class="muted">The fastest way to confirm meal timing, availability, and subscriptions is WhatsApp.</p>
+      </div>
+      <button class="btn primary large" id="contactWhatsApp" type="button">
+        <i data-lucide="message-circle" aria-hidden="true"></i>
+        <span>Chat on WhatsApp</span>
+      </button>
+    </section>
+  </main>
+
+  <div class="sticky-order" role="region" aria-label="Order bar">
+    <div class="sticky-info">
+      <div class="sticky-line">Items: <strong id="stickyCount">0</strong></div>
+      <div class="sticky-line">Total: <strong id="stickyTotal">&#8377;0</strong></div>
+    </div>
+    <div class="sticky-actions">
+      <button id="stickyCartBtn" class="btn outline compact" type="button">
+        <i data-lucide="shopping-bag" aria-hidden="true"></i>
+        <span>Cart</span>
+      </button>
+      <button id="orderWhatsApp" class="btn primary compact" type="button">
+        <i data-lucide="message-circle" aria-hidden="true"></i>
+        <span>Order on WhatsApp</span>
+      </button>
+    </div>
+  </div>
+
+  <button class="floating-whatsapp" id="floatingWhatsApp" type="button" aria-label="Chat on WhatsApp">
+    <i data-lucide="message-circle" aria-hidden="true"></i>
+  </button>
+
+  <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" hidden>
+    <div class="modal-panel checkout-panel">
+      <div class="modal-head">
+        <div>
+          <p class="section-kicker">Checkout</p>
+          <h2 id="checkoutTitle">Review Your Order</h2>
+        </div>
+        <button class="icon-button" type="button" data-close-modal="checkoutModal" aria-label="Close checkout">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="checkout-layout">
+        <div>
+          <h3>Items</h3>
+          <div id="checkoutItems" class="cart-items"></div>
+          <form class="coupon-row" id="couponForm">
+            <label for="couponCode">Coupon</label>
+            <div>
+              <input id="couponCode" type="text" placeholder="MOMLOVE">
+              <button class="btn outline compact" type="submit">Apply</button>
+            </div>
+            <p id="couponMessage" class="checker-message" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="checkout-side">
+          <h3>Payment</h3>
+          <div class="payment-options" role="radiogroup" aria-label="Payment options">
+            <label><input type="radio" name="payment" value="UPI" checked> UPI</label>
+            <label><input type="radio" name="payment" value="Cards"> Cards</label>
+            <label><input type="radio" name="payment" value="COD"> COD simulation</label>
+          </div>
+          <div class="summary-box">
+            <div><span>Subtotal</span><strong id="checkoutSubtotal">&#8377;0</strong></div>
+            <div><span>Discount</span><strong id="checkoutDiscount">-&#8377;0</strong></div>
+            <div><span>Total</span><strong id="checkoutTotal">&#8377;0</strong></div>
+          </div>
+          <button class="btn primary full-width" id="placeOrderBtn" type="button">
+            <i data-lucide="badge-check" aria-hidden="true"></i>
+            <span>Place Order</span>
+          </button>
+          <button class="btn outline full-width" id="checkoutWhatsApp" type="button">
+            <i data-lucide="message-circle" aria-hidden="true"></i>
+            <span>Send on WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="accountModal" role="dialog" aria-modal="true" aria-labelledby="accountTitle" hidden>
+    <div class="modal-panel account-panel">
+      <div class="modal-head">
+        <div>
+          <p class="section-kicker">Account</p>
+          <h2 id="accountTitle">Your Dashboard</h2>
+        </div>
+        <button class="icon-button" type="button" data-close-modal="accountModal" aria-label="Close account">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <label class="field full">Name
+          <input id="loginName" type="text" placeholder="Your name" autocomplete="name">
+        </label>
+        <label class="field full">Mobile
+          <input id="loginMobile" type="tel" placeholder="10-digit mobile" inputmode="numeric" maxlength="10" autocomplete="tel">
+        </label>
+        <button class="btn primary full-width" type="submit">Login</button>
+        <p class="checker-message" id="loginMessage" aria-live="polite"></p>
+      </form>
+
+      <div id="dashboardView" class="dashboard-view" hidden>
+        <div class="dashboard-head">
+          <div>
+            <p class="muted">Signed in as</p>
+            <h3 id="dashboardName">Guest</h3>
+          </div>
+          <button class="btn outline compact" id="logoutBtn" type="button">Logout</button>
+        </div>
+        <div class="dashboard-grid">
+          <section>
+            <h3>Active Subscriptions</h3>
+            <div id="subscriptionList" class="dashboard-list"></div>
+          </section>
+          <section>
+            <h3>Order History</h3>
+            <div id="orderHistory" class="dashboard-list"></div>
+          </section>
+          <section>
+            <h3>Saved Addresses</h3>
+            <div id="savedAddresses" class="dashboard-list"></div>
+          </section>
+          <section>
+            <h3>Preferences</h3>
+            <form id="preferenceForm" class="preference-form">
+              <label>Spice
+                <select id="prefSpice">
+                  <option value="Medium">Medium</option>
+                  <option value="Mild">Mild</option>
+                  <option value="Spicy">Spicy</option>
+                </select>
+              </label>
+              <label>Delivery slot
+                <select id="prefSlot">
+                  <option value="Lunch: 12:00 PM - 2:00 PM">Lunch: 12:00 PM - 2:00 PM</option>
+                  <option value="Dinner: 7:00 PM - 9:00 PM">Dinner: 7:00 PM - 9:00 PM</option>
+                  <option value="Custom time requested">Custom time requested</option>
+                </select>
+              </label>
+              <label>Allergies
+                <input id="prefAllergies" type="text" placeholder="No onion, less oil">
+              </label>
+              <button class="btn primary full-width" type="submit">Save Preferences</button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" hidden>
+    <div class="modal-panel success-panel">
+      <div class="confetti" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="success-icon"><i data-lucide="check" aria-hidden="true"></i></div>
+      <h2 id="successTitle">Order Saved</h2>
+      <p id="successMessage">Your order has been recorded in this demo checkout.</p>
+      <div class="success-actions">
+        <button class="btn primary" id="successWhatsApp" type="button">
+          <i data-lucide="message-circle" aria-hidden="true"></i>
+          <span>Send on WhatsApp</span>
+        </button>
+        <button class="btn outline" type="button" data-close-modal="successModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="notice" class="notice" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
