@@ -8,9 +8,36 @@ Your AnyTime Tiffin website is now fully integrated with Google Apps Script to a
 https://script.google.com/macros/s/AKfycbzP6yDvx6q5D1pAvr1rGNR0zaiFjj6JhZhz5mQ9eyg2sTtjKq_a4XmTuYuzVR2COZvhiw/exec
 ```
 
+## Current Payload Shape
+Every website submission now posts one JSON payload to the same Apps Script web app:
+
+```json
+{
+  "timestamp": "2026-06-04T10:30:00.000Z",
+  "source": "AnyTime Tiffin",
+  "eventType": "NEWSLETTER_SIGNUP",
+  "pageUrl": "https://your-domain.com/anytimetiffin/",
+  "data": {
+    "name": "Customer Name",
+    "mobile": "9876543210"
+  }
+}
+```
+
+Recommended Sheet columns are `Timestamp`, `Source`, `Event Type`, `Name`, `Mobile`, `Email`, `Page URL`, and `Data JSON`.
+
 ---
 
 ## Tracked Events
+
+### NEWSLETTER_SIGNUP
+**When:** When a visitor joins menu or newsletter updates.
+
+**Data Sent:**
+- Name
+- Mobile number
+- Interest/source label
+- Service area
 
 ### 1. **ORDER_PLACED** ✅
 **When:** When a customer completes and places an order through the checkout form.

@@ -10,7 +10,7 @@ A professionally organized multi-project portfolio website showcasing three inno
 
 | Project | Description | Type | Location |
 |---------|-------------|------|----------|
-| **AnyTime Tiffin** | Fresh homemade tiffin delivery service for M3M Soulitude | Static + Frontend | `/anytimetiffin/` |
+| **AnyTime Tiffin** | Fresh homemade tiffin delivery service for M3M Soulitude | Static + Frontend | `/anytimetiffin/` via Vercel rewrite |
 | **AI Automation Agency** | AI chatbots, WhatsApp automation, CRM workflows, and voice agents | Static + Frontend | `/ai-automation-agency/` |
 | **Social Drive** | ROI-driven social media marketing with performance analytics | Node.js Backend | `/social-drive/` |
 
@@ -110,7 +110,7 @@ Then visit: `http://localhost:8000`
    - Should display the Deepanshu Ventures hub with 3 venture cards
    - Click each card to verify routing works
 
-2. **AnyTime Tiffin**: `http://localhost:8000/anytimetiffin/`
+2. **AnyTime Tiffin**: `http://localhost:8000/AnyTimeTiffin/` locally, `/anytimetiffin/` on Vercel
    - Should display the complete tiffin delivery website
    - Verify "← Back to Ventures" link works
 
@@ -178,7 +178,7 @@ If Social Drive backend needs environment variables:
 ## ⚙️ Configuration Details
 
 ### vercel.json
-- **Rewrites**: Clean URL routing for each sub-project
+- **Rewrites**: Clean URL routing for each sub-project, including `/anytimetiffin/` to the `AnyTimeTiffin/` folder
 - **Headers**: Security headers (X-Content-Type-Options, X-Frame-Options, etc.)
 - **Cache Control**: 
   - HTML files: 3600s (1 hour)
@@ -189,7 +189,7 @@ If Social Drive backend needs environment variables:
 
 #### AnyTime Tiffin
 - **Type**: Static website + Frontend JS
-- **Features**: Menu catalog, cart system, WhatsApp ordering
+- **Features**: Menu catalog, cart system, Google Sheets lead capture, newsletter signup, compact WhatsApp ordering
 - **Assets**: Images, CSS, JavaScript bundled
 - **No backend required** ✅
 

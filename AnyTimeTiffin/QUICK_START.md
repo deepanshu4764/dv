@@ -29,17 +29,32 @@ https://script.google.com → New Project
 ```javascript
 function doPost(e) {
   try {
-    const payload = JSON.parse(e.postData.contents);
-    const sheet = SpreadsheetApp.getActiveSheet();
+    const payload = JSON.parse(e.postData.contents || "{}");
+    const data = payload.data || {};
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["Timestamp", "Event Type", "Data"]);
+      sheet.appendRow([
+        "Timestamp",
+        "Source",
+        "Event Type",
+        "Name",
+        "Mobile",
+        "Email",
+        "Page URL",
+        "Data JSON"
+      ]);
     }
     
     sheet.appendRow([
-      new Date(),
-      payload.eventType,
-      JSON.stringify(payload.data)
+      payload.timestamp ? new Date(payload.timestamp) : new Date(),
+      payload.source || "",
+      payload.eventType || "",
+      data.name || data.customerName || data.userName || "",
+      data.mobile || data.customerMobile || data.userMobile || "",
+      data.email || "",
+      payload.pageUrl || "",
+      JSON.stringify(data)
     ]);
     
     return ContentService.createTextOutput(

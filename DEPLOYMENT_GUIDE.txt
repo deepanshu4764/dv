@@ -45,7 +45,8 @@ Then visit: http://localhost:8000
 
 ✅ What works:
   - Root landing page: http://localhost:8000
-  - AnyTime Tiffin: http://localhost:8000/anytimetiffin/
+  - AnyTime Tiffin: http://localhost:8000/AnyTimeTiffin/
+  - Vercel route after deploy: /anytimetiffin/ (rewritten to AnyTimeTiffin/)
   - AI Automation: http://localhost:8000/ai-automation-agency/
   - Social Drive: http://localhost:8000/social-drive/
 
@@ -67,6 +68,7 @@ Then visit: http://localhost:8000
 ✅ Full features enabled:
   - All pages accessible
   - WhatsApp integration (AnyTime Tiffin)
+  - Google Sheets lead capture through the single Apps Script endpoint
   - SMS service (Social Drive backend)
   - Authentication forms
 
@@ -159,6 +161,8 @@ Local Testing:
   ☐ Navigation links work
 
 Before Production:
+  - Confirm /anytimetiffin/ opens on Vercel and the root ANYTIMETIFFIN card uses that route
+  - Confirm Google Sheets receives root contact, root newsletter, AnyTimeTiffin newsletter, and order rows
   ☐ All links tested again on production URL
   ☐ Google PageSpeed Insights score good
   ☐ Mobile speed & performance acceptable

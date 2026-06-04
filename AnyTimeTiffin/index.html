@@ -28,12 +28,13 @@
       </button>
 
       <div class="nav-links" id="primaryNav">
-        <a href="../" style="font-size: 0.85rem; color: #888; border-right: 1px solid #ddd; padding-right: 16px; margin-right: 16px;">← Back to Ventures</a>
+        <a href="../" style="font-size: 0.85rem; color: #888; border-right: 1px solid #ddd; padding-right: 16px; margin-right: 16px;">Back to Ventures</a>
         <a href="#home">Home</a>
         <a href="#menuSection">Menu</a>
         <a href="#how">How it Works</a>
         <a href="#plans">Plans</a>
         <a href="#areas">Areas</a>
+        <a href="#updates">Updates</a>
         <a href="#contact">Contact</a>
       </div>
 
@@ -85,6 +86,28 @@
             <span class="badge"><i data-lucide="map-pin" aria-hidden="true"></i>M3M Soulitude Only</span>
           </div>
         </div>
+        <aside class="hero-order-card" aria-label="Today at AnyTime Tiffin">
+          <div class="hero-card-head">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>Accepting orders today</span>
+          </div>
+          <h2>Fresh lunch and dinner from &#8377;129</h2>
+          <div class="hero-menu-list">
+            <div>
+              <strong>Standard Home Tiffin</strong>
+              <span>Dal, sabzi, rice, salad, 4 rotis</span>
+            </div>
+            <div>
+              <strong>Premium Home Tiffin</strong>
+              <span>Paneer sabzi, rice, salad, 5 butter rotis</span>
+            </div>
+          </div>
+          <div class="hero-card-meta">
+            <span><i data-lucide="clock" aria-hidden="true"></i> Lunch and dinner slots</span>
+            <span><i data-lucide="message-circle" aria-hidden="true"></i> WhatsApp confirmation</span>
+          </div>
+          <a class="btn light full-width" href="#menuSection">Browse Menu</a>
+        </aside>
       </div>
     </section>
 
@@ -100,6 +123,34 @@
       <div>
         <span>Delivery promise</span>
         <strong>Hot doorstep drop</strong>
+      </div>
+      <div>
+        <span>Starting price</span>
+        <strong>&#8377;129 per tiffin</strong>
+      </div>
+    </section>
+
+    <section class="section-block service-proof" aria-label="Ordering confidence">
+      <div class="proof-item">
+        <i data-lucide="badge-check" aria-hidden="true"></i>
+        <div>
+          <strong>Simple checkout</strong>
+          <span>Add meals, review total, then confirm on WhatsApp.</span>
+        </div>
+      </div>
+      <div class="proof-item">
+        <i data-lucide="notebook-tabs" aria-hidden="true"></i>
+        <div>
+          <strong>Leads saved to Sheets</strong>
+          <span>Orders, newsletter signups, pincode checks, and preferences are logged.</span>
+        </div>
+      </div>
+      <div class="proof-item">
+        <i data-lucide="shield-check" aria-hidden="true"></i>
+        <div>
+          <strong>Built for residents</strong>
+          <span>Focused only on M3M Soulitude for reliable delivery.</span>
+        </div>
       </div>
     </section>
 
@@ -191,6 +242,20 @@
           <textarea id="custInstr" rows="2" placeholder="Leave at doorstep, ring bell, etc."></textarea>
         </label>
       </form>
+      <div class="delivery-assurance" aria-label="Delivery assurance">
+        <div>
+          <i data-lucide="timer" aria-hidden="true"></i>
+          <span>Choose lunch, dinner, or a custom time request.</span>
+        </div>
+        <div>
+          <i data-lucide="sliders-horizontal" aria-hidden="true"></i>
+          <span>Save spice, allergies, and delivery instructions before checkout.</span>
+        </div>
+        <div>
+          <i data-lucide="sheet" aria-hidden="true"></i>
+          <span>Your order details are sent to Google Sheets for follow-up.</span>
+        </div>
+      </div>
     </section>
 
     <section class="section-block menu-section" id="menuSection" aria-labelledby="menuTitle">
@@ -421,16 +486,45 @@
       </div>
     </section>
 
+    <section class="section-block newsletter-section" id="updates" aria-labelledby="updatesTitle">
+      <div class="newsletter-copy">
+        <p class="section-kicker">Menu updates</p>
+        <h2 id="updatesTitle">Get Fresh Menu Alerts</h2>
+        <p class="muted">Share your name and mobile number to receive new meal drops, offers, and service-area updates.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm" novalidate>
+        <label class="field">Name (required)
+          <input type="text" id="newsletterName" required placeholder="Your name" autocomplete="name">
+          <span class="error" id="errNewsletterName" aria-live="polite"></span>
+        </label>
+        <label class="field">Mobile (required)
+          <input type="tel" id="newsletterMobile" required placeholder="10-digit mobile" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" autocomplete="tel">
+          <span class="error" id="errNewsletterMobile" aria-live="polite"></span>
+        </label>
+        <button class="btn primary full-width" type="submit">
+          <i data-lucide="bell-plus" aria-hidden="true"></i>
+          <span>Join Updates</span>
+        </button>
+        <p class="checker-message" id="newsletterMessage" aria-live="polite"></p>
+      </form>
+    </section>
+
     <section class="section-block contact-section" id="contact" aria-labelledby="contactTitle">
       <div>
         <p class="section-kicker">Contact</p>
         <h2 id="contactTitle">Order or Ask on WhatsApp</h2>
         <p class="muted">The fastest way to confirm meal timing, availability, and subscriptions is WhatsApp.</p>
       </div>
-      <button class="btn primary large" id="contactWhatsApp" type="button">
-        <i data-lucide="message-circle" aria-hidden="true"></i>
-        <span>Chat on WhatsApp</span>
-      </button>
+      <div class="contact-actions">
+        <button class="btn primary large" id="contactWhatsApp" type="button">
+          <i data-lucide="message-circle" aria-hidden="true"></i>
+          <span>Chat on WhatsApp</span>
+        </button>
+        <a class="btn outline large" href="#updates">
+          <i data-lucide="bell-plus" aria-hidden="true"></i>
+          <span>Get Menu Alerts</span>
+        </a>
+      </div>
     </section>
   </main>
 

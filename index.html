@@ -64,6 +64,87 @@
       html {
         scroll-behavior: smooth;
       }
+      .dv-hero {
+        position: relative;
+        overflow: hidden;
+        min-height: calc(100svh - 7rem);
+        border: 1px solid rgba(148, 163, 184, 0.22);
+        background: #0f172a;
+      }
+      .dv-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.9) 46%, rgba(15, 23, 42, 0.5) 100%),
+          linear-gradient(180deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.1));
+      }
+      .dv-hero-image {
+        position: absolute;
+        inset: 0 0 0 auto;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.22;
+      }
+      .venture-card {
+        position: relative;
+        display: grid;
+        min-height: 172px;
+        gap: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.82);
+        padding: 22px;
+        color: #fff;
+        box-shadow: 0 22px 55px rgba(2, 6, 23, 0.2);
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+      .venture-card::before {
+        content: '';
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 5px;
+        background: #2563eb;
+      }
+      .venture-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255, 255, 255, 0.34);
+        background: rgba(15, 23, 42, 0.96);
+      }
+      .venture-card[data-accent='green']::before {
+        background: #16a34a;
+      }
+      .venture-card[data-accent='orange']::before {
+        background: #f97316;
+      }
+      .venture-chip {
+        display: inline-flex;
+        width: max-content;
+        align-items: center;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 6px 10px;
+        font-size: 12px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.78);
+      }
+      .metric-tile {
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      }
+      .dark .metric-tile {
+        border-color: rgba(51, 65, 85, 0.85);
+        background: rgba(15, 23, 42, 0.72);
+      }
+      @media (min-width: 1024px) {
+        .dv-hero-image {
+          width: 48%;
+          opacity: 0.62;
+        }
+      }
     </style>
   </head>
   <body class="antialiased bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-white">
@@ -92,6 +173,9 @@
                 </button>
                 <button data-scroll="about" class="capitalize font-medium hover:text-blue-600 transition-colors">
                   about
+                </button>
+                <button data-scroll="hiring" class="capitalize font-medium hover:text-blue-600 transition-colors">
+                  hiring
                 </button>
                 <button data-scroll="contact" class="capitalize font-medium hover:text-blue-600 transition-colors">
                   contact
@@ -267,6 +351,13 @@
               about
             </button>
             <button
+              data-scroll="hiring"
+              class="block w-full text-left px-4 py-2 rounded-lg capitalize font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+              type="button"
+            >
+              hiring
+            </button>
+            <button
               data-scroll="contact"
               class="block w-full text-left px-4 py-2 rounded-lg capitalize font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
               type="button"
@@ -358,76 +449,101 @@
       </header>
 
       <main class="pt-20 sm:pt-24 pb-20 px-4 sm:px-6 lg:px-8" id="top">
-        <section id="hero" data-breadcrumb-label="Home" class="max-w-6xl mx-auto mb-24 pb-6">
-          <div class="flex flex-col-reverse lg:flex-row items-center lg:items-start gap-12 lg:gap-16">
-            <div class="w-full lg:w-1/2 text-center lg:text-left">
-              <div class="mx-auto w-full max-w-lg lg:mx-0">
-                <span
-                  class="inline-flex items-center px-4 py-1.5 text-sm font-semibold bg-blue-100 text-blue-600 rounded-full"
-                >
-                  🚀 Growth Partner for Ambitious Brands
+        <section id="hero" data-breadcrumb-label="Home" class="max-w-7xl mx-auto mb-14">
+          <div class="dv-hero rounded-[2rem] shadow-2xl shadow-slate-950/20">
+            <img
+              data-hero-image
+              src="https://i.ibb.co/tPK8BHgJ/my-photo.jpg"
+              data-default-src="my-photo.jpg"
+              alt="Portrait of Deepanshu Yadav, founder of Deepanshu Ventures"
+              class="dv-hero-image"
+              loading="eager"
+              width="511"
+              height="951"
+            />
+            <div class="relative z-10 grid min-h-[inherit] gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.72fr)] lg:items-center lg:px-12 lg:py-16">
+              <div class="max-w-3xl text-white">
+                <span class="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-100">
+                  Growth, automation, and local commerce ventures
                 </span>
-                <h1 class="mt-6 text-3xl sm:text-5xl font-extrabold leading-tight">
-                  Choose a venture to explore.
+                <h1 class="mt-6 text-4xl font-extrabold leading-tight sm:text-6xl lg:text-7xl">
+                  Deepanshu Ventures
                 </h1>
-                <div class="mt-6 overflow-hidden rounded-[2rem] bg-slate-950/95 p-4 shadow-2xl shadow-slate-950/30 sm:p-6">
-                  <div id="ventures-grid" class="grid grid-cols-1 gap-4"></div>
+                <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-200 sm:text-xl">
+                  A focused venture hub building practical businesses across marketing, AI automation, and fresh local services.
+                  Explore the active products, request work, or order directly from the live tiffin experience.
+                </p>
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <button
+                    data-scroll="services"
+                    class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-4 text-base font-bold text-slate-950 shadow-lg transition hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    type="button"
+                  >
+                    Explore Services
+                  </button>
+                  <button
+                    data-scroll="contact"
+                    class="inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/10 px-6 py-4 text-base font-bold text-white transition hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    type="button"
+                  >
+                    Start a Project
+                  </button>
+                </div>
+                <div class="mt-10 grid gap-3 sm:grid-cols-3">
+                  <div class="rounded-2xl border border-white/12 bg-white/10 p-4">
+                    <strong class="block text-2xl">3</strong>
+                    <span class="text-sm text-slate-300">Active ventures</span>
+                  </div>
+                  <div class="rounded-2xl border border-white/12 bg-white/10 p-4">
+                    <strong class="block text-2xl">4+</strong>
+                    <span class="text-sm text-slate-300">Years building campaigns</span>
+                  </div>
+                  <div class="rounded-2xl border border-white/12 bg-white/10 p-4">
+                    <strong class="block text-2xl">24h</strong>
+                    <span class="text-sm text-slate-300">Typical response time</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="w-full lg:w-1/2">
-              <div
-                class="relative mx-auto max-w-xs sm:max-w-sm lg:max-w-md overflow-hidden rounded-[2.5rem] border-[14px] border-white shadow-2xl dark:border-gray-900"
-                style="aspect-ratio: 511 / 951;"
-              >
-                <div
-                  class="pointer-events-none absolute inset-0 -z-10 rounded-[2.1rem] bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-pink-500/30 blur-xl"
-                ></div>
-                <div class="relative rounded-[1.9rem] overflow-hidden bg-white dark:bg-gray-900">
-                  <img
-                    data-hero-image
-                    src="https://i.ibb.co/tPK8BHgJ/my-photo.jpg"
-                    data-default-src="my-photo.jpg"
-                    alt="Portrait of Deepanshu Yadav, founder of Deepanshu Ventures"
-                    class="w-full h-full object-cover"
-                    loading="eager"
-                    width="511"
-                    height="951"
-                  />
-
-                </div>
-                <div
-                  class="absolute -bottom-8 left-1/2 flex w-[92%] -translate-x-1/2 items-center gap-4 rounded-3xl bg-white/90 px-6 py-4 text-left shadow-xl backdrop-blur dark:bg-gray-900/90 sm:left-6 sm:w-auto sm:translate-x-0"
-                >
-                  <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 text-2xl font-extrabold text-white">
-                    4+
-                  </div>
+              <div class="rounded-[1.5rem] border border-white/12 bg-slate-950/60 p-4 shadow-2xl backdrop-blur sm:p-5">
+                <div class="mb-5 flex items-center justify-between gap-4">
                   <div>
-                    <p class="text-sm font-semibold uppercase tracking-wide text-blue-600">Years of Experience</p>
-                    <p class="text-base font-semibold text-gray-900 dark:text-gray-100">Campaigns that build trust & revenue</p>
+                    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-blue-200">Launchpad</p>
+                    <h2 class="mt-1 text-2xl font-bold text-white">Choose a venture</h2>
                   </div>
+                  <span class="rounded-full bg-green-500/15 px-3 py-1 text-xs font-bold text-green-200">Live</span>
                 </div>
+                <div id="ventures-grid" class="grid grid-cols-1 gap-4"></div>
               </div>
             </div>
           </div>
         </section>
         <script>
+          const projectUrl = (localUrl, deployUrl) => window.location.protocol === 'file:' ? localUrl : deployUrl;
           const ventures = [
             {
               name: 'AI Automation Agency',
-              url: 'ai-automation-agency/',
+              url: projectUrl('ai-automation-agency/index.html', 'ai-automation-agency/'),
+              tag: 'AI systems',
+              metric: 'Workflow automation',
+              accent: 'blue',
               description: 'Smart AI systems and workflow automation for businesses.',
               target: '_self',
             },
             {
               name: 'Social Drive Marketing Agency',
-              url: 'social-drive/',
+              url: projectUrl('social-drive/index.html', 'social-drive/'),
+              tag: 'Marketing engine',
+              metric: 'Content, ads, growth',
+              accent: 'green',
               description: 'Growth-focused branding, content, ads, and social media marketing.',
               target: '_self',
             },
             {
-              name: 'ANYTIMETIFFIN',
-              url: 'anytimetiffin/index.html',
+              name: 'AnyTime Tiffin',
+              url: projectUrl('AnyTimeTiffin/index.html', '/anytimetiffin/'),
+              tag: 'Food service',
+              metric: 'Fresh tiffin checkout',
+              accent: 'orange',
               description: 'Fresh homemade tiffin ordering service.',
               target: '_self',
             },
@@ -443,19 +559,25 @@
                     target="${venture.target}"
                     rel="noopener noreferrer"
                     aria-label="Visit ${venture.name}"
-                    class="group block h-full rounded-3xl bg-slate-900/95 p-7 shadow-xl transition duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                    class="venture-card group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    data-accent="${venture.accent}"
                   >
-                    <div class="flex h-full flex-col justify-between gap-6">
-                      <h3 class="text-2xl font-bold text-white transition-colors group-hover:text-blue-200">
-                        ${venture.name}
-                      </h3>
-                      <span class="inline-flex items-center justify-between rounded-full bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition-colors group-hover:bg-blue-500">
-                        <span>Explore</span>
+                    <div class="flex items-start justify-between gap-4">
+                      <span class="venture-chip">${venture.tag}</span>
+                      <span class="text-sm font-semibold text-slate-300">${venture.metric}</span>
+                    </div>
+                    <div>
+                      <h3 class="text-2xl font-bold transition-colors group-hover:text-blue-200">${venture.name}</h3>
+                      <p class="mt-3 text-sm leading-6 text-slate-300">${venture.description}</p>
+                    </div>
+                    <span class="inline-flex items-center justify-between rounded-xl bg-white px-4 py-3 text-sm font-bold text-slate-950 transition-colors group-hover:bg-blue-50">
+                      <span>Open venture</span>
+                      <span class="ml-4 inline-flex h-7 w-7 items-center justify-center rounded-lg bg-slate-950 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
                           <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                         </svg>
                       </span>
-                    </div>
+                    </span>
                   </a>
                 `;
               })
@@ -836,42 +958,66 @@
           </div>
         </section>
 
-        <section id="about" data-breadcrumb-label="About" class="max-w-4xl mx-auto mb-20">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4">About Deepanshu Yadav</h2>
-          </div>
-          <div class="p-8 md:p-12 rounded-2xl bg-gray-50 dark:bg-gray-800">
-            <p class="text-lg mb-6 text-gray-700 dark:text-gray-300">
-              I help ambitious businesses unlock exponential growth through strategic marketing and brand positioning. Based in
-              Rohtak with clients across Delhi-NCR and India, I specialize in the “Domino Effect”—identifying the one strategic
-              lever that cascades into multiple wins.
-            </p>
-            <p class="text-lg mb-6 text-gray-700 dark:text-gray-300">
-              With experience across agency execution and consulting, I blend strategic thinking with hands-on implementation.
-              Whether you're a D2C brand scaling up, a B2B company seeking qualified leads, or a founder building personal
-              authority, I build marketing systems that deliver predictable, measurable growth.
-            </p>
-            <p class="text-lg mb-8 text-gray-700 dark:text-gray-300">
-              My approach is simple: understand your business deeply, identify high-leverage opportunities, execute with
-              precision, and optimize relentlessly. No fluff, no vanity metrics—only results that impact your bottom line.
-            </p>
-            <div class="flex justify-center gap-4">
-              <a
-                href="https://www.linkedin.com/in/earthiandeepanshu?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://x.com/itsdeepansh2005?s=21"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors"
-              >
-                Twitter
-              </a>
+        <section id="about" data-breadcrumb-label="About" class="max-w-6xl mx-auto mb-20">
+          <div class="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+            <div class="relative overflow-hidden rounded-[2rem] bg-slate-950 p-4 shadow-2xl shadow-slate-950/20">
+              <img
+                data-founder-image
+                src="https://i.ibb.co/tPK8BHgJ/my-photo.jpg"
+                alt="Deepanshu Yadav, founder of Deepanshu Ventures"
+                class="aspect-[4/5] w-full rounded-[1.5rem] object-cover"
+                loading="lazy"
+                width="511"
+                height="951"
+              />
+              <div class="absolute inset-x-8 bottom-8 rounded-2xl bg-white/92 p-5 shadow-xl backdrop-blur dark:bg-gray-900/92">
+                <p class="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">Founder</p>
+                <h3 class="mt-1 text-2xl font-extrabold text-gray-950 dark:text-white">Deepanshu Yadav</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Marketing, AI automation, and venture building.</p>
+              </div>
+            </div>
+            <div class="rounded-3xl bg-gray-50 p-8 shadow-inner dark:bg-gray-800 md:p-12">
+              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-blue-600">About</p>
+              <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Building useful digital ventures from India.</h2>
+              <p class="mt-6 text-lg text-gray-700 dark:text-gray-300">
+                I help ambitious businesses unlock exponential growth through strategic marketing and brand positioning. Based in
+                Rohtak with clients across Delhi-NCR and India, I specialize in the Domino Effect: identifying the one strategic
+                lever that cascades into multiple wins.
+              </p>
+              <p class="mt-5 text-lg text-gray-700 dark:text-gray-300">
+                With experience across agency execution and consulting, I blend strategic thinking with hands-on implementation.
+                Whether you're a D2C brand scaling up, a B2B company seeking qualified leads, or a founder building personal
+                authority, I build marketing systems that deliver predictable, measurable growth.
+              </p>
+              <p class="mt-5 text-lg text-gray-700 dark:text-gray-300">
+                My approach is simple: understand your business deeply, identify high-leverage opportunities, execute with
+                precision, and optimize relentlessly.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="https://www.linkedin.com/in/earthiandeepanshu?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://x.com/itsdeepansh2005?s=21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="rounded-xl bg-gray-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-gray-950"
+                >
+                  Twitter
+                </a>
+                <button
+                  data-scroll="hiring"
+                  class="rounded-xl border border-gray-300 px-5 py-3 font-semibold transition-colors hover:border-blue-600 hover:text-blue-600 dark:border-gray-700"
+                  type="button"
+                >
+                  Hiring form
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -944,6 +1090,155 @@
           </div>
         </section>
 
+        <section id="hiring" data-breadcrumb-label="Hiring" class="max-w-6xl mx-auto mb-20">
+          <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="rounded-3xl bg-slate-950 p-8 text-white shadow-2xl shadow-slate-950/20 md:p-10">
+              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">Hiring</p>
+              <h2 class="mt-4 text-3xl font-bold sm:text-4xl">Work with Deepanshu Ventures</h2>
+              <p class="mt-5 text-lg leading-8 text-slate-300">
+                Apply for marketing, content, design, sales, operations, or AI automation work. Keep it simple: share your
+                strongest links, your role interest, and how soon you can start.
+              </p>
+              <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border border-white/10 bg-white/10 p-5">
+                  <strong class="block text-2xl">Remote</strong>
+                  <span class="mt-1 block text-sm text-slate-300">Project and internship roles</span>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/10 p-5">
+                  <strong class="block text-2xl">Fast</strong>
+                  <span class="mt-1 block text-sm text-slate-300">Shortlisted profiles get a direct reply</span>
+                </div>
+              </div>
+              <div class="mt-8 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6 text-blue-100">
+                Tip: Add portfolio, resume, Instagram, LinkedIn, GitHub, or Drive links in the form so your application is easy to review.
+              </div>
+            </div>
+            <div class="rounded-3xl bg-white p-6 shadow-xl dark:border dark:border-gray-700 dark:bg-gray-800 md:p-8">
+              <form id="hiring-form" class="space-y-5">
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label class="block mb-2 font-semibold" for="hiring-name">Name</label>
+                    <input
+                      id="hiring-name"
+                      name="name"
+                      required
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                      placeholder="Your full name"
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label class="block mb-2 font-semibold" for="hiring-mobile">Mobile</label>
+                    <input
+                      id="hiring-mobile"
+                      name="mobile"
+                      required
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                      placeholder="+91 98765 43210"
+                      type="tel"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label class="block mb-2 font-semibold" for="hiring-email">Email</label>
+                  <input
+                    id="hiring-email"
+                    name="email"
+                    required
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                    placeholder="you@example.com"
+                    type="email"
+                  />
+                </div>
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label class="block mb-2 font-semibold" for="hiring-role">Role interest</label>
+                    <select
+                      id="hiring-role"
+                      name="role"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                    >
+                      <option value="Social media intern">Social media intern</option>
+                      <option value="Content creator">Content creator</option>
+                      <option value="Graphic designer">Graphic designer</option>
+                      <option value="Sales or outreach">Sales or outreach</option>
+                      <option value="AI automation assistant">AI automation assistant</option>
+                      <option value="Operations">Operations</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block mb-2 font-semibold" for="hiring-availability">Availability</label>
+                    <select
+                      id="hiring-availability"
+                      name="availability"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                    >
+                      <option value="Immediately">Immediately</option>
+                      <option value="Within 1 week">Within 1 week</option>
+                      <option value="Within 2 weeks">Within 2 weeks</option>
+                      <option value="Exploring only">Exploring only</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label class="block mb-2 font-semibold" for="hiring-city">City</label>
+                    <input
+                      id="hiring-city"
+                      name="city"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                      placeholder="Rohtak, Gurugram, remote..."
+                      type="text"
+                    />
+                  </div>
+                  <div>
+                    <label class="block mb-2 font-semibold" for="hiring-experience">Experience</label>
+                    <input
+                      id="hiring-experience"
+                      name="experience"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                      placeholder="Fresher, 6 months, 2 years..."
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label class="block mb-2 font-semibold" for="hiring-links">Portfolio / resume links</label>
+                  <input
+                    id="hiring-links"
+                    name="links"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                    placeholder="LinkedIn, Instagram, Drive resume, GitHub, portfolio..."
+                    type="url"
+                  />
+                </div>
+                <div>
+                  <label class="block mb-2 font-semibold" for="hiring-message">Why should we work together?</label>
+                  <textarea
+                    id="hiring-message"
+                    name="message"
+                    rows="4"
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none dark:border-gray-700 dark:bg-gray-900"
+                    placeholder="Tell me your strengths, best work, and what you want to learn or build..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full py-4 bg-slate-950 hover:bg-slate-800 text-white font-semibold rounded-xl transition-all transform hover:scale-[1.02] shadow-lg dark:bg-blue-600 dark:hover:bg-blue-700"
+                >
+                  Submit Hiring Form
+                </button>
+              </form>
+              <div
+                id="hiring-success"
+                class="hidden mt-4 p-4 bg-green-500/10 border border-green-500 rounded-lg text-green-700 text-center dark:text-green-300"
+              >
+                Application received. I will review it soon.
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="contact" data-breadcrumb-label="Contact" class="max-w-6xl mx-auto mb-20">
           <div class="grid lg:grid-cols-2 gap-12">
             <div>
@@ -1001,6 +1296,35 @@
                     placeholder="+91 89503 78717"
                     type="tel"
                   />
+                </div>
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label class="block mb-2 font-semibold" for="contact-service">Interested in</label>
+                    <select
+                      id="contact-service"
+                      name="service"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                    >
+                      <option value="Social media marketing">Social media marketing</option>
+                      <option value="Performance ads">Performance ads</option>
+                      <option value="AI automation">AI automation</option>
+                      <option value="Website or funnel">Website or funnel</option>
+                      <option value="AnyTime Tiffin">AnyTime Tiffin</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block mb-2 font-semibold" for="contact-budget">Budget range</label>
+                    <select
+                      id="contact-budget"
+                      name="budget"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:border-gray-700 dark:bg-gray-900"
+                    >
+                      <option value="Not sure yet">Not sure yet</option>
+                      <option value="Under Rs. 25,000">Under Rs. 25,000</option>
+                      <option value="Rs. 25,000 - Rs. 50,000">Rs. 25,000 - Rs. 50,000</option>
+                      <option value="Rs. 50,000+">Rs. 50,000+</option>
+                    </select>
+                  </div>
                 </div>
                 <div>
                   <label class="block mb-2 font-semibold" for="contact-message">Message</label>
@@ -1188,6 +1512,37 @@
       }
     </script>
     <script>
+      const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzP6yDvx6q5D1pAvr1rGNR0zaiFjj6JhZhz5mQ9eyg2sTtjKq_a4XmTuYuzVR2COZvhiw/exec';
+
+      async function sendLeadCapture(eventType, data, source = 'Deepanshu Ventures') {
+        if (!SHEETS_WEB_APP_URL || !navigator.onLine) {
+          return false;
+        }
+
+        const payload = {
+          timestamp: new Date().toISOString(),
+          source,
+          eventType,
+          pageUrl: window.location.href,
+          data
+        };
+
+        try {
+          await fetch(SHEETS_WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(payload)
+          });
+          return true;
+        } catch (error) {
+          console.warn('Lead capture failed:', eventType, error);
+          return false;
+        }
+      }
+
       document.addEventListener('DOMContentLoaded', () => {
         const config = typeof HERO_IMAGE_CONFIG === 'object' && HERO_IMAGE_CONFIG !== null ? HERO_IMAGE_CONFIG : {};
         const heroImage = document.querySelector('[data-hero-image]');
@@ -1499,11 +1854,37 @@
         const contactForm = document.getElementById('contact-form');
         const successMessage = document.getElementById('contact-success');
         if (contactForm && successMessage) {
-          contactForm.addEventListener('submit', (event) => {
+          contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
+            const submitButton = contactForm.querySelector('[type="submit"]');
+            const originalText = submitButton ? submitButton.textContent : '';
+            const formData = new FormData(contactForm);
+            const data = {
+              name: String(formData.get('name') || '').trim(),
+              email: String(formData.get('email') || '').trim(),
+              mobile: String(formData.get('phone') || '').trim(),
+              service: String(formData.get('service') || '').trim(),
+              budget: String(formData.get('budget') || '').trim(),
+              message: String(formData.get('message') || '').trim()
+            };
+
+            if (submitButton) {
+              submitButton.disabled = true;
+              submitButton.textContent = 'Sending...';
+            }
+
+            const sent = await sendLeadCapture('CONTACT_SUBMITTED', data);
             contactForm.reset();
+            successMessage.textContent = sent
+              ? "Message sent. I'll get back to you soon."
+              : 'Could not reach Google Sheets. Please use WhatsApp too if this is urgent.';
             successMessage.classList.remove('hidden');
             setTimeout(() => successMessage.classList.add('hidden'), 5000);
+
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = originalText;
+            }
           });
         }
 
@@ -1630,7 +2011,6 @@
         const closeBtn = overlay.querySelector('[data-gd-close]');
         const form = overlay.querySelector('[data-gd-form]');
         const STORAGE_KEY = 'gd-exit-dismissed';
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxZ5xsjOZbec68LYEUlUXQhe5qN57KOJ2nTB_ljlkBlb9QxXK5mYmmRfWg9nRWJ8Ju7Og/exec';
 
         const show = () => {
           if (!sessionStorage.getItem(STORAGE_KEY)) overlay.hidden = false;
@@ -1652,34 +2032,39 @@
         form?.addEventListener('submit', async (e) => {
           e.preventDefault();
           const formData = new FormData(form);
-          const name = formData.get('name');
-          const mobile = formData.get('mobile');
+          const name = String(formData.get('name') || '').trim();
+          const mobile = String(formData.get('mobile') || '').trim();
           const statusEl = form.querySelector('.gd-status');
           const btn = form.querySelector('[type="submit"]');
+
+          if (!name || !/^[0-9+\-\s]{10,}$/.test(mobile)) {
+            statusEl.textContent = 'Enter your name and a valid mobile number.';
+            statusEl.style.color = '#dc2626';
+            return;
+          }
 
           btn.disabled = true;
           btn.textContent = 'Subscribing...';
 
           try {
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ name: name.trim(), mobile: mobile.trim() })
+            const sent = await sendLeadCapture('NEWSLETTER_SIGNUP', {
+              name,
+              mobile,
+              interest: 'Growth Dispatch'
             });
-            
-            const result = await response.json();
-            if (result.success) {
-              statusEl.textContent = '✓ Thanks! Check your SMS for updates.';
-              statusEl.style.color = '#2cf7a4';
+
+            if (sent) {
+              statusEl.textContent = 'Thanks. You are on the update list.';
+              statusEl.style.color = '#166534';
               form.reset();
               setTimeout(hide, 2000);
             } else {
-              statusEl.textContent = 'Error: ' + result.message;
-              statusEl.style.color = '#ff6b6b';
+              statusEl.textContent = 'Saved on this page. Please try again if you are offline.';
+              statusEl.style.color = '#b45309';
             }
           } catch (error) {
             statusEl.textContent = 'Network error. Please try again.';
-            statusEl.style.color = '#ff6b6b';
+            statusEl.style.color = '#dc2626';
           } finally {
             btn.disabled = false;
             btn.textContent = 'Get Updates';

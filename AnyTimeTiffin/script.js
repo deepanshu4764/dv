@@ -115,23 +115,32 @@ const state = {
   addresses: [],
   pendingSubscription: null,
   lastOrder: null,
+  orderSubmitting: false,
+  newsletterSubmitting: false,
   noticeTimer: null
 }
 
-// Google Apps Script Integration
-async function sendToGoogleAppsScript(eventType, data) {
+// Shared Google Sheets lead capture helper.
+async function sendLeadCapture(eventType, data) {
+  if (!CONFIG.googleAppsScriptUrl || !navigator.onLine) {
+    console.warn(`Lead capture skipped: ${eventType}`)
+    return false
+  }
+
   try {
     const payload = {
       timestamp: new Date().toISOString(),
+      source: 'AnyTime Tiffin',
       eventType: eventType,
+      pageUrl: window.location.href,
       data: data
     }
 
-    const response = await fetch(CONFIG.googleAppsScriptUrl, {
+    await fetch(CONFIG.googleAppsScriptUrl, {
       method: 'POST',
       mode: 'no-cors',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain;charset=utf-8'
       },
       body: JSON.stringify(payload)
     })
@@ -142,6 +151,10 @@ async function sendToGoogleAppsScript(eventType, data) {
     console.error(`✗ Error sending to Google Apps Script:`, error)
     return false
   }
+}
+
+function sendToGoogleAppsScript(eventType, data) {
+  return sendLeadCapture(eventType, data)
 }
 
 document.addEventListener('DOMContentLoaded', init)
@@ -221,6 +234,7 @@ function bindEvents() {
   byId('locCurrent').addEventListener('click', useCurrentLocation)
   byId('heroPincodeForm').addEventListener('submit', event => handlePincodeCheck(event, 'heroPincode', 'heroPinMessage'))
   byId('areaPincodeForm').addEventListener('submit', event => handlePincodeCheck(event, 'areaPincode', 'areaPinMessage'))
+  byId('newsletterForm').addEventListener('submit', handleNewsletterSignup)
 
   byId('orderWhatsApp').addEventListener('click', onOrder)
   byId('checkoutWhatsApp').addEventListener('click', onOrder)
@@ -664,6 +678,56 @@ function handlePincodeCheck(event, inputId, messageId) {
   message.textContent = 'Not serviceable yet. You can still ask us on WhatsApp.'
 }
 
+async function handleNewsletterSignup(event) {
+  event.preventDefault()
+  if (state.newsletterSubmitting) return
+
+  const form = byId('newsletterForm')
+  const nameInput = byId('newsletterName')
+  const mobileInput = byId('newsletterMobile')
+  const nameError = byId('errNewsletterName')
+  const mobileError = byId('errNewsletterMobile')
+  const message = byId('newsletterMessage')
+  const button = form.querySelector('[type="submit"]')
+  const name = nameInput.value.trim()
+  const mobile = mobileInput.value.trim()
+
+  nameError.textContent = ''
+  mobileError.textContent = ''
+  message.textContent = ''
+
+  if (!name) {
+    nameError.textContent = 'Name is required'
+    nameInput.focus()
+    return
+  }
+
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    mobileError.textContent = 'Enter a valid 10-digit mobile number'
+    mobileInput.focus()
+    return
+  }
+
+  state.newsletterSubmitting = true
+  setButtonLoading(button, true, 'Joining...')
+  const sent = await sendToGoogleAppsScript('NEWSLETTER_SIGNUP', {
+    name,
+    mobile,
+    interest: 'AnyTime Tiffin menu updates',
+    serviceArea: CONFIG.serviceAreaName
+  })
+
+  if (sent) {
+    form.reset()
+    message.textContent = 'You are on the update list.'
+  } else {
+    message.textContent = 'Could not reach Google Sheets. Please try again when you are online.'
+  }
+
+  state.newsletterSubmitting = false
+  setButtonLoading(button, false)
+}
+
 function onOrder() {
   const customer = validateOrderForm()
   if (!customer) return
@@ -671,9 +735,14 @@ function onOrder() {
   openWhatsApp(buildWhatsAppMessage(customer), 'Your order is ready on WhatsApp. Please send the message to confirm.')
 }
 
-function placeOrder() {
+async function placeOrder() {
+  if (state.orderSubmitting) return
+
   const customer = validateOrderForm()
   if (!customer) return
+
+  state.orderSubmitting = true
+  setButtonLoading(byId('placeOrderBtn'), true, 'Saving...')
 
   const cart = getCartItems()
   const subtotal = getSubtotal(cart)
@@ -697,8 +766,7 @@ function placeOrder() {
   saveCurrentAddress(customer)
   writeLocal(LOCAL_KEYS.orders, state.orders)
   
-  // Send order to Google Apps Script
-  sendToGoogleAppsScript('ORDER_PLACED', {
+  const sheetsSaved = await sendToGoogleAppsScript('ORDER_PLACED', {
     orderId: order.id,
     customerName: customer.name,
     customerMobile: customer.mobile,
@@ -725,8 +793,12 @@ function placeOrder() {
   
   renderDashboard()
   closeModal('checkoutModal')
-  byId('successMessage').textContent = `Order ${order.id} saved for ${formatCurrency(order.total)} via ${order.paymentMode}. Confirm it on WhatsApp when ready.`
+  byId('successMessage').textContent = sheetsSaved
+    ? `Order ${order.id} saved for ${formatCurrency(order.total)} via ${order.paymentMode}. Confirm it on WhatsApp when ready.`
+    : `Order ${order.id} saved on this browser. Please confirm it on WhatsApp; Sheets will need another try when online.`
   openModal('successModal')
+  state.orderSubmitting = false
+  setButtonLoading(byId('placeOrderBtn'), false)
 }
 
 function validateOrderForm() {
@@ -785,41 +857,31 @@ function buildWhatsAppMessage(customer, sourceOrder = null) {
   const subtotal = sourceOrder ? sourceOrder.subtotal : getSubtotal(cart)
   const discount = sourceOrder ? sourceOrder.discount : getDiscountAmount(subtotal)
   const total = sourceOrder ? sourceOrder.total : Math.max(0, subtotal - discount)
-  const coupon = sourceOrder ? sourceOrder.coupon : (state.coupon.code || '-')
+  const orderId = sourceOrder ? sourceOrder.id : 'ATT-' + Date.now().toString().slice(-6)
+  const paymentMode = sourceOrder ? sourceOrder.paymentMode : state.paymentMode
 
   const lines = [
-    'New Tiffin Order',
-    '',
-    'Customer Details:',
+    `New AnyTime Tiffin Order: ${orderId}`,
     'Name: ' + customer.name,
     'Mobile: ' + customer.mobile,
-    'Location: ' + customer.location,
-    'Pincode: ' + customer.pincode,
-    'Tower/Block: ' + customer.tower,
-    'Flat No: ' + customer.flat,
-    'Floor: ' + (customer.floor || '-'),
-    'Delivery Slot: ' + customer.slot,
-    'Spice Level: ' + customer.spice,
-    'Allergies/Preferences: ' + (customer.allergies || '-'),
-    'Instructions: ' + (customer.instr || '-'),
-    '',
-    'Order Items:'
+    'Flat: ' + customer.flat + ', ' + customer.tower,
+    'Slot: ' + customer.slot,
+    'Items: ' + summarizeCartForWhatsApp(cart),
+    'Total: Rs. ' + total,
+    'Payment: ' + paymentMode,
+    'Full order details are saved. Please confirm availability.'
   ]
 
-  cart.forEach((item, index) => {
-    lines.push(`${index + 1}. ${item.title} x ${item.qty} = Rs. ${item.qty * item.price}`)
-  })
-
-  lines.push('')
-  lines.push('Subtotal: Rs. ' + subtotal)
-  lines.push('Coupon: ' + coupon)
-  lines.push('Discount: Rs. ' + discount)
-  lines.push('Total Amount: Rs. ' + total)
-  lines.push('Payment Option: ' + state.paymentMode)
-  lines.push('')
-  lines.push('Please confirm my order.')
-
   return lines.join('\n')
+}
+
+function summarizeCartForWhatsApp(cart) {
+  if (!cart.length) return 'No items selected'
+
+  const maxItems = 4
+  const shown = cart.slice(0, maxItems).map(item => `${item.title} x${item.qty}`).join(', ')
+  const remaining = cart.length - maxItems
+  return remaining > 0 ? `${shown}, +${remaining} more` : shown
 }
 
 function openWhatsAppChat() {
@@ -827,11 +889,7 @@ function openWhatsAppChat() {
   const lines = ['Hi AnyTime Tiffin, I want to order from M3M Soulitude.']
 
   if (cart.length > 0) {
-    lines.push('')
-    lines.push('Current cart:')
-    cart.forEach((item, index) => {
-      lines.push(`${index + 1}. ${item.title} x ${item.qty} = Rs. ${item.qty * item.price}`)
-    })
+    lines.push('Cart: ' + summarizeCartForWhatsApp(cart))
     lines.push('Total: Rs. ' + Math.max(0, getSubtotal(cart) - getDiscountAmount()))
   } else {
     lines.push('Please share today\'s availability.')
@@ -841,8 +899,11 @@ function openWhatsAppChat() {
 }
 
 function openWhatsApp(message, noticeText) {
-  const encoded = encodeURIComponent(message)
-  const url = `https://api.whatsapp.com/send?phone=${CONFIG.whatsappNumber}&text=${encoded}`
+  const safeMessage = message.length > 1400
+    ? 'Hi AnyTime Tiffin, I need help confirming my tiffin order. Full details are saved in the website checkout.'
+    : message
+  const encoded = encodeURIComponent(safeMessage)
+  const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encoded}`
   const opened = window.open(url, '_blank', 'noopener')
 
   if (!opened) {
@@ -1155,6 +1216,18 @@ function showNotice(message) {
   state.noticeTimer = setTimeout(() => {
     notice.style.display = 'none'
   }, 3600)
+}
+
+function setButtonLoading(button, isLoading, loadingText = 'Working...') {
+  if (!button) return
+
+  const label = button.querySelector('span') || button
+  if (!button.dataset.defaultText) {
+    button.dataset.defaultText = label.textContent
+  }
+
+  button.disabled = isLoading
+  label.textContent = isLoading ? loadingText : button.dataset.defaultText
 }
 
 function scrollToMenu() {
