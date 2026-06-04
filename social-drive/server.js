@@ -482,7 +482,7 @@ async function handleApi(req, res, pathname) {
 }
 
 function serveIndex(res) {
-  const htmlPath = path.join(__dirname, "index.html");
+  const htmlPath = path.join(__dirname, "public", "index.html");
   fs.createReadStream(htmlPath)
     .on("error", () => {
       res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });

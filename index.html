@@ -1615,8 +1615,10 @@
         <h3 class="gd-title">Get the Growth Dispatch</h3>
         <p class="gd-sub">Monthly playbooks, case studies, and AI/ML marketing drops.</p>
         <form class="gd-form" data-gd-form>
-          <input class="gd-input" type="email" name="email" placeholder="you@example.com" required />
+          <input class="gd-input" type="text" name="name" placeholder="Your Name" required />
+          <input class="gd-input" type="tel" name="mobile" placeholder="Mobile Number" pattern="[0-9\-\+\s]{10,}" required />
           <button class="gd-btn" type="submit">Get Updates</button>
+          <div class="gd-status"></div>
         </form>
       </div>
     </div>
@@ -1628,6 +1630,7 @@
         const closeBtn = overlay.querySelector('[data-gd-close]');
         const form = overlay.querySelector('[data-gd-form]');
         const STORAGE_KEY = 'gd-exit-dismissed';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxZ5xsjOZbec68LYEUlUXQhe5qN57KOJ2nTB_ljlkBlb9QxXK5mYmmRfWg9nRWJ8Ju7Og/exec';
 
         const show = () => {
           if (!sessionStorage.getItem(STORAGE_KEY)) overlay.hidden = false;
@@ -1648,9 +1651,39 @@
 
         form?.addEventListener('submit', async (e) => {
           e.preventDefault();
-          const email = new FormData(form).get('email');
-          // TODO: send `email` to your backend or email tool.
-          hide();
+          const formData = new FormData(form);
+          const name = formData.get('name');
+          const mobile = formData.get('mobile');
+          const statusEl = form.querySelector('.gd-status');
+          const btn = form.querySelector('[type="submit"]');
+
+          btn.disabled = true;
+          btn.textContent = 'Subscribing...';
+
+          try {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: name.trim(), mobile: mobile.trim() })
+            });
+            
+            const result = await response.json();
+            if (result.success) {
+              statusEl.textContent = '✓ Thanks! Check your SMS for updates.';
+              statusEl.style.color = '#2cf7a4';
+              form.reset();
+              setTimeout(hide, 2000);
+            } else {
+              statusEl.textContent = 'Error: ' + result.message;
+              statusEl.style.color = '#ff6b6b';
+            }
+          } catch (error) {
+            statusEl.textContent = 'Network error. Please try again.';
+            statusEl.style.color = '#ff6b6b';
+          } finally {
+            btn.disabled = false;
+            btn.textContent = 'Get Updates';
+          }
         });
       })();
     </script>
