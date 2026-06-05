@@ -3,31 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Deepanshu Ventures</title>
+    <title>Deepanshu Ventures | Founder Brand, Growth Systems & AI Automation</title>
     <link rel="icon" href="favicon.png" sizes="32x32" type="image/png" />
     <link rel="icon" href="favicon.png" sizes="192x192" type="image/png" />
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="shortcut icon" href="favicon.png" type="image/png" />
     <meta
       name="description"
-      content="Strategic social media marketing and growth consulting services for ambitious businesses across India."
+      content="Deepanshu Ventures is a founder-led venture studio building personal brands, growth systems, AI automation, websites, and local-first businesses across India."
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://deepanshuventures.com/" />
-    <meta property="og:title" content="Deepanshu Ventures | Strategic Social Media & Growth Consulting" />
+    <meta property="og:title" content="Deepanshu Ventures | Founder Brand, Growth Systems & AI Automation" />
     <meta
       property="og:description"
-      content="Strategic social media marketing, performance advertising, and growth consulting for ambitious brands across India."
+      content="Founder-led growth, AI automation, websites, and practical venture building across India."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://deepanshuventures.com/" />
     <meta property="og:image" content="https://i.ibb.co/tPK8BHgJ/my-photo.jpg" />
     <meta property="og:locale" content="en_IN" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Deepanshu Ventures | Strategic Social Media & Growth Consulting" />
+    <meta name="twitter:title" content="Deepanshu Ventures | Founder Brand, Growth Systems & AI Automation" />
     <meta
       name="twitter:description"
-      content="Strategic social media marketing, performance advertising, and growth consulting for ambitious brands across India."
+      content="Founder-led growth, AI automation, websites, and practical venture building across India."
     />
     <meta name="twitter:image" content="https://i.ibb.co/tPK8BHgJ/my-photo.jpg" />
     <link
@@ -40,7 +40,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <script>
@@ -60,24 +60,58 @@
     <style>
       body {
         font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background:
+          linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+          #f8fafc;
+        background-size: 40px 40px;
+      }
+      html.dark body {
+        background:
+          linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+          #0f172a;
+        background-size: 40px 40px;
       }
       html {
         scroll-behavior: smooth;
       }
+      ::selection {
+        background: rgba(37, 99, 235, 0.18);
+      }
+      .dv-brand-wordmark {
+        letter-spacing: 0;
+      }
+      .mobile-actions {
+        flex-shrink: 0;
+      }
       .dv-hero {
         position: relative;
         overflow: hidden;
-        min-height: calc(100svh - 7rem);
-        border: 1px solid rgba(148, 163, 184, 0.22);
-        background: #0f172a;
+        min-height: calc(100svh - 4.5rem);
+        border: 0;
+        background: #050816;
+      }
+      .dv-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        opacity: 0.22;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.75) 46%, transparent 100%);
       }
       .dv-hero::after {
         content: '';
         position: absolute;
         inset: 0;
+        z-index: 2;
         background:
-          linear-gradient(90deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.9) 46%, rgba(15, 23, 42, 0.5) 100%),
-          linear-gradient(180deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.1));
+          linear-gradient(90deg, rgba(5, 8, 22, 0.98) 0%, rgba(5, 8, 22, 0.9) 44%, rgba(5, 8, 22, 0.44) 100%),
+          linear-gradient(180deg, rgba(5, 8, 22, 0.12), rgba(5, 8, 22, 0.88));
       }
       .dv-hero-image {
         position: absolute;
@@ -85,21 +119,45 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
+        object-position: center top;
         opacity: 0.22;
+      }
+      .dv-hero-shell {
+        margin-left: -1rem;
+        margin-right: -1rem;
+      }
+      .dv-hero-kicker {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      }
+      .dv-hero-title {
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+      .dv-glass-panel {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(6, 12, 30, 0.7);
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.36);
+      }
+      .dv-metric {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
       }
       .venture-card {
         position: relative;
         display: grid;
-        min-height: 172px;
+        min-height: 180px;
         gap: 18px;
         overflow: hidden;
-        border: 1px solid rgba(148, 163, 184, 0.18);
-        border-radius: 18px;
-        background: rgba(15, 23, 42, 0.82);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 12px;
+        background: rgba(15, 23, 42, 0.72);
         padding: 22px;
         color: #fff;
-        box-shadow: 0 22px 55px rgba(2, 6, 23, 0.2);
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        box-shadow: 0 22px 55px rgba(2, 6, 23, 0.26);
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
       }
       .venture-card::before {
         content: '';
@@ -109,9 +167,10 @@
         background: #2563eb;
       }
       .venture-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(255, 255, 255, 0.34);
-        background: rgba(15, 23, 42, 0.96);
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.38);
+        background: rgba(15, 23, 42, 0.98);
+        box-shadow: 0 28px 70px rgba(2, 6, 23, 0.38);
       }
       .venture-card[data-accent='green']::before {
         background: #16a34a;
@@ -135,30 +194,228 @@
         background: rgba(255, 255, 255, 0.82);
         box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
       }
+      .dv-section-band {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+        backdrop-filter: blur(18px);
+      }
+      .dv-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(203, 213, 225, 0.75);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      }
+      .dv-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(37, 99, 235, 0.35);
+        box-shadow: 0 28px 75px rgba(15, 23, 42, 0.14);
+      }
+      .dark .dv-card {
+        border-color: rgba(51, 65, 85, 0.9);
+        background: rgba(15, 23, 42, 0.78);
+      }
+      .dv-icon-box {
+        display: inline-flex;
+        height: 52px;
+        width: 52px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: #eff6ff;
+        color: #2563eb;
+      }
+      .dv-icon-box svg {
+        height: 26px;
+        width: 26px;
+      }
+      .dark .dv-icon-box {
+        background: rgba(37, 99, 235, 0.16);
+        color: #93c5fd;
+      }
+      .dv-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #2563eb;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .dv-kicker::before {
+        content: '';
+        height: 2px;
+        width: 34px;
+        background: #f97316;
+      }
+      .dv-headline {
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+      .dv-cta-link {
+        color: #1d4ed8;
+      }
+      .dv-cta-link:hover {
+        color: #0f172a;
+      }
+      .dark .dv-cta-link:hover {
+        color: #dbeafe;
+      }
+      .dv-process-step {
+        position: relative;
+      }
+      .dv-process-step::after {
+        content: '';
+        position: absolute;
+        top: 32px;
+        right: -16px;
+        height: 1px;
+        width: 32px;
+        background: rgba(37, 99, 235, 0.35);
+      }
+      .dv-process-step:last-child::after {
+        display: none;
+      }
+      .dv-premium-panel {
+        background:
+          linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96)),
+          #0f172a;
+      }
+      .dv-calendly-card {
+        background:
+          linear-gradient(135deg, rgba(6, 95, 70, 0.25), rgba(37, 99, 235, 0.2)),
+          rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      }
       .dark .metric-tile {
         border-color: rgba(51, 65, 85, 0.85);
         background: rgba(15, 23, 42, 0.72);
       }
       @media (min-width: 1024px) {
         .dv-hero-image {
-          width: 48%;
-          opacity: 0.62;
+          width: 52%;
+          opacity: 0.72;
+        }
+        .dv-hero-shell {
+          margin-left: -2rem;
+          margin-right: -2rem;
+        }
+      }
+      @media (min-width: 640px) and (max-width: 1023px) {
+        .dv-hero-shell {
+          margin-left: -1.5rem;
+          margin-right: -1.5rem;
+        }
+      }
+      @media (max-width: 767px) {
+        main {
+          overflow-x: hidden;
+        }
+        header nav {
+          max-width: 100%;
+          overflow: hidden;
+        }
+        header nav > div {
+          position: relative;
+        }
+        .mobile-actions {
+          position: fixed;
+          top: 0.78rem;
+          right: auto;
+          left: min(17rem, calc(100vw - 3.5rem));
+          z-index: 60;
+          transform: none;
+        }
+        .mobile-actions [data-menu-toggle] {
+          display: inline-flex !important;
+          width: 2.5rem;
+          height: 2.5rem;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(226, 232, 240, 0.85);
+          border-radius: 0.75rem;
+          background: #ffffff;
+          color: #0f172a;
+          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+        }
+        .dv-hero {
+          min-height: auto;
+        }
+        .dv-hero-shell {
+          margin-left: -1rem;
+          margin-right: -1rem;
+          overflow: hidden;
+        }
+        .dv-hero::before {
+          display: none;
+        }
+        .dv-hero::after {
+          background:
+            linear-gradient(180deg, rgba(5, 8, 22, 0.64) 0%, rgba(5, 8, 22, 0.98) 78%),
+            linear-gradient(90deg, rgba(5, 8, 22, 0.7), rgba(5, 8, 22, 0.35));
+        }
+        .dv-hero-image {
+          opacity: 0.35;
+        }
+        .dv-hero-title {
+          max-width: 22rem;
+          font-size: 2.25rem;
+          line-height: 1.08;
+        }
+        #hero .max-w-3xl {
+          width: 100%;
+          max-width: 21.5rem;
+          min-width: 0;
+        }
+        #hero .relative.z-10 {
+          display: block;
+          width: 100%;
+          max-width: 100%;
+        }
+        #hero p,
+        #hero h1 {
+          overflow-wrap: break-word;
+        }
+        #hero p {
+          max-width: 21.5rem;
+          font-size: 1rem;
+          line-height: 1.65;
+        }
+        #hero .inline-flex {
+          max-width: 100%;
+        }
+        #hero button {
+          width: 100%;
+        }
+        .dv-process-step::after {
+          display: none;
         }
       }
     </style>
   </head>
-  <body class="antialiased bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-white">
+  <body class="antialiased text-gray-900 transition-colors duration-300 dark:text-white">
     <div class="min-h-screen">
       <header
         class="fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-sm border-b border-gray-200/80 bg-white/95 dark:border-gray-800/80 dark:bg-gray-900/95"
       >
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center h-16">
-            <div class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Deepanshu Ventures
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-950 text-sm font-black text-white shadow-lg shadow-slate-950/15 dark:bg-white dark:text-slate-950">
+                DV
+              </span>
+              <div>
+                <span class="dv-brand-wordmark block text-lg font-black text-slate-950 dark:text-white">Deepanshu Ventures</span>
+                <span class="hidden text-xs font-semibold text-slate-500 dark:text-slate-400 sm:block">Founder brand and venture studio</span>
+              </div>
             </div>
-            <div class="hidden md:flex items-center gap-6">
-              <div class="flex items-center space-x-8">
+            <div class="hidden md:flex items-center gap-4">
+              <div class="flex items-center space-x-4 lg:space-x-6">
                 <button data-scroll="services" class="capitalize font-medium hover:text-blue-600 transition-colors">
                   services
                 </button>
@@ -190,7 +447,7 @@
                 <span aria-hidden="true" class="text-base">🤝</span>
               </button>
               <div
-                class="flex items-center gap-3 pl-5 border-l border-gray-200/80 text-gray-500 dark:border-gray-700/60 dark:text-gray-300"
+                class="hidden 2xl:flex items-center gap-3 pl-5 border-l border-gray-200/80 text-gray-500 dark:border-gray-700/60 dark:text-gray-300"
               >
                 <span class="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500">Connect</span>
                 <div class="flex items-center gap-3" data-social-icons>
@@ -273,7 +530,7 @@
               </div>
               <button
                 data-toggle-dark
-                class="p-2 rounded-lg hover:bg-gray-100 transition-colors dark:hover:bg-gray-800"
+                class="hidden p-2 rounded-lg hover:bg-gray-100 transition-colors dark:hover:bg-gray-800 sm:block"
                 aria-label="Toggle dark mode"
                 type="button"
               >
@@ -281,17 +538,17 @@
                 <span class="hidden text-xl leading-none dark:block" aria-hidden="true">☀️</span>
               </button>
             </div>
-            <div class="md:hidden flex items-center space-x-2">
+            <div class="mobile-actions md:hidden flex items-center space-x-2">
               <button
                 data-scroll="contact"
-                class="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 text-xs font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                class="hidden items-center gap-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 text-xs font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 sm:inline-flex"
                 type="button"
               >
                 <span>Connect</span>
               </button>
               <button
                 data-toggle-dark
-                class="p-2 rounded-lg hover:bg-gray-100 transition-colors dark:hover:bg-gray-800"
+                class="hidden p-2 rounded-lg hover:bg-gray-100 transition-colors dark:hover:bg-gray-800 sm:block"
                 aria-label="Toggle dark mode"
                 type="button"
               >
@@ -449,8 +706,8 @@
       </header>
 
       <main class="pt-20 sm:pt-24 pb-20 px-4 sm:px-6 lg:px-8" id="top">
-        <section id="hero" data-breadcrumb-label="Home" class="max-w-7xl mx-auto mb-14">
-          <div class="dv-hero rounded-[2rem] shadow-2xl shadow-slate-950/20">
+        <section id="hero" data-breadcrumb-label="Home" class="dv-hero-shell mb-16">
+          <div class="dv-hero">
             <img
               data-hero-image
               src="https://i.ibb.co/tPK8BHgJ/my-photo.jpg"
@@ -461,50 +718,50 @@
               width="511"
               height="951"
             />
-            <div class="relative z-10 grid min-h-[inherit] gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.72fr)] lg:items-center lg:px-12 lg:py-16">
+            <div class="relative z-10 mx-auto grid min-h-[inherit] max-w-7xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.72fr)] lg:items-center lg:px-12 lg:py-16">
               <div class="max-w-3xl text-white">
-                <span class="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-blue-100">
-                  Growth, automation, and local commerce ventures
+                <span class="dv-hero-kicker inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-blue-100">
+                  Founder-led growth studio from India
                 </span>
-                <h1 class="mt-6 text-4xl font-extrabold leading-tight sm:text-6xl lg:text-7xl">
-                  Deepanshu Ventures
+                <h1 class="dv-hero-title mt-6 text-4xl font-extrabold leading-tight sm:text-6xl lg:text-7xl">
+                  Deepanshu Ventures builds brands, systems, and businesses.
                 </h1>
                 <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-200 sm:text-xl">
-                  A focused venture hub building practical businesses across marketing, AI automation, and fresh local services.
-                  Explore the active products, request work, or order directly from the live tiffin experience.
+                  Deepanshu Ventures turns ideas into usable digital businesses: personal branding, growth marketing, AI automation,
+                  conversion-focused websites, and local-first products.
                 </p>
                 <div class="mt-8 flex flex-col gap-3 sm:flex-row">
                   <button
                     data-scroll="services"
-                    class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-4 text-base font-bold text-slate-950 shadow-lg transition hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-4 text-base font-bold text-slate-950 shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     type="button"
                   >
-                    Explore Services
+                    See what I build
                   </button>
                   <button
                     data-scroll="contact"
-                    class="inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/10 px-6 py-4 text-base font-bold text-white transition hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    class="inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/10 px-6 py-4 text-base font-bold text-white shadow-lg shadow-black/10 transition hover:-translate-y-0.5 hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     type="button"
                   >
-                    Start a Project
+                    Start with Deepanshu
                   </button>
                 </div>
                 <div class="mt-10 grid gap-3 sm:grid-cols-3">
-                  <div class="rounded-2xl border border-white/12 bg-white/10 p-4">
+                  <div class="dv-metric rounded-2xl p-4">
                     <strong class="block text-2xl">3</strong>
                     <span class="text-sm text-slate-300">Active ventures</span>
                   </div>
-                  <div class="rounded-2xl border border-white/12 bg-white/10 p-4">
-                    <strong class="block text-2xl">4+</strong>
-                    <span class="text-sm text-slate-300">Years building campaigns</span>
+                  <div class="dv-metric rounded-2xl p-4">
+                    <strong class="block text-2xl">AI + Web</strong>
+                    <span class="text-sm text-slate-300">Systems that reduce manual work</span>
                   </div>
-                  <div class="rounded-2xl border border-white/12 bg-white/10 p-4">
+                  <div class="dv-metric rounded-2xl p-4">
                     <strong class="block text-2xl">24h</strong>
                     <span class="text-sm text-slate-300">Typical response time</span>
                   </div>
                 </div>
               </div>
-              <div class="rounded-[1.5rem] border border-white/12 bg-slate-950/60 p-4 shadow-2xl backdrop-blur sm:p-5">
+              <div class="dv-glass-panel rounded-2xl p-4 backdrop-blur sm:p-5">
                 <div class="mb-5 flex items-center justify-between gap-4">
                   <div>
                     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-blue-200">Launchpad</p>
@@ -588,21 +845,25 @@
         <section
           id="locations"
           data-breadcrumb-label="Service Locations"
-          class="py-10 border-y border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-800/60 mb-20"
+          class="max-w-7xl mx-auto mb-20"
         >
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap justify-center items-center gap-8 text-sm font-medium">
-              <div class="flex items-center gap-2">
-                📍<span>Rohtak</span>
+          <div class="dv-section-band rounded-3xl px-5 py-6 dark:border-gray-700 dark:bg-gray-800/80 sm:px-8">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div class="rounded-2xl border border-slate-200 bg-white/75 p-5 dark:border-gray-700 dark:bg-gray-900/60">
+                <span class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Base</span>
+                <strong class="mt-2 block text-xl text-slate-950 dark:text-white">Rohtak</strong>
               </div>
-              <div class="flex items-center gap-2">
-                📍<span>Gurugram</span>
+              <div class="rounded-2xl border border-slate-200 bg-white/75 p-5 dark:border-gray-700 dark:bg-gray-900/60">
+                <span class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Network</span>
+                <strong class="mt-2 block text-xl text-slate-950 dark:text-white">Gurugram</strong>
               </div>
-              <div class="flex items-center gap-2">
-                📍<span>Delhi-NCR</span>
+              <div class="rounded-2xl border border-slate-200 bg-white/75 p-5 dark:border-gray-700 dark:bg-gray-900/60">
+                <span class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Market</span>
+                <strong class="mt-2 block text-xl text-slate-950 dark:text-white">Delhi-NCR</strong>
               </div>
-              <div class="flex items-center gap-2">
-                🌐<span>All India</span>
+              <div class="rounded-2xl border border-slate-200 bg-white/75 p-5 dark:border-gray-700 dark:bg-gray-900/60">
+                <span class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Reach</span>
+                <strong class="mt-2 block text-xl text-slate-950 dark:text-white">All India</strong>
               </div>
             </div>
           </div>
@@ -610,12 +871,20 @@
 
         <section id="services" data-breadcrumb-label="Services" class="max-w-7xl mx-auto mb-20">
           <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Services That Drive Growth</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400">End-to-end marketing solutions for modern businesses</p>
+            <p class="dv-kicker justify-center mb-4">Capabilities</p>
+            <h2 class="dv-headline text-3xl sm:text-5xl font-black mb-4">Services that turn attention into revenue.</h2>
+            <p class="mx-auto max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
+              Brand, web, AI, content, and performance systems built to move real business metrics.
+            </p>
           </div>
           <div class="grid md:grid-cols-2 gap-8">
-            <div class="p-8 rounded-2xl bg-white shadow-lg transition-all hover:shadow-2xl hover:scale-[1.02] dark:bg-gray-800">
-              <div class="text-4xl mb-4">📈</div>
+            <div class="dv-card p-8 rounded-2xl dark:bg-gray-800">
+              <div class="dv-icon-box mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 3v18h18" />
+                  <path d="m7 14 4-4 3 3 5-6" />
+                </svg>
+              </div>
               <h3 class="text-2xl font-bold mb-3">Social Media Marketing</h3>
               <p class="mb-6 text-gray-600 dark:text-gray-300">
                 Transform your social presence into a revenue-generating machine with data-driven campaigns.
@@ -629,13 +898,19 @@
                 href="https://wa.me/918950378717?text=Hey%20I%20am%20interested%20in%20knowing%20about%20website%20creation"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700"
+                class="dv-cta-link inline-flex items-center font-semibold"
               >
                 Book a Call →
               </a>
             </div>
-            <div class="p-8 rounded-2xl bg-white shadow-lg transition-all hover:shadow-2xl hover:scale-[1.02] dark:bg-gray-800">
-              <div class="text-4xl mb-4">🎯</div>
+            <div class="dv-card p-8 rounded-2xl dark:bg-gray-800">
+              <div class="dv-icon-box mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+                </svg>
+              </div>
               <h3 class="text-2xl font-bold mb-3">Performance Advertising</h3>
               <p class="mb-6 text-gray-600 dark:text-gray-300">
                 ROI-focused ad campaigns across Meta, Google, and LinkedIn that deliver measurable results.
@@ -649,13 +924,19 @@
                 href="https://wa.me/918950378717?text=Hey%20I%20am%20interested%20in%20knowing%20about%20website%20creation"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700"
+                class="dv-cta-link inline-flex items-center font-semibold"
               >
                 Book a Call →
               </a>
             </div>
-            <div class="p-8 rounded-2xl bg-white shadow-lg transition-all hover:shadow-2xl hover:scale-[1.02] dark:bg-gray-800">
-              <div class="text-4xl mb-4">🤝</div>
+            <div class="dv-card p-8 rounded-2xl dark:bg-gray-800">
+              <div class="dv-icon-box mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19V5" />
+                  <path d="M4 7h10a4 4 0 0 1 0 8H4" />
+                  <path d="M14 15l5 4" />
+                </svg>
+              </div>
               <h3 class="text-2xl font-bold mb-3">Personal Branding</h3>
               <p class="mb-6 text-gray-600 dark:text-gray-300">
                 Build authority and trust with strategic positioning that attracts your ideal clients.
@@ -669,13 +950,17 @@
                 href="https://wa.me/918950378717?text=Hey%20I%20am%20interested%20in%20knowing%20about%20website%20creation"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700"
+                class="dv-cta-link inline-flex items-center font-semibold"
               >
                 Book a Call →
               </a>
             </div>
-            <div class="p-8 rounded-2xl bg-white shadow-lg transition-all hover:shadow-2xl hover:scale-[1.02] dark:bg-gray-800">
-              <div class="text-4xl mb-4">⚡</div>
+            <div class="dv-card p-8 rounded-2xl dark:bg-gray-800">
+              <div class="dv-icon-box mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />
+                </svg>
+              </div>
               <h3 class="text-2xl font-bold mb-3">Growth Consulting</h3>
               <p class="mb-6 text-gray-600 dark:text-gray-300">
                 Strategic guidance to scale your business with proven frameworks and systems.
@@ -689,7 +974,7 @@
                 href="https://wa.me/918950378717?text=Hey%20I%20am%20interested%20in%20knowing%20about%20website%20creation"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center font-semibold text-blue-600 hover:text-blue-700"
+                class="dv-cta-link inline-flex items-center font-semibold"
               >
                 Book a Call →
               </a>
@@ -700,65 +985,69 @@
         <section
           id="work"
           data-breadcrumb-label="Case Studies"
-          class="max-w-7xl mx-auto mb-20 rounded-3xl bg-gray-50 p-10 shadow-inner dark:bg-gray-800/60"
+          class="max-w-7xl mx-auto mb-20 rounded-3xl bg-slate-950 p-6 text-white shadow-2xl shadow-slate-950/20 sm:p-10"
         >
           <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Proven Results</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400">Real businesses, real growth</p>
+            <p class="dv-kicker justify-center mb-4 text-blue-200">Proof board</p>
+            <h2 class="dv-headline text-3xl sm:text-5xl font-black mb-4">The work is built to show up in numbers.</h2>
+            <p class="mx-auto max-w-2xl text-lg leading-8 text-slate-300">Strategy, execution, tracking, and iteration connected in one operating loop.</p>
           </div>
           <div class="grid lg:grid-cols-3 gap-8">
-            <article class="p-8 rounded-2xl bg-white shadow-lg dark:bg-gray-900">
+            <article class="rounded-2xl border border-white/10 bg-white/[0.08] p-8 shadow-lg backdrop-blur">
+              <div class="mb-5 inline-flex rounded-full bg-emerald-400/15 px-3 py-1 text-sm font-bold text-emerald-200">3.2x revenue</div>
               <h3 class="text-xl font-bold mb-4">D2C Fashion Brand</h3>
-              <div class="space-y-4 text-gray-600 dark:text-gray-300">
+              <div class="space-y-4 text-slate-300">
                 <div>
                   <span class="text-sm font-semibold uppercase text-red-500">Problem</span>
                   <p class="mt-1">Low online visibility and inconsistent sales despite quality products.</p>
                 </div>
                 <div>
-                  <span class="text-sm font-semibold uppercase text-blue-500">Approach</span>
+                  <span class="text-sm font-semibold uppercase text-blue-300">Approach</span>
                   <p class="mt-1">Instagram-first strategy with influencer partnerships and performance ads.</p>
                 </div>
                 <div>
-                  <span class="text-sm font-semibold uppercase text-green-500">Outcome</span>
-                  <p class="mt-1 font-semibold text-gray-900 dark:text-gray-100">
+                  <span class="text-sm font-semibold uppercase text-emerald-300">Outcome</span>
+                  <p class="mt-1 font-semibold text-white">
                     3.2x revenue growth in 6 months, 45% reduction in CAC.
                   </p>
                 </div>
               </div>
             </article>
-            <article class="p-8 rounded-2xl bg-white shadow-lg dark:bg-gray-900">
+            <article class="rounded-2xl border border-white/10 bg-white/[0.08] p-8 shadow-lg backdrop-blur">
+              <div class="mb-5 inline-flex rounded-full bg-blue-400/15 px-3 py-1 text-sm font-bold text-blue-200">180+ leads</div>
               <h3 class="text-xl font-bold mb-4">B2B SaaS Startup</h3>
-              <div class="space-y-4 text-gray-600 dark:text-gray-300">
+              <div class="space-y-4 text-slate-300">
                 <div>
                   <span class="text-sm font-semibold uppercase text-red-500">Problem</span>
                   <p class="mt-1">Struggling to generate qualified leads in a competitive market.</p>
                 </div>
                 <div>
-                  <span class="text-sm font-semibold uppercase text-blue-500">Approach</span>
+                  <span class="text-sm font-semibold uppercase text-blue-300">Approach</span>
                   <p class="mt-1">LinkedIn thought leadership with an ABM campaign and targeted ads.</p>
                 </div>
                 <div>
-                  <span class="text-sm font-semibold uppercase text-green-500">Outcome</span>
-                  <p class="mt-1 font-semibold text-gray-900 dark:text-gray-100">
+                  <span class="text-sm font-semibold uppercase text-emerald-300">Outcome</span>
+                  <p class="mt-1 font-semibold text-white">
                     Generated 180+ qualified leads and closed 12 enterprise deals.
                   </p>
                 </div>
               </div>
             </article>
-            <article class="p-8 rounded-2xl bg-white shadow-lg dark:bg-gray-900">
+            <article class="rounded-2xl border border-white/10 bg-white/[0.08] p-8 shadow-lg backdrop-blur">
+              <div class="mb-5 inline-flex rounded-full bg-orange-400/15 px-3 py-1 text-sm font-bold text-orange-200">5:1 ROAS</div>
               <h3 class="text-xl font-bold mb-4">Local Service Business</h3>
-              <div class="space-y-4 text-gray-600 dark:text-gray-300">
+              <div class="space-y-4 text-slate-300">
                 <div>
                   <span class="text-sm font-semibold uppercase text-red-500">Problem</span>
                   <p class="mt-1">Relying on word-of-mouth with no scalable customer acquisition.</p>
                 </div>
                 <div>
-                  <span class="text-sm font-semibold uppercase text-blue-500">Approach</span>
+                  <span class="text-sm font-semibold uppercase text-blue-300">Approach</span>
                   <p class="mt-1">Google Ads, Facebook lead gen, and an automated follow-up system.</p>
                 </div>
                 <div>
-                  <span class="text-sm font-semibold uppercase text-green-500">Outcome</span>
-                  <p class="mt-1 font-semibold text-gray-900 dark:text-gray-100">
+                  <span class="text-sm font-semibold uppercase text-emerald-300">Outcome</span>
+                  <p class="mt-1 font-semibold text-white">
                     Achieved 5:1 ROAS and booked operations 90 days in advance.
                   </p>
                 </div>
@@ -769,46 +1058,49 @@
 
         <section id="process" data-breadcrumb-label="Process" class="max-w-7xl mx-auto mb-20">
           <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4">The Domino Effect System</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400">Strategic marketing that creates cascading wins</p>
+            <p class="dv-kicker justify-center mb-4">Operating system</p>
+            <h2 class="dv-headline text-3xl sm:text-5xl font-black mb-4">The Domino Effect System</h2>
+            <p class="mx-auto max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
+              A simple loop for finding the highest-leverage move, launching it, and improving what works.
+            </p>
           </div>
           <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
-            <div class="text-center">
+            <div class="dv-process-step rounded-2xl border border-slate-200 bg-white/85 p-5 text-center shadow-lg shadow-slate-950/5 dark:border-gray-700 dark:bg-gray-800/80">
               <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-xl font-bold bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
                 1
               </div>
               <h3 class="font-bold mb-2">Discovery</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">Deep dive into your business, audience, and goals.</p>
             </div>
-            <div class="text-center">
+            <div class="dv-process-step rounded-2xl border border-slate-200 bg-white/85 p-5 text-center shadow-lg shadow-slate-950/5 dark:border-gray-700 dark:bg-gray-800/80">
               <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-xl font-bold bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
                 2
               </div>
               <h3 class="font-bold mb-2">Strategy</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">Custom roadmap aligned with your growth objectives.</p>
             </div>
-            <div class="text-center">
+            <div class="dv-process-step rounded-2xl border border-slate-200 bg-white/85 p-5 text-center shadow-lg shadow-slate-950/5 dark:border-gray-700 dark:bg-gray-800/80">
               <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-xl font-bold bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
                 3
               </div>
               <h3 class="font-bold mb-2">Creation</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">High-performing content and campaigns that convert.</p>
             </div>
-            <div class="text-center">
+            <div class="dv-process-step rounded-2xl border border-slate-200 bg-white/85 p-5 text-center shadow-lg shadow-slate-950/5 dark:border-gray-700 dark:bg-gray-800/80">
               <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-xl font-bold bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
                 4
               </div>
               <h3 class="font-bold mb-2">Launch</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">Multi-channel execution with precision timing.</p>
             </div>
-            <div class="text-center">
+            <div class="dv-process-step rounded-2xl border border-slate-200 bg-white/85 p-5 text-center shadow-lg shadow-slate-950/5 dark:border-gray-700 dark:bg-gray-800/80">
               <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-xl font-bold bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
                 5
               </div>
               <h3 class="font-bold mb-2">Optimize</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">Continuous testing and data-driven improvements.</p>
             </div>
-            <div class="text-center">
+            <div class="dv-process-step rounded-2xl border border-slate-200 bg-white/85 p-5 text-center shadow-lg shadow-slate-950/5 dark:border-gray-700 dark:bg-gray-800/80">
               <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-xl font-bold bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
                 6
               </div>
@@ -820,10 +1112,11 @@
 
         <section class="max-w-4xl mx-auto mb-20">
           <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Client Success Stories</h2>
+            <p class="dv-kicker justify-center mb-4">Trust</p>
+            <h2 class="dv-headline text-3xl sm:text-5xl font-black mb-4">What the work should feel like.</h2>
           </div>
           <div class="relative">
-            <div class="p-8 md:p-12 rounded-2xl bg-white shadow-xl dark:bg-gray-900" data-testimonial>
+            <div class="dv-card p-8 md:p-12 rounded-2xl dark:bg-gray-900" data-testimonial>
               <div class="flex justify-center mb-4 text-yellow-400 text-lg">★★★★★</div>
               <blockquote class="text-xl md:text-2xl font-medium mb-6 text-center text-gray-900 dark:text-gray-100">
                 “Deepanshu transformed our social media from a cost center to our #1 revenue channel. His strategic approach and
@@ -834,7 +1127,7 @@
                 <div class="text-sm text-gray-600 dark:text-gray-400">Founder, StyleNest</div>
               </div>
             </div>
-            <div class="hidden p-8 md:p-12 rounded-2xl bg-white shadow-xl dark:bg-gray-900" data-testimonial>
+            <div class="hidden dv-card p-8 md:p-12 rounded-2xl dark:bg-gray-900" data-testimonial>
               <div class="flex justify-center mb-4 text-yellow-400 text-lg">★★★★★</div>
               <blockquote class="text-xl md:text-2xl font-medium mb-6 text-center text-gray-900 dark:text-gray-100">
                 “Working with Deepanshu was a game-changer. He built a complete growth system that scaled our business 4x in one
@@ -845,7 +1138,7 @@
                 <div class="text-sm text-gray-600 dark:text-gray-400">CEO, TechFlow Solutions</div>
               </div>
             </div>
-            <div class="hidden p-8 md:p-12 rounded-2xl bg-white shadow-xl dark:bg-gray-900" data-testimonial>
+            <div class="hidden dv-card p-8 md:p-12 rounded-2xl dark:bg-gray-900" data-testimonial>
               <div class="flex justify-center mb-4 text-yellow-400 text-lg">★★★★★</div>
               <blockquote class="text-xl md:text-2xl font-medium mb-6 text-center text-gray-900 dark:text-gray-100">
                 “Finally, a marketer who understands both strategy and execution. Deepanshu delivered results beyond our most
@@ -879,11 +1172,14 @@
 
         <section id="pricing" data-breadcrumb-label="Pricing" class="max-w-7xl mx-auto mb-20">
           <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Flexible Engagements</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400">Choose the plan that matches your growth goals</p>
+            <p class="dv-kicker justify-center mb-4">Engagements</p>
+            <h2 class="dv-headline text-3xl sm:text-5xl font-black mb-4">Choose the build mode that matches your stage.</h2>
+            <p class="mx-auto max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
+              Start with focused execution, then scale into deeper systems when the signal is clear.
+            </p>
           </div>
           <div class="grid md:grid-cols-3 gap-8">
-            <div class="relative p-8 rounded-2xl bg-white border border-gray-200 shadow-lg transition-transform hover:-translate-y-2 dark:bg-gray-800 dark:border-gray-700">
+            <div class="dv-card relative p-8 rounded-2xl dark:bg-gray-800">
               <h3 class="text-2xl font-bold mb-4 text-center">Starter</h3>
               <div class="text-center mb-6">
                 <span class="text-4xl font-bold">₹25,000</span>
@@ -905,7 +1201,7 @@
                 Get Started
               </a>
             </div>
-            <div class="relative p-8 rounded-2xl bg-white border border-blue-600 shadow-2xl transition-transform hover:-translate-y-2 dark:bg-gray-800 dark:border-blue-500">
+            <div class="relative overflow-hidden rounded-2xl border border-blue-500 bg-white p-8 shadow-2xl shadow-blue-950/15 transition-transform hover:-translate-y-2 dark:bg-gray-800 dark:border-blue-400">
               <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-semibold uppercase tracking-wide bg-blue-600 text-white rounded-full shadow-lg">
                 Most Popular
               </span>
@@ -932,7 +1228,7 @@
                 Book a Call
               </a>
             </div>
-            <div class="relative p-8 rounded-2xl bg-white border border-gray-200 shadow-lg transition-transform hover:-translate-y-2 dark:bg-gray-800 dark:border-gray-700">
+            <div class="dv-card relative p-8 rounded-2xl dark:bg-gray-800">
               <h3 class="text-2xl font-bold mb-4 text-center">Custom</h3>
               <div class="text-center mb-6">
                 <span class="text-4xl font-bold">Let's Talk</span>
@@ -976,9 +1272,9 @@
                 <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Marketing, AI automation, and venture building.</p>
               </div>
             </div>
-            <div class="rounded-3xl bg-gray-50 p-8 shadow-inner dark:bg-gray-800 md:p-12">
-              <p class="text-sm font-semibold uppercase tracking-[0.22em] text-blue-600">About</p>
-              <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Building useful digital ventures from India.</h2>
+            <div class="dv-section-band rounded-3xl p-8 dark:border-gray-700 dark:bg-gray-800/80 md:p-12">
+              <p class="dv-kicker mb-4">Founder note</p>
+              <h2 class="dv-headline mt-3 text-3xl font-black sm:text-5xl">Building useful digital ventures from India.</h2>
               <p class="mt-6 text-lg text-gray-700 dark:text-gray-300">
                 I help ambitious businesses unlock exponential growth through strategic marketing and brand positioning. Based in
                 Rohtak with clients across Delhi-NCR and India, I specialize in the Domino Effect: identifying the one strategic
@@ -1024,10 +1320,11 @@
 
         <section id="faq" data-breadcrumb-label="FAQ" class="max-w-4xl mx-auto mb-20">
           <div class="text-center mb-12">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p class="dv-kicker justify-center mb-4">FAQ</p>
+            <h2 class="dv-headline text-3xl sm:text-5xl font-black mb-4">Clear answers before we start.</h2>
           </div>
           <div class="space-y-4">
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800" data-faq>
+            <div class="dv-card rounded-2xl dark:bg-gray-800" data-faq>
               <button class="w-full px-6 py-5 flex items-center justify-between text-left text-lg font-semibold" type="button">
                 <span>What industries do you work with?</span>
                 <span class="transition-transform" aria-hidden="true">⌄</span>
@@ -1037,7 +1334,7 @@
                 adapt to your specific market dynamics.
               </div>
             </div>
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800" data-faq>
+            <div class="dv-card rounded-2xl dark:bg-gray-800" data-faq>
               <button class="w-full px-6 py-5 flex items-center justify-between text-left text-lg font-semibold" type="button">
                 <span>How quickly can I expect results?</span>
                 <span class="transition-transform" aria-hidden="true">⌄</span>
@@ -1047,7 +1344,7 @@
                 months with consistent execution.
               </div>
             </div>
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800" data-faq>
+            <div class="dv-card rounded-2xl dark:bg-gray-800" data-faq>
               <button class="w-full px-6 py-5 flex items-center justify-between text-left text-lg font-semibold" type="button">
                 <span>Do you require long-term contracts?</span>
                 <span class="transition-transform" aria-hidden="true">⌄</span>
@@ -1057,7 +1354,7 @@
                 available after the initial period.
               </div>
             </div>
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800" data-faq>
+            <div class="dv-card rounded-2xl dark:bg-gray-800" data-faq>
               <button class="w-full px-6 py-5 flex items-center justify-between text-left text-lg font-semibold" type="button">
                 <span>What makes your approach different?</span>
                 <span class="transition-transform" aria-hidden="true">⌄</span>
@@ -1067,7 +1364,7 @@
                 execution, not just more activity.
               </div>
             </div>
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800" data-faq>
+            <div class="dv-card rounded-2xl dark:bg-gray-800" data-faq>
               <button class="w-full px-6 py-5 flex items-center justify-between text-left text-lg font-semibold" type="button">
                 <span>Do you handle content creation?</span>
                 <span class="transition-transform" aria-hidden="true">⌄</span>
@@ -1077,7 +1374,7 @@
                 and more.
               </div>
             </div>
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800" data-faq>
+            <div class="dv-card rounded-2xl dark:bg-gray-800" data-faq>
               <button class="w-full px-6 py-5 flex items-center justify-between text-left text-lg font-semibold" type="button">
                 <span>What's your typical client engagement like?</span>
                 <span class="transition-transform" aria-hidden="true">⌄</span>
@@ -1092,9 +1389,9 @@
 
         <section id="hiring" data-breadcrumb-label="Hiring" class="max-w-6xl mx-auto mb-20">
           <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div class="rounded-3xl bg-slate-950 p-8 text-white shadow-2xl shadow-slate-950/20 md:p-10">
+            <div class="dv-premium-panel rounded-3xl p-8 text-white shadow-2xl shadow-slate-950/20 md:p-10">
               <p class="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">Hiring</p>
-              <h2 class="mt-4 text-3xl font-bold sm:text-4xl">Work with Deepanshu Ventures</h2>
+              <h2 class="dv-headline mt-4 text-3xl font-black sm:text-5xl">Work with Deepanshu Ventures</h2>
               <p class="mt-5 text-lg leading-8 text-slate-300">
                 Apply for marketing, content, design, sales, operations, or AI automation work. Keep it simple: share your
                 strongest links, your role interest, and how soon you can start.
@@ -1112,7 +1409,7 @@
               <div class="mt-8 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6 text-blue-100">
                 Tip: Add portfolio, resume, Instagram, LinkedIn, GitHub, or Drive links in the form so your application is easy to review.
               </div>
-              <div class="mt-5 rounded-2xl border border-emerald-400/25 bg-emerald-500/10 p-5">
+              <div class="dv-calendly-card mt-5 rounded-2xl border border-emerald-400/25 p-5">
                 <p class="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200">Quick meeting</p>
                 <h3 class="mt-3 text-2xl font-bold">Want to join the team or intern at DV companies?</h3>
                 <p class="mt-3 text-sm leading-6 text-slate-300">
@@ -1122,13 +1419,13 @@
                   href="https://calendly.com/deepanshucommerce/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+                  class="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-black text-slate-950 shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-emerald-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
                 >
-                  Book Hiring Meeting
+                  Book 15-Min Hiring Meeting
                 </a>
               </div>
             </div>
-            <div class="rounded-3xl bg-white p-6 shadow-xl dark:border dark:border-gray-700 dark:bg-gray-800 md:p-8">
+            <div class="dv-card rounded-3xl p-6 dark:bg-gray-800 md:p-8">
               <form id="hiring-form" class="space-y-5">
                 <div class="grid gap-5 sm:grid-cols-2">
                   <div>
@@ -1257,7 +1554,8 @@
         <section id="contact" data-breadcrumb-label="Contact" class="max-w-6xl mx-auto mb-20">
           <div class="grid lg:grid-cols-2 gap-12">
             <div>
-              <h2 class="text-3xl font-bold mb-6">Let’s Build Your Growth Engine</h2>
+              <p class="dv-kicker mb-4">Contact</p>
+              <h2 class="dv-headline text-3xl font-black mb-6 sm:text-5xl">Let’s build your growth engine.</h2>
               <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                 Share a bit about your business and the goals you’re aiming for. I’ll respond within 24 hours to schedule a
                 discovery call.
@@ -1277,7 +1575,7 @@
                 </div>
               </div>
             </div>
-            <div class="p-8 rounded-2xl bg-white shadow-xl dark:bg-gray-800 dark:border dark:border-gray-700">
+            <div class="dv-card p-8 rounded-2xl dark:bg-gray-800">
               <form id="contact-form" class="space-y-5">
                 <div>
                   <label class="block mb-2 font-semibold" for="contact-name">Name</label>
@@ -1428,7 +1726,7 @@
             </div>
             <div>
               <h4 class="font-bold mb-4">Connect</h4>
-              <div class="flex gap-4 mb-4 text-gray-600 dark:text-gray-400">
+              <div class="flex flex-wrap gap-3 mb-4 text-gray-600 dark:text-gray-400">
                 <a
                   href="https://www.linkedin.com/in/earthiandeepanshu?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                   target="_blank"
