@@ -1512,19 +1512,25 @@
       }
     </script>
     <script>
-      const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzP6yDvx6q5D1pAvr1rGNR0zaiFjj6JhZhz5mQ9eyg2sTtjKq_a4XmTuYuzVR2COZvhiw/exec';
+      const SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwgrYN0lNiJWxhsBtjnHqXK0cT3WNRvEnAo_LizJ04ih-UUPLvY-ykUKSk-9kw_7f6A/exec';
 
       async function sendLeadCapture(eventType, data, source = 'Deepanshu Ventures') {
         if (!SHEETS_WEB_APP_URL || !navigator.onLine) {
           return false;
         }
 
+        const cleanedData = Object.fromEntries(
+          Object.entries(data || {}).map(([key, value]) => [key, String(value || '').trim()])
+        );
+
         const payload = {
           timestamp: new Date().toISOString(),
           source,
           eventType,
+          pageTitle: document.title,
           pageUrl: window.location.href,
-          data
+          ...cleanedData,
+          data: cleanedData
         };
 
         try {
@@ -1965,6 +1971,11 @@
         border: 1px solid #e2e8f0;
         font-size: 15px;
       }
+      .gd-input:focus {
+        border-color: #2563eb;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+      }
       .gd-btn {
         width: 100%;
         padding: 12px 16px;
@@ -1978,6 +1989,16 @@
       }
       .gd-btn:hover {
         filter: brightness(1.05);
+      }
+      .gd-btn:disabled {
+        cursor: wait;
+        opacity: 0.72;
+      }
+      .gd-status {
+        min-height: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.45;
       }
       @media (max-width: 520px) {
         .gd-panel {
@@ -1996,10 +2017,13 @@
         <h3 class="gd-title">Get the Growth Dispatch</h3>
         <p class="gd-sub">Monthly playbooks, case studies, and AI/ML marketing drops.</p>
         <form class="gd-form" data-gd-form>
+          <input type="hidden" name="source_form" value="Growth Dispatch popup" />
+          <input type="hidden" name="interest" value="Growth Dispatch" />
           <input class="gd-input" type="text" name="name" placeholder="Your Name" required />
           <input class="gd-input" type="tel" name="mobile" placeholder="Mobile Number" pattern="[0-9\-\+\s]{10,}" required />
+          <input class="gd-input" type="email" name="email" placeholder="Email Address (optional)" />
           <button class="gd-btn" type="submit">Get Updates</button>
-          <div class="gd-status"></div>
+          <div class="gd-status" aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -2032,8 +2056,11 @@
         form?.addEventListener('submit', async (e) => {
           e.preventDefault();
           const formData = new FormData(form);
-          const name = String(formData.get('name') || '').trim();
-          const mobile = String(formData.get('mobile') || '').trim();
+          const payload = Object.fromEntries(
+            Array.from(formData.entries()).map(([key, value]) => [key, String(value || '').trim()])
+          );
+          const name = payload.name || '';
+          const mobile = payload.mobile || '';
           const statusEl = form.querySelector('.gd-status');
           const btn = form.querySelector('[type="submit"]');
 
@@ -2047,19 +2074,15 @@
           btn.textContent = 'Subscribing...';
 
           try {
-            const sent = await sendLeadCapture('NEWSLETTER_SIGNUP', {
-              name,
-              mobile,
-              interest: 'Growth Dispatch'
-            });
+            const sent = await sendLeadCapture('NEWSLETTER_SIGNUP', payload);
 
             if (sent) {
-              statusEl.textContent = 'Thanks. You are on the update list.';
+              statusEl.textContent = 'Thanks. Your details were sent to the Google Sheet.';
               statusEl.style.color = '#166534';
               form.reset();
               setTimeout(hide, 2000);
             } else {
-              statusEl.textContent = 'Saved on this page. Please try again if you are offline.';
+              statusEl.textContent = 'Could not reach Google Sheets. Please check your connection and try again.';
               statusEl.style.color = '#b45309';
             }
           } catch (error) {
