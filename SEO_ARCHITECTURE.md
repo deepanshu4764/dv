@@ -40,6 +40,8 @@
 - `/gurgaon/` - local SEO for Gurgaon, Gurugram, Delhi-NCR, India
 - `/innovation/` - startup and innovation search intent
 - `/ventures/` - portfolio and venture surfaces
+- `/anytimetiffin/` - AnyTimeTiffin food venture, local tiffin, and M3M Soulitude intent
+- `/anytimetiffin-order/` - full ordering app with cart, subscriptions, WhatsApp checkout, and lead capture
 - `/insights/deepanshu-ventures-seo-strategy/`
 - `/insights/deepanshu-founder-branding-india/`
 - `/insights/ai-automation-gurgaon-businesses/`
@@ -64,7 +66,7 @@ Deploy on Vercel from the repository root. Vercel will detect Next.js automatica
 
 ## Post-Deployment SEO Checklist
 
-- Submit `https://deepanshuventures.com/sitemap.xml` to Google Search Console.
+- Submit `https://www.deepanshuventures.com/sitemap.xml` to Google Search Console.
 - Verify the canonical homepage URL.
 - Inspect the homepage and SEO pages in Search Console URL Inspection.
 - Add business profiles and social profiles that link back to the official site.

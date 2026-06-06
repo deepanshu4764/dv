@@ -39,7 +39,7 @@ export default function VenturesPage() {
             and startup innovation in India.
           </p>
         </div>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {ventures.map((venture) => (
             <Link key={venture.href} href={venture.href} className="card group rounded-3xl p-6 transition hover:-translate-y-1">
               <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-midnight">{venture.tag}</span>

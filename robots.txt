@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://deepanshuventures.com/sitemap.xml
+Sitemap: https://www.deepanshuventures.com/sitemap.xml

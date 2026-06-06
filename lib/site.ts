@@ -15,7 +15,7 @@ import {
   Users
 } from 'lucide-react';
 
-export const siteUrl = 'https://deepanshuventures.com';
+export const siteUrl = 'https://www.deepanshuventures.com';
 
 export const googleSheetsEndpoint =
   'https://script.google.com/macros/s/AKfycbwgrYN0lNiJWxhsBtjnHqXK0cT3WNRvEnAo_LizJ04ih-UUPLvY-ykUKSk-9kw_7f6A/exec';
@@ -117,6 +117,13 @@ export const trustSignals = [
 ];
 
 export const ventures = [
+  {
+    title: 'AnyTimeTiffin by Deepanshu Ventures',
+    href: '/anytimetiffin/',
+    description:
+      'A local homemade tiffin venture for M3M Soulitude with WhatsApp ordering, subscriptions, resident updates, and Google Sheets lead capture.',
+    tag: 'Food Venture'
+  },
   {
     title: 'Deepanshu Ventures AI',
     href: '/ai-automation/',

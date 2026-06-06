@@ -52,6 +52,8 @@ Primary SEO files:
 - `/gurgaon/`
 - `/innovation/`
 - `/ventures/`
+- `/anytimetiffin/`
+- `/anytimetiffin-order/`
 - `/insights/deepanshu-ventures-seo-strategy/`
 - `/insights/deepanshu-founder-branding-india/`
 - `/insights/ai-automation-gurgaon-businesses/`
@@ -62,7 +64,7 @@ Deploy from the repository root on Vercel. Vercel detects Next.js automatically.
 
 After deployment:
 
-1. Submit `https://deepanshuventures.com/sitemap.xml` in Google Search Console.
+1. Submit `https://www.deepanshuventures.com/sitemap.xml` in Google Search Console.
 2. Inspect the homepage and all branded SEO pages.
 3. Link official social/business profiles back to the website.
 4. Keep adding founder, AI, Gurgaon, startup, and innovation content to build topical authority.

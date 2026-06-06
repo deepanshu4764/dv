@@ -227,7 +227,7 @@ export default function HomePage() {
         description="These internal surfaces support search engines and visitors with clear paths into AI, digital growth, and local authority."
       />
 
-      <section className="container grid gap-5 md:grid-cols-3">
+      <section className="container grid gap-5 md:grid-cols-2 lg:grid-cols-4">
         {ventures.map((venture) => (
           <Link key={venture.href} href={venture.href} className="glass focus-ring group rounded-[2rem] p-6 transition hover:-translate-y-1">
             <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-midnight">{venture.tag}</span>
