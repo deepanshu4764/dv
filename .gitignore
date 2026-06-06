@@ -1,0 +1,11 @@
+.next/
+node_modules/
+out/
+dist/
+.vercel/
+*.log
+.env
+.env.local
+.env.*.local
+public/dv-*-check.png
+dv-*-check.png
