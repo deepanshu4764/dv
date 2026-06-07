@@ -52,6 +52,11 @@ Primary SEO files:
 - `/gurgaon/`
 - `/innovation/`
 - `/ventures/`
+- `/ventures/ai-automation-agency/`
+- `/ventures/social-drive-marketing-agency/`
+- `/ventures/anytime-tiffin/`
+- `/ai-automation-agency/index.html`
+- `/social-drive/index.html`
 - `/anytimetiffin/`
 - `/anytimetiffin-order/`
 - `/insights/deepanshu-ventures-seo-strategy/`

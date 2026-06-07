@@ -40,6 +40,11 @@
 - `/gurgaon/` - local SEO for Gurgaon, Gurugram, Delhi-NCR, India
 - `/innovation/` - startup and innovation search intent
 - `/ventures/` - portfolio and venture surfaces
+- `/ventures/ai-automation-agency/` - clean venture redirect to the AI Automation Agency page
+- `/ventures/social-drive-marketing-agency/` - clean venture redirect to the Social Drive Marketing Agency page
+- `/ventures/anytime-tiffin/` - clean venture redirect to the Anytime Tiffin order app
+- `/ai-automation-agency/index.html` - static AI Automation Agency venture page
+- `/social-drive/index.html` - static Social Drive Marketing Agency venture page
 - `/anytimetiffin/` - AnyTimeTiffin food venture, local tiffin, and M3M Soulitude intent
 - `/anytimetiffin-order/` - full ordering app with cart, subscriptions, WhatsApp checkout, and lead capture
 - `/insights/deepanshu-ventures-seo-strategy/`

@@ -2,13 +2,14 @@ import type { MetadataRoute } from 'next';
 import { insightPosts, seoPages, siteUrl } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date('2026-06-06');
+  const now = new Date('2026-06-07');
   const staticRoutes = [
     '',
     '/ventures/',
     '/anytimetiffin/',
-    '/ai-automation-agency/',
-    '/social-drive/'
+    '/anytimetiffin-order/index.html',
+    '/ai-automation-agency/index.html',
+    '/social-drive/index.html'
   ];
 
   return [

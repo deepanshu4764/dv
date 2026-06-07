@@ -40,7 +40,7 @@ export default function HomePage() {
       <section className="noise relative overflow-hidden pt-28 sm:pt-32 lg:pt-36">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/60 to-transparent" />
         <div className="container grid min-h-[calc(100svh-7rem)] items-center gap-12 pb-20 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
+          <div className="min-w-0">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-black text-blue-100 shadow-glow">
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
                 Official Deepanshu Ventures website
@@ -82,7 +82,7 @@ export default function HomePage() {
               </dl>
           </div>
 
-          <div className="relative">
+          <div className="relative min-w-0">
               <div className="absolute -inset-6 rounded-[2rem] bg-blue-500/20 blur-3xl" aria-hidden="true" />
               <div className="glass relative overflow-hidden rounded-[2rem] p-4">
                 <Image
@@ -220,24 +220,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      <SectionHeader
-        id="ventures"
-        eyebrow="Venture portfolio"
-        title="One brand, multiple high-intent venture surfaces."
-        description="These internal surfaces support search engines and visitors with clear paths into AI, digital growth, and local authority."
-      />
-
-      <section className="container grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {ventures.map((venture) => (
-          <Link key={venture.href} href={venture.href} className="glass focus-ring group rounded-[2rem] p-6 transition hover:-translate-y-1">
-            <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-midnight">{venture.tag}</span>
-            <h3 className="mt-6 text-2xl font-black text-white">{venture.title}</h3>
-            <p className="mt-3 text-sm leading-7 text-slate-300">{venture.description}</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue-200">
-              Explore page <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" />
-            </span>
-          </Link>
-        ))}
+      <section className="container pb-8 pt-20" id="ventures">
+        <p className="text-sm font-black uppercase tracking-[0.24em] text-blue-200">Venture portfolio</p>
+        <div className="mt-5 grid gap-5 lg:grid-cols-[0.9fr_0.75fr] lg:items-end">
+          <h2 className="text-4xl font-black leading-tight tracking-normal text-white sm:text-5xl">Open active Deepanshu Ventures directly.</h2>
+          <p className="text-lg leading-8 text-slate-400">
+            A simple, mobile-friendly list of venture pages so visitors can move straight into AI automation, social media growth, or the
+            Anytime Tiffin ordering experience.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {ventures.map((venture) => (
+            <Link key={venture.href} href={venture.href} className="glass focus-ring group rounded-[2rem] p-6 transition hover:-translate-y-1">
+              <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-midnight">{venture.tag}</span>
+              <h3 className="mt-6 text-2xl font-black text-white">{venture.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">{venture.description}</p>
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue-200">
+                Explore page <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" />
+              </span>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <SectionHeader

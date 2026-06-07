@@ -48,4 +48,28 @@
     <changefreq>weekly</changefreq>
     <priority>0.86</priority>
   </url>
+  <url>
+    <loc>https://www.deepanshuventures.com/anytimetiffin/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://www.deepanshuventures.com/anytimetiffin-order/index.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://www.deepanshuventures.com/ai-automation-agency/index.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://www.deepanshuventures.com/social-drive/index.html</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
 </urlset>

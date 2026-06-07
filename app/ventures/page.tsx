@@ -7,7 +7,7 @@ import { brand, siteUrl, ventures } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Deepanshu Ventures Portfolio | AI, Digital Growth & Local Business Ventures',
   description:
-    'Explore Deepanshu Ventures portfolio surfaces across AI automation, digital growth, local SEO, technology, innovation, and startup execution in India.',
+    'Explore active Deepanshu Ventures portfolio companies including AI Automation Agency, Social Drive Marketing Agency, and Anytime Tiffin.',
   alternates: {
     canonical: '/ventures/'
   }
@@ -35,11 +35,11 @@ export default function VenturesPage() {
             Deepanshu Ventures portfolio and venture surfaces
           </h1>
           <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-300">
-            {brand.name} builds connected venture surfaces for AI, digital growth, local authority, websites, technology systems,
-            and startup innovation in India.
+            {brand.name} builds connected venture surfaces for AI automation, social media growth, local food operations,
+            websites, technology systems, and startup execution in India.
           </p>
         </div>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
           {ventures.map((venture) => (
             <Link key={venture.href} href={venture.href} className="card group rounded-3xl p-6 transition hover:-translate-y-1">
               <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-midnight">{venture.tag}</span>

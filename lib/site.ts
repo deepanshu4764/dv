@@ -66,6 +66,7 @@ export const seoKeywords = [
 export const navLinks = [
   { label: 'Company', href: '/deepanshu-ventures/' },
   { label: 'Founder', href: '/deepanshu/' },
+  { label: 'Ventures', href: '/#ventures' },
   { label: 'AI', href: '/ai-automation/' },
   { label: 'Gurgaon', href: '/gurgaon/' },
   { label: 'Insights', href: '/insights/deepanshu-ventures-seo-strategy/' },
@@ -118,29 +119,25 @@ export const trustSignals = [
 
 export const ventures = [
   {
-    title: 'AnyTimeTiffin by Deepanshu Ventures',
-    href: '/anytimetiffin/',
+    title: 'AI Automation Agency',
+    href: '/ventures/ai-automation-agency/',
+    description:
+      'AI chatbots, WhatsApp automation, CRM workflows, voice agents, and operational systems for businesses that want to scale faster.',
+    tag: 'AI Venture'
+  },
+  {
+    title: 'Social Drive Marketing Agency',
+    href: '/ventures/social-drive-marketing-agency/',
+    description:
+      'ROI-focused social media marketing, campaign systems, reporting, client portal flow, and growth support for brands.',
+    tag: 'Marketing Venture'
+  },
+  {
+    title: 'Anytime Tiffin',
+    href: '/ventures/anytime-tiffin/',
     description:
       'A local homemade tiffin venture for M3M Soulitude with WhatsApp ordering, subscriptions, resident updates, and Google Sheets lead capture.',
     tag: 'Food Venture'
-  },
-  {
-    title: 'Deepanshu Ventures AI',
-    href: '/ai-automation/',
-    description: 'AI automation, digital systems, and technology workflows for ambitious Indian businesses.',
-    tag: 'AI + Technology'
-  },
-  {
-    title: 'Deepanshu Ventures Digital',
-    href: '/digital-growth/',
-    description: 'Brand, content, conversion, and performance marketing systems for founders and companies.',
-    tag: 'Digital Growth'
-  },
-  {
-    title: 'Deepanshu Ventures Gurgaon',
-    href: '/gurgaon/',
-    description: 'Local SEO and business presence for Gurgaon, Gurugram, Delhi-NCR, Rohtak, and India.',
-    tag: 'Local Authority'
   }
 ];
 
