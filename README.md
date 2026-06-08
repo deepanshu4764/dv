@@ -55,6 +55,8 @@ Primary SEO files:
 - `/ventures/ai-automation-agency/`
 - `/ventures/social-drive-marketing-agency/`
 - `/ventures/anytime-tiffin/`
+- `/pay/`
+- `/payments/admin/`
 - `/ai-automation-agency/index.html`
 - `/social-drive/index.html`
 - `/anytimetiffin/`
@@ -66,6 +68,10 @@ Primary SEO files:
 ## Deployment
 
 Deploy from the repository root on Vercel. Vercel detects Next.js automatically.
+
+## Razorpay Payments
+
+Payment architecture is documented in `RAZORPAY_INTEGRATION.md`. Add the Razorpay environment variables from `.env.example` in Vercel before testing live payments.
 
 After deployment:
 

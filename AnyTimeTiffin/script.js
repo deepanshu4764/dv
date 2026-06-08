@@ -108,7 +108,7 @@ const state = {
   isAvailable: true,
   filters: { search: '', diet: 'all', maxPrice: 200, sort: 'featured' },
   coupon: { code: '', discount: 0 },
-  paymentMode: 'UPI',
+  paymentMode: 'RAZORPAY',
   user: null,
   orders: [],
   subscriptions: [],
@@ -168,6 +168,7 @@ function init() {
   updateAccountUI()
   renderDashboard()
   checkAvailability(false)
+  updatePaymentButtonLabel()
   refreshIcons()
 }
 
@@ -255,6 +256,7 @@ function bindEvents() {
   document.querySelectorAll('input[name="payment"]').forEach(input => {
     input.addEventListener('change', event => {
       state.paymentMode = event.target.value
+      updatePaymentButtonLabel()
     })
   })
 
@@ -442,6 +444,17 @@ function renderCart() {
   const hasCart = cart.length > 0
   byId('placeOrderBtn').disabled = !hasCart || !state.isAvailable
   byId('checkoutWhatsApp').disabled = !hasCart || !state.isAvailable
+  updatePaymentButtonLabel()
+}
+
+function updatePaymentButtonLabel() {
+  const placeOrderButton = byId('placeOrderBtn')
+  if (!placeOrderButton) return
+
+  const label = placeOrderButton.querySelector('span') || placeOrderButton
+  const text = state.paymentMode === 'RAZORPAY' ? 'Pay Online & Place Order' : 'Place COD / Pay Later Order'
+  label.textContent = text
+  placeOrderButton.dataset.defaultText = text
 }
 
 function renderCartList(container, cart) {
@@ -742,8 +755,116 @@ async function placeOrder() {
   if (!customer) return
 
   state.orderSubmitting = true
-  setButtonLoading(byId('placeOrderBtn'), true, 'Saving...')
+  setButtonLoading(byId('placeOrderBtn'), true, state.paymentMode === 'RAZORPAY' ? 'Opening payment...' : 'Saving...')
 
+  if (state.paymentMode === 'RAZORPAY') {
+    await payOnlineOrder(customer)
+    return
+  }
+
+  await saveOrderAndShowSuccess(customer, {
+    paymentMode: 'COD / Pay later',
+    paymentStatus: 'PENDING_COD'
+  })
+}
+
+async function payOnlineOrder(customer) {
+  const cart = getCartItems()
+  const subtotal = getSubtotal(cart)
+  const discount = getDiscountAmount(subtotal)
+  const total = Math.max(0, subtotal - discount)
+  const paymentMessage = byId('paymentMessage')
+  if (paymentMessage) paymentMessage.textContent = 'Creating secure Razorpay order...'
+
+  try {
+    await loadRazorpayCheckout()
+    if (!window.Razorpay) throw new Error('Razorpay checkout did not load.')
+
+    const response = await fetch('/api/payments/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: total,
+        currency: 'INR',
+        ventureId: 'anytimetiffin',
+        ventureName: 'AnyTimeTiffin',
+        customerName: customer.name,
+        customerPhone: customer.mobile,
+        flatNumber: customer.flat,
+        address: `${customer.flat}, ${customer.tower}, ${customer.location}, ${customer.pincode}`,
+        cartItems: cart.map(item => ({ key: item.key, qty: item.qty })),
+        notes: {
+          couponCode: state.coupon.code || '',
+          deliverySlot: customer.slot,
+          spiceLevel: customer.spice,
+          allergies: customer.allergies,
+          instructions: customer.instr
+        },
+        orderType: 'TIFFIN_ORDER'
+      })
+    })
+
+    const orderData = await response.json()
+    if (!response.ok) throw new Error(orderData.error || 'Could not create Razorpay order.')
+
+    if (paymentMessage) paymentMessage.textContent = 'Complete the payment in the secure Razorpay window.'
+
+    let paymentCompleted = false
+    const checkout = new window.Razorpay({
+      key: orderData.keyId,
+      amount: orderData.amount,
+      currency: orderData.currency,
+      name: 'AnyTimeTiffin',
+      description: 'M3M Soulitude tiffin order',
+      order_id: orderData.razorpayOrderId,
+      prefill: {
+        name: customer.name,
+        contact: customer.mobile
+      },
+      notes: {
+        localOrderId: orderData.localOrderId,
+        ventureId: 'anytimetiffin'
+      },
+      handler: async function (paymentResponse) {
+        await verifyRazorpayPayment(paymentResponse, orderData.localOrderId)
+        paymentCompleted = true
+        const savedOrder = await saveOrderAndShowSuccess(customer, {
+          paymentMode: 'Razorpay',
+          paymentStatus: 'PAID',
+          razorpayOrderId: paymentResponse.razorpay_order_id,
+          razorpayPaymentId: paymentResponse.razorpay_payment_id
+        })
+        if (paymentMessage) paymentMessage.textContent = 'Payment successful. Order placed.'
+        openWhatsApp(buildWhatsAppMessage(customer, savedOrder), 'Payment successful. Order details are ready on WhatsApp.')
+      },
+      modal: {
+        ondismiss: function () {
+          if (paymentCompleted) return
+          state.orderSubmitting = false
+          setButtonLoading(byId('placeOrderBtn'), false)
+          if (paymentMessage) paymentMessage.textContent = 'Payment window closed. You can retry online payment or choose COD.'
+        }
+      }
+    })
+
+    checkout.on('payment.failed', function () {
+      state.orderSubmitting = false
+      setButtonLoading(byId('placeOrderBtn'), false)
+      if (paymentMessage) paymentMessage.textContent = 'Payment failed. Please retry or choose COD.'
+      showNotice('Payment failed. Please retry; the order was not marked as paid.')
+    })
+
+    checkout.open()
+  } catch (error) {
+    state.orderSubmitting = false
+    setButtonLoading(byId('placeOrderBtn'), false)
+    const message = error instanceof Error ? error.message : 'Payment failed. Please retry.'
+    if (paymentMessage) paymentMessage.textContent = message
+    showNotice(message)
+  }
+}
+
+async function saveOrderAndShowSuccess(customer, payment) {
   const cart = getCartItems()
   const subtotal = getSubtotal(cart)
   const discount = getDiscountAmount(subtotal)
@@ -757,7 +878,10 @@ async function placeOrder() {
     discount,
     total,
     coupon: state.coupon.code || '-',
-    paymentMode: state.paymentMode
+    paymentMode: payment.paymentMode,
+    paymentStatus: payment.paymentStatus,
+    razorpayOrderId: payment.razorpayOrderId || '',
+    razorpayPaymentId: payment.razorpayPaymentId || ''
   }
 
   state.lastOrder = order
@@ -788,17 +912,63 @@ async function placeOrder() {
     discount: discount,
     total: total,
     coupon: state.coupon.code || '-',
-    paymentMode: state.paymentMode
+    paymentMode: order.paymentMode,
+    paymentStatus: order.paymentStatus,
+    razorpayOrderId: order.razorpayOrderId,
+    razorpayPaymentId: order.razorpayPaymentId
   })
   
   renderDashboard()
   closeModal('checkoutModal')
   byId('successMessage').textContent = sheetsSaved
-    ? `Order ${order.id} saved for ${formatCurrency(order.total)} via ${order.paymentMode}. Confirm it on WhatsApp when ready.`
+    ? `Order ${order.id} saved for ${formatCurrency(order.total)} via ${order.paymentMode}. ${order.paymentStatus === 'PAID' ? 'Payment successful. Order placed.' : 'Confirm it on WhatsApp when ready.'}`
     : `Order ${order.id} saved on this browser. Please confirm it on WhatsApp; Sheets will need another try when online.`
   openModal('successModal')
   state.orderSubmitting = false
   setButtonLoading(byId('placeOrderBtn'), false)
+  return order
+}
+
+function loadRazorpayCheckout() {
+  return new Promise((resolve, reject) => {
+    if (window.Razorpay) {
+      resolve(true)
+      return
+    }
+
+    const existing = document.querySelector('script[src="https://checkout.razorpay.com/v1/checkout.js"]')
+    if (existing) {
+      existing.addEventListener('load', () => resolve(true), { once: true })
+      existing.addEventListener('error', () => reject(new Error('Unable to load Razorpay checkout.')), { once: true })
+      return
+    }
+
+    const script = document.createElement('script')
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js'
+    script.async = true
+    script.onload = () => resolve(true)
+    script.onerror = () => reject(new Error('Unable to load Razorpay checkout.'))
+    document.body.appendChild(script)
+  })
+}
+
+async function verifyRazorpayPayment(paymentResponse, localOrderId) {
+  const response = await fetch('/api/payments/verify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      razorpay_order_id: paymentResponse.razorpay_order_id,
+      razorpay_payment_id: paymentResponse.razorpay_payment_id,
+      razorpay_signature: paymentResponse.razorpay_signature,
+      localOrderId
+    })
+  })
+
+  const data = await response.json()
+  if (!response.ok || !data.success) {
+    throw new Error(data.error || 'Payment verification failed.')
+  }
+  return data
 }
 
 function validateOrderForm() {
@@ -859,18 +1029,22 @@ function buildWhatsAppMessage(customer, sourceOrder = null) {
   const total = sourceOrder ? sourceOrder.total : Math.max(0, subtotal - discount)
   const orderId = sourceOrder ? sourceOrder.id : 'ATT-' + Date.now().toString().slice(-6)
   const paymentMode = sourceOrder ? sourceOrder.paymentMode : state.paymentMode
+  const paymentStatus = sourceOrder ? sourceOrder.paymentStatus : ''
 
   const lines = [
     `New AnyTime Tiffin Order: ${orderId}`,
     'Name: ' + customer.name,
     'Mobile: ' + customer.mobile,
     'Flat: ' + customer.flat + ', ' + customer.tower,
+    'Location: ' + customer.location,
     'Slot: ' + customer.slot,
     'Items: ' + summarizeCartForWhatsApp(cart),
     'Total: Rs. ' + total,
-    'Payment: ' + paymentMode,
+    'Payment: ' + paymentMode + (paymentStatus ? ' (' + paymentStatus + ')' : ''),
+    sourceOrder && sourceOrder.razorpayPaymentId ? 'Razorpay Payment ID: ' + sourceOrder.razorpayPaymentId : '',
+    sourceOrder && sourceOrder.razorpayOrderId ? 'Razorpay Order ID: ' + sourceOrder.razorpayOrderId : '',
     'Full order details are saved. Please confirm availability.'
-  ]
+  ].filter(Boolean)
 
   return lines.join('\n')
 }

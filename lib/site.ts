@@ -67,6 +67,7 @@ export const navLinks = [
   { label: 'Company', href: '/deepanshu-ventures/' },
   { label: 'Founder', href: '/deepanshu/' },
   { label: 'Ventures', href: '/#ventures' },
+  { label: 'Pay', href: '/pay/' },
   { label: 'AI', href: '/ai-automation/' },
   { label: 'Gurgaon', href: '/gurgaon/' },
   { label: 'Insights', href: '/insights/deepanshu-ventures-seo-strategy/' },
@@ -138,6 +139,29 @@ export const ventures = [
     description:
       'A local homemade tiffin venture for M3M Soulitude with WhatsApp ordering, subscriptions, resident updates, and Google Sheets lead capture.',
     tag: 'Food Venture'
+  }
+];
+
+export const paymentLinks = [
+  {
+    title: 'AI Automation Agency advance',
+    href: '/pay/?venture=ai-automation-agency&amount=15000&purpose=ai-automation-starter-advance',
+    description: 'Pay a consultation, starter package, package advance, or custom AI automation invoice.'
+  },
+  {
+    title: 'Social Drive package payment',
+    href: '/pay/?venture=social-drive-marketing-agency&amount=15000&purpose=social-drive-base-plan',
+    description: 'Pay for strategy booking, monthly packages, campaign advances, or custom marketing invoices.'
+  },
+  {
+    title: 'AnyTimeTiffin payment',
+    href: '/ventures/anytime-tiffin/',
+    description: 'Open the live tiffin order app and pay the exact cart total after selecting meals.'
+  },
+  {
+    title: 'Custom Deepanshu Ventures payment',
+    href: '/pay/?venture=deepanshu-ventures',
+    description: 'Create a custom Razorpay payment for invoices, retainers, consultation, or venture support.'
   }
 ];
 

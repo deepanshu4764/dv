@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, MapPin, Search, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, CreditCard, MapPin, Search, Sparkles } from 'lucide-react';
 import { JsonLd } from '@/components/JsonLd';
 import { LeadForm } from '@/components/LeadForm';
 import { MotionReveal } from '@/components/MotionReveal';
@@ -14,6 +14,7 @@ import {
   heroStats,
   insightPosts,
   keywordClusters,
+  paymentLinks,
   seoPages,
   siteUrl,
   trustSignals,
@@ -241,6 +242,26 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <SectionHeader
+        id="payments"
+        eyebrow="Secure payments"
+        title="Pay for any Deepanshu Ventures service or venture."
+        description="Razorpay payment links are routed through one reusable server-verified system for agency packages, consultation booking, advances, custom invoices, and AnyTimeTiffin orders."
+      />
+
+      <section className="container grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {paymentLinks.map((payment) => (
+          <Link key={payment.href} href={payment.href} className="card focus-ring group rounded-3xl p-6 transition hover:-translate-y-1 hover:border-blue-300/40">
+            <CreditCard className="h-8 w-8 text-blue-200" aria-hidden="true" />
+            <h3 className="mt-6 text-xl font-black text-white">{payment.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-slate-400">{payment.description}</p>
+            <p className="mt-5 inline-flex items-center gap-2 text-sm font-black text-blue-200">
+              Open payment <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" />
+            </p>
+          </Link>
+        ))}
       </section>
 
       <SectionHeader

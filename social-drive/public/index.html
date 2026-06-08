@@ -950,7 +950,7 @@
           <li>1 detailed monthly report</li>
           <li>30-min strategy call</li>
         </ul>
-        <button class="btn btn-primary" data-plan="Base">Start free trial</button>
+        <button class="btn btn-primary" data-plan="Base">Book Base Plan</button>
         <div class="note">Cancel anytime within 30 days.</div>
       </div>
       <div class="plan recommended">
@@ -975,7 +975,7 @@
           <li>Weekly strategy meeting</li>
           <li>1-2 micro-influencer collabs</li>
         </ul>
-        <button class="btn btn-primary" data-plan="Growth">Start free trial</button>
+        <button class="btn btn-primary" data-plan="Growth">Book Growth Plan</button>
         <div class="note">Free month + Razorpay secure checkout.</div>
       </div>
       <div class="plan">
@@ -1001,7 +1001,7 @@
           <li>Daily dashboard + weekly reviews</li>
           <li>Competitor benchmarking</li>
         </ul>
-        <button class="btn btn-primary" data-plan="Professional">Start free trial</button>
+        <button class="btn btn-primary" data-plan="Professional">Book Professional Plan</button>
         <div class="note">Dedicated account manager + priority support.</div>
       </div>
     </div>
@@ -1569,8 +1569,17 @@
     });
 
     function openCheckout(plan) {
-      // Placeholder: integrate Razorpay checkout with selected plan & free trial logic.
-      alert("Razorpay checkout for " + plan + " plan (first month free) would open here.");
+      const planPayments = {
+        Base: { amount: 15000, purpose: "social-drive-base-plan" },
+        Growth: { amount: 50000, purpose: "social-drive-growth-plan" },
+        Professional: { amount: 100000, purpose: "social-drive-professional-plan" }
+      };
+      const selected = planPayments[plan] || planPayments.Base;
+      const url = new URL("/pay/", window.location.origin);
+      url.searchParams.set("venture", "social-drive-marketing-agency");
+      url.searchParams.set("amount", String(selected.amount));
+      url.searchParams.set("purpose", selected.purpose);
+      window.location.href = url.toString();
     }
 
     // Chatbot and WhatsApp floating support starts
