@@ -68,6 +68,7 @@ export const navLinks = [
   { label: 'Founder', href: '/deepanshu/' },
   { label: 'Ventures', href: '/#ventures' },
   { label: 'Pay', href: '/pay/' },
+  { label: 'Login', href: '/auth/' },
   { label: 'AI', href: '/ai-automation/' },
   { label: 'Gurgaon', href: '/gurgaon/' },
   { label: 'Insights', href: '/insights/deepanshu-ventures-seo-strategy/' },
