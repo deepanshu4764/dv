@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, CreditCard, MapPin, Search, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, CreditCard, LogIn, MapPin, Search, Sparkles } from 'lucide-react';
 import { JsonLd } from '@/components/JsonLd';
 import { LeadForm } from '@/components/LeadForm';
 import { MotionReveal } from '@/components/MotionReveal';
@@ -232,14 +232,19 @@ export default function HomePage() {
         </div>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {ventures.map((venture) => (
-            <Link key={venture.href} href={venture.href} className="glass focus-ring group rounded-[2rem] p-6 transition hover:-translate-y-1">
+            <article key={venture.href} className="glass rounded-[2rem] p-6 transition hover:-translate-y-1">
               <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-midnight">{venture.tag}</span>
               <h3 className="mt-6 text-2xl font-black text-white">{venture.title}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{venture.description}</p>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-black text-blue-200">
-                Explore page <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true" />
-              </span>
-            </Link>
+              <div className="mt-6 grid gap-3">
+                <Link href={venture.href} className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-black text-midnight transition hover:bg-blue-50">
+                  Explore venture <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link href={venture.authHref} className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-white/14 bg-white/8 px-4 py-3 text-sm font-black text-white transition hover:bg-white/12">
+                  Venture login <LogIn className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
       </section>

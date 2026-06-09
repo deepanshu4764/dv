@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { AuthDashboard } from '@/components/auth/AuthDashboard';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: 'Rider Dashboard',
-  description: 'Rider dashboard for Deepanshu Ventures authenticated users.',
+  title: 'Venture Rider Access',
+  description: 'Rider access is now scoped to each Deepanshu Ventures portfolio company.',
   robots: {
     index: false,
     follow: false
@@ -11,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function RiderPage() {
-  return <AuthDashboard role="rider" />;
+  redirect('/ventures/');
 }

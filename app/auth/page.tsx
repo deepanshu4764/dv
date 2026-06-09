@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
-import { OtpAuthPortal } from '@/components/auth/OtpAuthPortal';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: 'Login',
-  description: 'Phone OTP login and sign-up portal for Deepanshu Ventures customers and riders.',
-  alternates: {
-    canonical: '/auth/'
-  },
+  title: 'Venture Login',
+  description: 'Choose a Deepanshu Ventures portfolio company to access its venture-specific login.',
   robots: {
     index: false,
     follow: false
@@ -14,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function AuthPage() {
-  return <OtpAuthPortal />;
+  redirect('/ventures/');
 }

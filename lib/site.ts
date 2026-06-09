@@ -14,6 +14,7 @@ import {
   Sparkles,
   Users
 } from 'lucide-react';
+import { ventureAuthConfigs } from '@/lib/venture-auth';
 
 export const siteUrl = 'https://www.deepanshuventures.com';
 
@@ -68,7 +69,6 @@ export const navLinks = [
   { label: 'Founder', href: '/deepanshu/' },
   { label: 'Ventures', href: '/#ventures' },
   { label: 'Pay', href: '/pay/' },
-  { label: 'Login', href: '/auth/' },
   { label: 'AI', href: '/ai-automation/' },
   { label: 'Gurgaon', href: '/gurgaon/' },
   { label: 'Insights', href: '/insights/deepanshu-ventures-seo-strategy/' },
@@ -119,29 +119,14 @@ export const trustSignals = [
   { icon: Clock, title: 'Fast static delivery', description: 'Next.js App Router, optimized metadata, responsive CSS, and minimal client JavaScript.' }
 ];
 
-export const ventures = [
-  {
-    title: 'AI Automation Agency',
-    href: '/ventures/ai-automation-agency/',
-    description:
-      'AI chatbots, WhatsApp automation, CRM workflows, voice agents, and operational systems for businesses that want to scale faster.',
-    tag: 'AI Venture'
-  },
-  {
-    title: 'Social Drive Marketing Agency',
-    href: '/ventures/social-drive-marketing-agency/',
-    description:
-      'ROI-focused social media marketing, campaign systems, reporting, client portal flow, and growth support for brands.',
-    tag: 'Marketing Venture'
-  },
-  {
-    title: 'Anytime Tiffin',
-    href: '/ventures/anytime-tiffin/',
-    description:
-      'A local homemade tiffin venture for M3M Soulitude with WhatsApp ordering, subscriptions, resident updates, and Google Sheets lead capture.',
-    tag: 'Food Venture'
-  }
-];
+export const ventures = ventureAuthConfigs.map((venture) => ({
+  title: venture.name,
+  href: venture.href,
+  appHref: venture.appHref,
+  authHref: venture.authHref,
+  description: venture.description,
+  tag: venture.tag
+}));
 
 export const paymentLinks = [
   {

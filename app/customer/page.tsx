@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { AuthDashboard } from '@/components/auth/AuthDashboard';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: 'Customer Dashboard',
-  description: 'Customer dashboard for Deepanshu Ventures authenticated users.',
+  title: 'Venture Customer Access',
+  description: 'Customer access is now scoped to each Deepanshu Ventures portfolio company.',
   robots: {
     index: false,
     follow: false
@@ -11,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function CustomerPage() {
-  return <AuthDashboard role="customer" />;
+  redirect('/ventures/');
 }

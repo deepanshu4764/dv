@@ -1,41 +1,27 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Bike, CheckCircle2, Loader2, Phone, ShieldCheck, UserRound, Users } from 'lucide-react';
+import { Bike, CheckCircle2, Loader2, Phone, ShieldCheck, Store, UserRound, Users } from 'lucide-react';
+import {
+  getVentureDashboardHref,
+  getVentureStorageKeys,
+  type UserRole,
+  type VentureAuthConfig
+} from '@/lib/venture-auth';
 
 type AuthView = 'login' | 'signup';
-type UserRole = 'customer' | 'rider';
 
 type UserProfile = {
   name: string | null;
   phone: string;
   role: UserRole;
+  ventureId: VentureAuthConfig['id'];
+  ventureName: string;
   token: string;
   authenticated: true;
   createdAt: string;
-};
-
-const authStorageKeys = {
-  authToken: 'deepanshu.authToken',
-  userProfile: 'deepanshu.userProfile',
-  selectedRole: 'deepanshu.selectedRole',
-  otpAttempt: 'deepanshu.otpAttempt'
-};
-
-const roleContent = {
-  customer: {
-    label: 'Customer',
-    description: 'Order, pay, and track Deepanshu Ventures services.',
-    icon: UserRound,
-    dashboard: '/customer/'
-  },
-  rider: {
-    label: 'Rider',
-    description: 'Access delivery and field operation workflows.',
-    icon: Bike,
-    dashboard: '/rider/'
-  }
 };
 
 function sanitizePhone(value: string) {
@@ -58,28 +44,72 @@ function validateOtp(otp: string) {
   return '';
 }
 
-function createMockToken() {
-  return `mock_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+function createMockToken(ventureId: VentureAuthConfig['id']) {
+  return `mock_${ventureId}_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 }
 
-function getStoredProfile(): UserProfile | null {
+function getStoredProfile(venture: VentureAuthConfig): UserProfile | null {
   if (typeof window === 'undefined') return null;
 
   try {
+    const authStorageKeys = getVentureStorageKeys(venture.id);
     const token = localStorage.getItem(authStorageKeys.authToken);
     const rawProfile = localStorage.getItem(authStorageKeys.userProfile);
     if (!token || !rawProfile) return null;
 
     const profile = JSON.parse(rawProfile) as UserProfile;
-    if (!profile.authenticated || profile.token !== token || !['customer', 'rider'].includes(profile.role)) return null;
+    const validRole = profile.role === 'customer' || profile.role === 'rider';
+    const validSession = profile.authenticated && profile.token === token && profile.ventureId === venture.id;
+    if (!validRole || !validSession) return null;
     return profile;
   } catch {
     return null;
   }
 }
 
-export function OtpAuthPortal() {
+function syncAnyTimeTiffinCustomerSession(venture: VentureAuthConfig, user: UserProfile) {
+  if (venture.id !== 'anytimetiffin' || user.role !== 'customer') return;
+
+  try {
+    const existing = JSON.parse(localStorage.getItem('anytimeTiffin.user') || '{}') as {
+      preferences?: {
+        spice?: string;
+        slot?: string;
+        allergies?: string;
+      };
+    };
+
+    localStorage.setItem(
+      'anytimeTiffin.user',
+      JSON.stringify({
+        name: user.name || 'AnyTimeTiffin Customer',
+        mobile: user.phone.slice(-10),
+        preferences: {
+          spice: existing.preferences?.spice || 'Medium',
+          slot: existing.preferences?.slot || 'Lunch: 12:00 PM - 2:00 PM',
+          allergies: existing.preferences?.allergies || ''
+        }
+      })
+    );
+  } catch {
+    localStorage.setItem(
+      'anytimeTiffin.user',
+      JSON.stringify({
+        name: user.name || 'AnyTimeTiffin Customer',
+        mobile: user.phone.slice(-10),
+        preferences: {
+          spice: 'Medium',
+          slot: 'Lunch: 12:00 PM - 2:00 PM',
+          allergies: ''
+        }
+      })
+    );
+  }
+}
+
+export function OtpAuthPortal({ venture }: { venture: VentureAuthConfig }) {
   const router = useRouter();
+  const authStorageKeys = useMemo(() => getVentureStorageKeys(venture.id), [venture.id]);
   const [currentView, setCurrentView] = useState<AuthView>('login');
   const [userRole, setUserRole] = useState<UserRole>('customer');
   const [fullName, setFullName] = useState('');
@@ -93,6 +123,24 @@ export function OtpAuthPortal() {
   const [authToken, setAuthToken] = useState('');
   const [otpExpiresAt, setOtpExpiresAt] = useState(0);
   const [lastOtpSentAt, setLastOtpSentAt] = useState(0);
+
+  const roleContent = useMemo(
+    () => ({
+      customer: {
+        label: 'Customer',
+        description: venture.customerRoleDescription,
+        icon: UserRound,
+        dashboard: venture.customerDashboardHref
+      },
+      rider: {
+        label: 'Rider',
+        description: venture.riderRoleDescription,
+        icon: Bike,
+        dashboard: venture.riderDashboardHref
+      }
+    }),
+    [venture.customerDashboardHref, venture.customerRoleDescription, venture.riderDashboardHref, venture.riderRoleDescription]
+  );
 
   const activeRole = roleContent[userRole];
   const ActiveRoleIcon = activeRole.icon;
@@ -111,12 +159,12 @@ export function OtpAuthPortal() {
       setUserRole(existingRole);
     }
 
-    const profile = getStoredProfile();
+    const profile = getStoredProfile(venture);
     if (profile) {
       setAuthToken(profile.token);
-      router.replace(roleContent[profile.role].dashboard);
+      router.replace(getVentureDashboardHref(venture, profile.role));
     }
-  }, [router]);
+  }, [authStorageKeys.selectedRole, router, venture]);
 
   function clearFeedback() {
     setErrorMessage('');
@@ -142,6 +190,7 @@ export function OtpAuthPortal() {
     setUserRole(role);
     localStorage.setItem(authStorageKeys.selectedRole, role);
     clearFeedback();
+    resetOtpState();
   }
 
   async function handleSendOTP(phone: string) {
@@ -167,6 +216,7 @@ export function OtpAuthPortal() {
       JSON.stringify({
         phone,
         role: userRole,
+        ventureId: venture.id,
         otp,
         expiresAt
       })
@@ -190,10 +240,11 @@ export function OtpAuthPortal() {
       const savedAttempt = JSON.parse(localStorage.getItem(authStorageKeys.otpAttempt) || '{}') as {
         phone?: string;
         role?: UserRole;
+        ventureId?: VentureAuthConfig['id'];
         otp?: string;
         expiresAt?: number;
       };
-      if (savedAttempt.phone === phone && savedAttempt.role === role) {
+      if (savedAttempt.phone === phone && savedAttempt.role === role && savedAttempt.ventureId === venture.id) {
         expectedOtp = savedAttempt.otp || expectedOtp;
         expectedExpiry = savedAttempt.expiresAt || expectedExpiry;
       }
@@ -205,11 +256,13 @@ export function OtpAuthPortal() {
     if (Date.now() > expectedExpiry) throw new Error('OTP expired');
     if (otp !== expectedOtp) throw new Error('Wrong OTP');
 
-    const token = createMockToken();
+    const token = createMockToken(venture.id);
     const user: UserProfile = {
       name: name || null,
       phone,
       role,
+      ventureId: venture.id,
+      ventureName: venture.name,
       token,
       authenticated: true,
       createdAt: new Date().toISOString()
@@ -219,6 +272,7 @@ export function OtpAuthPortal() {
     localStorage.setItem(authStorageKeys.userProfile, JSON.stringify(user));
     localStorage.setItem(authStorageKeys.selectedRole, role);
     localStorage.removeItem(authStorageKeys.otpAttempt);
+    syncAnyTimeTiffinCustomerSession(venture, user);
     setAuthToken(token);
 
     return {
@@ -264,8 +318,7 @@ export function OtpAuthPortal() {
       setIsLoading(true);
       const result = await handleVerifyOTP(cleanPhone, cleanOtp, userRole, isSignup ? fullName.trim() : null);
       setSuccessMessage(isSignup ? 'Account Created Successfully' : 'Login Successful');
-      console.log(`Redirecting to ${result.user.role} dashboard`);
-      router.push(roleContent[result.user.role].dashboard);
+      router.push(getVentureDashboardHref(venture, result.user.role));
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : 'OTP Verification Failed');
     } finally {
@@ -277,26 +330,31 @@ export function OtpAuthPortal() {
     <section className="container min-h-[calc(100svh-4rem)] py-28" aria-labelledby="auth-title">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <div className="glass rounded-[2rem] p-7 md:p-9">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-black text-blue-100">
-            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-            Phone OTP access
-          </div>
+          <Link href="/ventures/" className="focus-ring inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-black text-blue-100">
+            <Store className="h-4 w-4" aria-hidden="true" />
+            {venture.name} access
+          </Link>
           <h1 id="auth-title" className="mt-6 text-4xl font-black leading-tight text-white sm:text-5xl">
-            Secure login for customers and riders.
+            Secure {venture.shortName} login for customers and riders.
           </h1>
-          <p className="mt-5 text-lg leading-8 text-slate-300">
-            A mobile-first authentication portal for Deepanshu Ventures operations, built with role-aware OTP flows and local mock sessions.
-          </p>
+          <p className="mt-5 text-lg leading-8 text-slate-300">{venture.authDescription}</p>
           <div className="mt-7 grid gap-3 text-sm font-bold text-slate-300">
             <p className="inline-flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-blue-200" aria-hidden="true" />
-              Segmented role selection persists through login and sign-up.
+              Role selection is saved only for this venture.
             </p>
             <p className="inline-flex items-center gap-2">
               <Phone className="h-5 w-5 text-blue-200" aria-hidden="true" />
               OTPs are mock-generated locally for immediate testing.
             </p>
+            <p className="inline-flex items-center gap-2">
+              <ShieldCheck className="h-5 w-5 text-blue-200" aria-hidden="true" />
+              Sessions redirect into {venture.shortName} dashboards.
+            </p>
           </div>
+          <Link href={venture.appHref} className="focus-ring mt-8 inline-flex items-center justify-center rounded-2xl border border-white/14 bg-white/8 px-5 py-3 text-sm font-black text-white transition hover:bg-white/12">
+            Open {venture.shortName}
+          </Link>
         </div>
 
         <div className="card rounded-[2rem] p-5 shadow-premium sm:p-7 md:p-8">
@@ -348,7 +406,7 @@ export function OtpAuthPortal() {
             </div>
           </div>
 
-          <form className="grid gap-4" onSubmit={(event) => event.preventDefault()} aria-label={isSignup ? 'Sign up with phone OTP' : 'Login with phone OTP'}>
+          <form className="grid gap-4" onSubmit={(event) => event.preventDefault()} aria-label={isSignup ? `Sign up for ${venture.name}` : `Login to ${venture.name}`}>
             {isSignup ? (
               <label className="grid gap-2 text-sm font-bold text-slate-300">
                 Full Name
@@ -441,7 +499,7 @@ export function OtpAuthPortal() {
             </button>
           </div>
 
-          {authToken ? <p className="mt-4 text-center text-xs font-bold text-slate-500">Active mock token restored for this browser.</p> : null}
+          {authToken ? <p className="mt-4 text-center text-xs font-bold text-slate-500">Active {venture.shortName} mock token restored for this browser.</p> : null}
         </div>
       </div>
     </section>

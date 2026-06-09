@@ -5,6 +5,8 @@ const CONFIG = {
   serviceAreaKey: 'M3M Soulitude',
   whatsappNumber: '918950378717',
   serviceablePincodes: ['122004', '122505'],
+  ventureAuthUrl: '/ventures/anytime-tiffin/auth/',
+  ventureAuthStoragePrefix: 'deepanshu.ventures.anytimetiffin.',
   googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbzP6yDvx6q5D1pAvr1rGNR0zaiFjj6JhZhz5mQ9eyg2sTtjKq_a4XmTuYuzVR2COZvhiw/exec'
 }
 
@@ -167,6 +169,7 @@ function init() {
   renderCart()
   updateAccountUI()
   renderDashboard()
+  resumePendingSubscription()
   checkAvailability(false)
   updatePaymentButtonLabel()
   refreshIcons()
@@ -265,6 +268,11 @@ function bindEvents() {
   })
 
   byId('accountBtn').addEventListener('click', () => {
+    if (!state.user) {
+      openVentureAuth('Login with AnyTimeTiffin OTP to open your account.')
+      return
+    }
+
     updateAccountUI()
     renderDashboard()
     openModal('accountModal')
@@ -1090,9 +1098,12 @@ function openWhatsApp(message, noticeText) {
 function startSubscription(planType, menuKey = 'standard') {
   if (!state.user) {
     state.pendingSubscription = { planType, menuKey }
-    byId('loginMessage').textContent = 'Login to start this subscription.'
-    updateAccountUI()
-    openModal('accountModal')
+    try {
+      sessionStorage.setItem('anytimeTiffin.pendingSubscription', JSON.stringify(state.pendingSubscription))
+    } catch (error) {
+      console.warn('Unable to save pending subscription:', error)
+    }
+    openVentureAuth('Login with AnyTimeTiffin OTP to start this subscription.')
     return
   }
 
@@ -1218,6 +1229,7 @@ function loginUser(event) {
 function logoutUser() {
   state.user = null
   localStorage.removeItem(LOCAL_KEYS.user)
+  clearVentureAuthSession()
   state.pendingSubscription = null
   byId('loginName').value = ''
   byId('loginMobile').value = ''
@@ -1441,10 +1453,65 @@ function loadStoredState() {
     state.coupon = storedCart.coupon || state.coupon
   }
 
-  state.user = readLocal(LOCAL_KEYS.user) || null
+  state.user = readLocal(LOCAL_KEYS.user) || readVentureAuthUser()
   state.orders = readLocal(LOCAL_KEYS.orders) || []
   state.subscriptions = readLocal(LOCAL_KEYS.subscriptions) || []
   state.addresses = readLocal(LOCAL_KEYS.addresses) || []
+}
+
+function openVentureAuth(noticeText) {
+  showNotice(noticeText || 'Opening AnyTimeTiffin login.')
+  window.location.href = CONFIG.ventureAuthUrl
+}
+
+function readVentureAuthUser() {
+  try {
+    const token = localStorage.getItem(CONFIG.ventureAuthStoragePrefix + 'authToken')
+    const rawProfile = localStorage.getItem(CONFIG.ventureAuthStoragePrefix + 'userProfile')
+    if (!token || !rawProfile) return null
+
+    const profile = JSON.parse(rawProfile)
+    const validSession = profile.authenticated && profile.token === token && profile.ventureId === 'anytimetiffin' && profile.role === 'customer'
+    if (!validSession) return null
+
+    const user = {
+      name: profile.name || 'AnyTimeTiffin Customer',
+      mobile: String(profile.phone || '').slice(-10),
+      preferences: {
+        spice: 'Medium',
+        slot: 'Lunch: 12:00 PM - 2:00 PM',
+        allergies: ''
+      }
+    }
+    writeLocal(LOCAL_KEYS.user, user)
+    return user
+  } catch (error) {
+    console.warn('Unable to restore AnyTimeTiffin venture login:', error)
+    return null
+  }
+}
+
+function clearVentureAuthSession() {
+  localStorage.removeItem(CONFIG.ventureAuthStoragePrefix + 'authToken')
+  localStorage.removeItem(CONFIG.ventureAuthStoragePrefix + 'userProfile')
+  localStorage.removeItem(CONFIG.ventureAuthStoragePrefix + 'otpAttempt')
+}
+
+function resumePendingSubscription() {
+  if (!state.user) return
+
+  try {
+    const rawPending = sessionStorage.getItem('anytimeTiffin.pendingSubscription')
+    if (!rawPending) return
+
+    const pending = JSON.parse(rawPending)
+    sessionStorage.removeItem('anytimeTiffin.pendingSubscription')
+    if (pending && pending.planType) {
+      createSubscription(pending.planType, pending.menuKey || 'standard')
+    }
+  } catch (error) {
+    console.warn('Unable to resume pending subscription:', error)
+  }
 }
 
 function saveCart() {

@@ -57,9 +57,11 @@ Primary SEO files:
 - `/ventures/anytime-tiffin/`
 - `/pay/`
 - `/payments/admin/`
-- `/auth/`
-- `/customer/`
-- `/rider/`
+- `/ventures/ai-automation-agency/auth/`
+- `/ventures/social-drive-marketing-agency/auth/`
+- `/ventures/anytime-tiffin/auth/`
+- `/ventures/[venture]/customer/`
+- `/ventures/[venture]/rider/`
 - `/ai-automation-agency/index.html`
 - `/social-drive/index.html`
 - `/anytimetiffin/`

@@ -830,7 +830,7 @@
           <a class="nav-link" href="#pricing">Plans</a>
           <a class="nav-link" href="#why">Why us</a>
           <a class="nav-link" href="#lead">Contact</a>
-          <button class="btn btn-ghost" id="login-btn">Login / Sign up</button>
+          <a class="btn btn-ghost" id="login-btn" href="/ventures/social-drive-marketing-agency/auth/">Login / Sign up</a>
           <button class="btn btn-primary" data-scroll="#lead">Start free trial</button>
         </div>
       </div>
@@ -1222,6 +1222,7 @@
     const authTabs = document.getElementById("auth-tabs");
     const authUser = document.getElementById("auth-user");
     const loginBtn = document.getElementById("login-btn");
+    const socialDriveAuthUrl = "/ventures/social-drive-marketing-agency/auth/";
 
     const authState = {
       view: "login",
@@ -1528,7 +1529,12 @@
       }
     }
 
-    if (loginBtn) loginBtn.addEventListener("click", () => openAuthModal("login"));
+    if (loginBtn) {
+      loginBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.href = socialDriveAuthUrl;
+      });
+    }
     if (authClose) authClose.addEventListener("click", closeAuthModal);
     if (authForm) {
       authForm.addEventListener("submit", handleAuthSubmit);

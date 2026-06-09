@@ -12,6 +12,7 @@ import {
   MessageCircle,
   ShoppingBag,
   Sparkles,
+  UserRound,
   Utensils
 } from 'lucide-react';
 import { JsonLd } from '@/components/JsonLd';
@@ -148,6 +149,12 @@ export default function AnyTimeTiffinPage() {
               >
                 Order on WhatsApp <MessageCircle className="h-5 w-5" aria-hidden="true" />
               </Link>
+              <Link
+                href="/ventures/anytime-tiffin/auth/"
+                className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-white/14 bg-white/8 px-6 py-4 text-base font-black text-white transition hover:-translate-y-0.5 hover:bg-white/12"
+              >
+                Customer / rider login <UserRound className="h-5 w-5" aria-hidden="true" />
+              </Link>
             </div>
             <dl className="mt-10 grid gap-3 sm:grid-cols-3">
               {[
@@ -255,6 +262,9 @@ export default function AnyTimeTiffinPage() {
               </Link>
               <Link href={`${orderAppPath}#plans`} className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-white/14 bg-white/8 px-5 py-4 font-black text-white transition hover:-translate-y-0.5 hover:bg-white/12">
                 Subscriptions <Clock className="h-5 w-5" aria-hidden="true" />
+              </Link>
+              <Link href="/ventures/anytime-tiffin/auth/" className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-white/14 bg-white/8 px-5 py-4 font-black text-white transition hover:-translate-y-0.5 hover:bg-white/12">
+                Login <UserRound className="h-5 w-5" aria-hidden="true" />
               </Link>
               <Link href="/ventures/" className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl border border-white/14 bg-white/8 px-5 py-4 font-black text-white transition hover:-translate-y-0.5 hover:bg-white/12">
                 DV portfolio <ArrowRight className="h-5 w-5" aria-hidden="true" />
